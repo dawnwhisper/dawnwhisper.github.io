@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://i.loli.net/2020/11/14/O5GjVLui2wNzZEx.png">
 <meta property="article:published_time" content="2020-11-07T08:22:20.000Z">
-<meta property="article:modified_time" content="2020-11-14T08:28:26.775Z">
+<meta property="article:modified_time" content="2020-11-14T08:31:11.922Z">
 <meta property="article:author" content="Dawn_whisper">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary">
@@ -183,7 +183,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 16:28:26" itemprop="dateModified" datetime="2020-11-14T16:28:26+08:00">2020-11-14</time>
+                <time title="修改时间：2020-11-14 16:31:11" itemprop="dateModified" datetime="2020-11-14T16:31:11+08:00">2020-11-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -210,7 +210,8 @@
 <a id="more"></a>
 
 <h2 id="Pollard-39-s-p-−-1"><a href="#Pollard-39-s-p-−-1" class="headerlink" title="Pollard&#39;s p − 1"></a>Pollard&#39;s p − 1</h2><p>已知 $N=p\cdot q$ ，我们的任务是分解出其中的两个质因子</p>
-<p>首先我们找到这样的一个 $L$ 满足 $L\mid p-1$ 且 $L\nmid q-1$ ，也就是存在整数 $i,j,k(k\neq0)$ 满足 $L=i\cdot (p-1)=j\cdot (q-1)+k$ ，由费马小定理可知<br>$$<br>a^L=a^{i\cdot (p-1)}=(a^{p-1})^i\equiv 1^i\ (mod\ p)\equiv 1\ (mod\ p) \<br>a^L=a^{j\cdot (q-1)+k}=(a^{q-1})^i\cdot a^k\equiv 1^j\cdot a^k\ (mod\ q)\equiv a^k\ (mod\ q)<br>$$<br>所以 $p\mid a^L-1$ 而 $q\nmid a^L-1$ ，那么我们就可以得到 $p=gcd(a^L-a,N)$</p>
+<p>首先我们找到这样的一个 $L$ 满足 $L\mid p-1$ 且 $L\nmid q-1$ ，也就是存在整数 $i,j,k(k\neq0)$ 满足 $L=i\cdot (p-1)=j\cdot (q-1)+k$ ，由费马小定理可知<br>$$<br>a^L=a^{i\cdot (p-1)}=(a^{p-1})^i\equiv 1^i\ (mod\ p)\equiv 1\ (mod\ p)<br>$$<br>$$<br>a^L=a^{j\cdot (q-1)+k}=(a^{q-1})^i\cdot a^k\equiv 1^j\cdot a^k\ (mod\ q)\equiv a^k\ (mod\ q)<br>$$</p>
+<p>所以 $p\mid a^L-1$ 而 $q\nmid a^L-1$ ，那么我们就可以得到 $p=gcd(a^L-a,N)$</p>
 <p><del>听起来无比简单</del>，但是，我们要如何找到这个 $L$ 呢？</p>
 <p>在Pollard的观察中，如果 $p-1$ 恰好是许多小素数的乘积，所以我们可以利用 $p-1$ 的倍数 $n!$ （n不是非常大）来代替 $p-1$ ，即计算 $gcd(a^{n!}-1,N)$ （例如我们可以选择 $a=2$ ）</p>
 <ul>
