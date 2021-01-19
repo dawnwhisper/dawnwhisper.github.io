@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="WP for *ctf2020第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！ 最后没AK，不好（悲）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Write up for *ctf2020">
+<meta property="og:url" content="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="WP for *ctf2020第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！ 最后没AK，不好（悲）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/ouXmL1yckdJHZzE.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/DpU1AXfdM6HBFQE.png">
+<meta property="og:image" content="https://i.loli.net/2021/01/19/21UeVbGj9Cn6haf.png">
+<meta property="article:published_time" content="2020-12-07T08:37:08.000Z">
+<meta property="article:modified_time" content="2021-01-19T05:54:12.785Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/01/19/ouXmL1yckdJHZzE.png">
+
+<link rel="canonical" href="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Write up for *ctf2020 | Dawn_whisper's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dawn_whisper's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Dawn_whisper">
+      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dawn_whisper's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Write up for *ctf2020
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-07 16:37:08" itemprop="dateCreated datePublished" datetime="2020-12-07T16:37:08+08:00">2020-12-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-19 13:54:12" itemprop="dateModified" datetime="2021-01-19T13:54:12+08:00">2021-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="WP-for-ctf2020"><a href="#WP-for-ctf2020" class="headerlink" title="WP for *ctf2020"></a>WP for *ctf2020</h1><p>第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！</p>
+<p>最后没AK，不好（悲）</p>
+<a id="more"></a>
+
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><h3 id="lottery-again"><a href="#lottery-again" class="headerlink" title="lottery again"></a>lottery again</h3><p>看源码，找关键代码</p>
+<p>加密部分</p>
+<p><img src="https://i.loli.net/2021/01/19/ouXmL1yckdJHZzE.png" alt="29.png"></p>
+<p>解密部分</p>
+<p><img src="https://i.loli.net/2021/01/19/DpU1AXfdM6HBFQE.png" alt="30.png"></p>
+<p>兑换彩票部分</p>
+<p><img src="https://i.loli.net/2021/01/19/21UeVbGj9Cn6haf.png" alt="31.png"></p>
+<p>分析函数可以发现在兑换彩票的时候，会对彩票密文进行解码，通过解码得到的彩票lottery内容从数据库中找到对应数据，取得可兑换的coin数量，并把coin加到解码得到的user账号的硬币中。</p>
+<p>分析代码可知，从密文中取得的user账号没有与在数据库中的信息进行验证，故如果我们可以篡改密文中对应的user信息，那么就可以让a用户购买的彩票，给b用户使用，从而让b用户达到白嫖的目的。</p>
+<p>我们发现加密方式为MCRYPT_RIJNDAEL_256，ECB模式，通过手动测试发现该算法的分组方式为32字节为一组，在这样的前提下，我们可以尝试替换储存在其中的user数据。</p>
+<p>以下来逐步分析如何替换全部user-uuid信息</p>
+<p>我们已有的密文数据是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">a46-58a00645c3e4&quot;,&quot;user&quot;:&quot;111111</span><br><span class="line">11-1111-1111-1111-111111111111&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;demodemo-demo-demo-d</span><br><span class="line">emo-demodemodemo&quot;,&quot;user&quot;:&quot;222222</span><br><span class="line">22-2222-2222-2222-222222222222&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如下为一个加密数据的明文内容，每一行的长度为0x20（除最后一行外</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">a46-58a00645c3e4&quot;,&quot;user&quot;:&quot;111111</span><br><span class="line">11-1111-1111-1111-111111111111&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我们想要把其替换为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">a46-58a00645c3e4&quot;,&quot;user&quot;:&quot;222222</span><br><span class="line">22-2222-2222-2222-222222222222&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是把user信息都从1替换成2 但是我们只可以替换其中的任何一个一行的内容，才不会造成解密错误。于是我们自然可以考虑替换第三行的内容，其标志着该彩票购买者的部分uuid信息。但是由于只是部分uuid信息，所以即使替换了也是如下情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">a46-58a00645c3e4&quot;,&quot;user&quot;:&quot;111111</span><br><span class="line">22-2222-2222-2222-222222222222&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>其user信息中的前六个字节无法被替换，由于六字节内容过长，不适合用爆破的方法来绕过。 但是如果我们考虑要把前六字节的信息也要替换的话，那么必须同时替换那一行的全部内容，也就是就会变成以下情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">emo-demodemodemo&quot;,&quot;user&quot;:&quot;222222</span><br><span class="line">22-2222-2222-2222-222222222222&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>也就是会造成lottery信息被替换，这会造成该彩票无法从数据库中读取到，直接报错。 最终考虑到以下构造：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-b</span><br><span class="line">a46-58a00645c3e4&quot;,&quot;user&quot;:&quot;111111</span><br><span class="line">emo-demodemodemo&quot;,&quot;user&quot;:&quot;222222</span><br><span class="line">22-2222-2222-2222-222222222222&quot;,</span><br><span class="line">&quot;coin&quot;:1&#125;</span><br></pre></td></tr></table></figure>
+<p>由于在php在json_decode的时候，后面的user会覆盖前面的user，也就是正确的user可以覆盖错误的user，成功修改user信息。</p>
+<p>其他部分就是，需要注册、登录、购买、彩票、兑换彩票，可以写个脚本使其自动化。代码中的target为最终要用于购买flag的账号的一个彩票密文数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line">url = <span class="string">&quot;http://52.149.144.45:8080&quot;</span></span><br><span class="line">req = requests.session()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getheaders</span>():</span></span><br><span class="line">    <span class="keyword">return</span> &#123;<span class="string">&quot;Cookie&quot;</span> : <span class="string">&quot;api_token=&quot;</span> + token&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reg</span>(<span class="params">user, pwd</span>):</span></span><br><span class="line">    text = req.post(url + <span class="string">&quot;/user/register&quot;</span>, data=&#123;<span class="string">&quot;username&quot;</span>: user, <span class="string">&quot;password&quot;</span>: pwd&#125;).text</span><br><span class="line">    data = json.loads(text)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">user, pwd</span>):</span></span><br><span class="line">    text = req.post(url + <span class="string">&quot;/user/login&quot;</span>, data=&#123;<span class="string">&quot;username&quot;</span>: user, <span class="string">&quot;password&quot;</span>: pwd&#125;).text</span><br><span class="line">    data = json.loads(text)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">buy</span>(<span class="params">token</span>):</span></span><br><span class="line">    text = req.post(url + <span class="string">&quot;/lottery/buy&quot;</span>, data=&#123;<span class="string">&quot;api_token&quot;</span>: token&#125;).text</span><br><span class="line">    data = json.loads(text)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hijack</span>(<span class="params">enc, enc2</span>):</span></span><br><span class="line">    enc = base64.b64decode(enc)</span><br><span class="line">    enc2 = base64.b64decode(enc2)</span><br><span class="line">    <span class="keyword">return</span> enc[:<span class="number">0x40</span>] + enc2[<span class="number">0x20</span>:<span class="number">0x60</span>] + enc[<span class="number">0x60</span>:]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getInfo</span>(<span class="params">enc</span>):</span></span><br><span class="line">    text = req.post(url + <span class="string">&quot;/lottery/info&quot;</span>, data=&#123;<span class="string">&quot;enc&quot;</span>: enc&#125;).text</span><br><span class="line">    data = json.loads(text)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">charge</span>(<span class="params">user, coin, enc</span>):</span></span><br><span class="line">    text = req.post(url + <span class="string">&quot;/lottery/charge&quot;</span>, data=&#123;<span class="string">&quot;user&quot;</span>: user, <span class="string">&quot;enc&quot;</span> : enc, <span class="string">&quot;coin&quot;</span> : coin&#125;).text</span><br><span class="line">    data = json.loads(text)</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">target = <span class="string">&#x27;***************jjXj40HxYWzD7/wbbu6LB8hKIgHzspmlNP0zCwC07w6uK7rCLP2MvVoq8P2oXt+OoD1NY2Ba5J5Hs1AiZkdxBRIrTSq9H8y2BmPiCmO6fH2d9eJW+rk8BfTg14RVjLwF1pW5cSqW2FXVyWb0j5c8edRkKKGE=&#x27;</span></span><br><span class="line">uuid = getInfo(target)[<span class="string">&#x27;info&#x27;</span>][<span class="string">&#x27;user&#x27;</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    reg_data = reg(<span class="string">&#x27;wjhflag&#x27;</span> + str(i), <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">    login_data = login(<span class="string">&#x27;wjhflag&#x27;</span> + str(i), <span class="string">&#x27;123456&#x27;</span>)</span><br><span class="line">    token = login_data[<span class="string">&#x27;user&#x27;</span>][<span class="string">&#x27;api_token&#x27;</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):</span><br><span class="line">        buy_data = buy(token)</span><br><span class="line">        enc = buy_data[<span class="string">&#x27;enc&#x27;</span>]</span><br><span class="line">        fake_enc = base64.b64encode(hijack(enc, target))</span><br><span class="line">        data = charge(uuid, <span class="number">0</span>, fake_enc)</span><br><span class="line">        print(data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h2><h3 id="GuessKey"><a href="#GuessKey" class="headerlink" title="GuessKey"></a>GuessKey</h3><p>憨憨出题人把key给出来了，<del>猜</del>（复制）数字</p>
+<h3 id="GuessKey2"><a href="#GuessKey2" class="headerlink" title="GuessKey2"></a>GuessKey2</h3><p>GuessKey_fix <del>其实就是不给key了</del></p>
+<p>先分析题目，看起来是要让我们去猜这个<code>key</code>，但显然不可能成功</p>
+<p>接着看下面发现我们每次可以给服务器发送一个<code>mask</code>，来对这个<code>key</code>进行改变，而改变的位置是<code>key</code>中<code>0</code>所在的位置随机选两个的区间来与<code>mask</code>异或，那么也就是说，每次选取的起止位置都是<code>0</code>，那么也就是说每一次的<code>mask</code>都会影响到这两个<code>0</code></p>
+<p>我们选择<code>mask</code>每一次都打<code>1</code>，这样每次的这两个<code>0</code>都会被异或成<code>1</code>（虽然有些地方也变成了<code>0</code>），但是相较于上一个状态，<code>0</code>的区间是被缩小了的，也就是说，在有限次的<code>mask</code>处理过后，<code>key</code>会变成<code>0b1111111111111111111111111111111111111111111111111111111111111111</code>，所以我们每次的<code>guess</code>就可以作为检测，当我们得到<code>Nice.</code>时，也就可以得知此时的<code>key</code>是<code>0b1111111111111111111111111111111111111111111111111111111111111111</code>，相当于<code>key</code>已知，和<code>GuessKey</code>就变成了一道题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">r = remote(<span class="string">&quot;52.163.228.53&quot;</span>, <span class="string">&quot;8082&quot;</span>)</span><br><span class="line">turn = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    turn += <span class="number">1</span></span><br><span class="line">    r.recvuntil(<span class="string">&quot;mask:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;guess:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&#x27;18446744073709551615&#x27;</span>)</span><br><span class="line">    back = r.recvline(<span class="literal">False</span>)</span><br><span class="line">    print(turn,back)</span><br><span class="line">    <span class="keyword">if</span>(back == <span class="string">b&#x27;Nice.&#x27;</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    r.recvuntil(<span class="string">&quot;mask:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">    r.recvuntil(<span class="string">&quot;guess:&quot;</span>)</span><br><span class="line">    r.sendline(<span class="string">&#x27;18446744073709551615&#x27;</span>)</span><br><span class="line">    back = r.recvline(<span class="literal">False</span>)</span><br><span class="line">    print(turn,back)</span><br><span class="line"></span><br><span class="line">flag = r.recvline(<span class="literal">False</span>)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<h3 id="MyEnc"><a href="#MyEnc" class="headerlink" title="MyEnc"></a>MyEnc</h3><p>这个题把<code>flag</code>当成<code>key</code>，对于我们给出的每个数字根据<code>key</code>的接下来6位对<code>iv</code>进行操作，因为我们已知<code>flag</code>的格式为<code>*CTF&#123;...&#125;</code>，所以我们对于<code>key</code>的前几十位是已知的，所以可以通过前几次操作来得到我们想要的东西</p>
+<p>因为返回的值是 $iv+(m ⊕ q)^{i^{i^i}}$ ，我们简记为 $iv+(m⊕q)^{x}$ ，那么我们可以两次令<code>m</code>为0，得到数的即为 $iv+q^x$ 与 $iv+q^y$ ，可知 $q = gcd(n,(iv+q^x)-(iv+q^y))$ ，那么<code>n</code>就可以被轻松分解</p>
+<p>接着我们可以令<code>m</code>等于<code>q</code>，这样就可以得到<code>iv</code></p>
+<p>接下来再令<code>m</code>等于0（其实等于几都能算，等于0方便点而已），由于<code>iv</code>、<code>q</code>全部已知，而且状态不超过 $2^7$ ，即可爆破状态，即为此时的6位<code>key</code></p>
+<p>手动补全前几位的<code>key</code>，然后不断通过爆破得到接下来的6位<code>key</code>，当<code>key</code>的长度达到120时，前120位即为<code>flag</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">table = <span class="string">&#x27;0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;</span></span><br><span class="line">r = remote(<span class="string">&quot;52.163.228.53&quot;</span>, <span class="string">&quot;8081&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">passpow</span>():</span></span><br><span class="line">	rev = r.recvuntil(<span class="string">&quot;sha256(xxxx+&quot;</span>)</span><br><span class="line">	suffix = r.recv(<span class="number">16</span>).decode()</span><br><span class="line">	r.recvuntil(<span class="string">&quot; == &quot;</span>)</span><br><span class="line">	res = r.recv(<span class="number">64</span>).decode()</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">		hashresult = hashlib.sha256((x+suffix).encode()).hexdigest()</span><br><span class="line">		<span class="keyword">if</span> hashresult == res:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	prefix = util.iters.mbruteforce(f,table,<span class="number">4</span>,<span class="string">&#x27;upto&#x27;</span>)</span><br><span class="line">	r.recvuntil(<span class="string">&quot;Give me xxxx:&quot;</span>)</span><br><span class="line">	r.sendline(str(prefix))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">talk</span>(<span class="params">x</span>):</span></span><br><span class="line">	r.recvuntil(<span class="string">&quot;give me a number:\n&quot;</span>)</span><br><span class="line">	r.sendline(str(x))</span><br><span class="line">	r.recvuntil(<span class="string">&quot;done: &quot;</span>)</span><br><span class="line">	<span class="keyword">return</span> int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line"></span><br><span class="line">passpow()</span><br><span class="line">print(<span class="string">&#x27;Successfully pass the pow!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;n: &quot;</span>)</span><br><span class="line">n = int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line">print(n)</span><br><span class="line"></span><br><span class="line">a = talk(<span class="number">0</span>)</span><br><span class="line">b = talk(<span class="number">0</span>)</span><br><span class="line">delta = b+n-a</span><br><span class="line"></span><br><span class="line">q = gcd(delta,n)</span><br><span class="line"><span class="keyword">assert</span> q != <span class="number">1</span></span><br><span class="line">p = n // q</span><br><span class="line"><span class="keyword">assert</span> p * q == n</span><br><span class="line"></span><br><span class="line">iv = talk(q)</span><br><span class="line"></span><br><span class="line">phi = (p<span class="number">-1</span>) * (q<span class="number">-1</span>)</span><br><span class="line">elist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">8</span>):</span><br><span class="line">	elist.append(pow(i,pow(i,i,phi),phi))</span><br><span class="line"></span><br><span class="line">flag = <span class="string">&#x27;001010100100001101010&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (len(flag)&lt;<span class="number">120</span>):</span><br><span class="line">	delta = talk(<span class="number">0</span>) - iv</span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">128</span>):</span><br><span class="line">		tmp = bin(i)[<span class="number">2</span>:].rjust(<span class="number">7</span>,<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">		res = <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> j <span class="keyword">in</span> range(len(tmp)):</span><br><span class="line">			<span class="keyword">if</span>(tmp[j] == <span class="string">&#x27;1&#x27;</span>):</span><br><span class="line">				res += pow(q,elist[j],n)</span><br><span class="line">				res %= n</span><br><span class="line">		<span class="keyword">if</span>(delta%n == res):</span><br><span class="line">			flag += bin(i)[<span class="number">2</span>:].rjust(<span class="number">7</span>,<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">			print(bin(i)[<span class="number">2</span>:].rjust(<span class="number">7</span>,<span class="string">&#x27;0&#x27;</span>))</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">flag = flag[:<span class="number">120</span>]</span><br><span class="line">print(flag)</span><br><span class="line">flag = long_to_bytes(int(flag,<span class="number">2</span>))</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
+
+<h3 id="little-case"><a href="#little-case" class="headerlink" title="little case"></a>little case</h3><p>题目分为两部分，一个是<code>little_trick</code>，一个是<code>real_trick</code></p>
+<p>阅读代码后发现<code>little_trick</code>就是<code>RSA</code>的<code>wiener attack</code>，最后即可分解<code>n</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">n1 = <span class="number">21669699875387343975765484834175962461348837371447024695458479154615348697330944566714587217852888702291368306637977095490953192701450127798670425959768118384915082017373951315699899009631834471691811815393784748930880954114446745814058132752897827717077886547911476575751254872623927783670252969995075629255541621917767501261249192653546875104532649043219697616464205772025267019328364349763854659490144531087349974469079255236823096415094552037488277752927579909539401311624671444833332618177513356173537573280352724384376372955100031534236816681805396608147647003653628203258681097552049114308367967967184116839561</span></span><br><span class="line">p1 = <span class="number">125457275769068125757485908164006976153846494199951055956773829512867658202991509882220598391130551501414264867302691498062034690987771420463818096949614464177297177742292221196272475473441901790650971196178740160270878352307469807794533558079725928555246759355468676092854618354193968504322694550607414849887</span></span><br><span class="line">q1 = <span class="number">172725732665160218766764654273481422951178250693790825716359642314019315013321867434849375780994146440118500992456863730311444752367847389052666095324149584230474450693683416636565463345342017830651196454735159385924736453857045827989347928771104006978412412405607299616293396656259291378061505961429915687703</span></span><br><span class="line">e1 = <span class="number">20717541468269984768938524534679430706714860712589983300712432366828367981392533792814384884126053081363266457682162675931547901815985830455612301105504518353600255693451085179954519939635263372257973143178677586338992274607959326361412487748088349413448526455377296931144384663805056580662706419414607407821761761574754611275621927387380065975844282519447660467416826579669726178901884060454994606177784839804528666823956703141147239309978420776148158425922031573513062568162012505209805669623841355103885621402814626329355281853436655713194649170570579414480803671531927080535374958180810697826214794117466378050607</span></span><br><span class="line">d1 = <span class="number">36167461773898995192586226632578677184913220227461899855497899052924496298787</span></span><br><span class="line"></span><br><span class="line">c1 = <span class="number">17653913822265292046140436077352027388518012934178497059850703004839268622175666123728756590505344279395546682262531546841391088108347695091027910544112830270722179480786859703225421972669021406495452107007154426730798752912163553332446929049057464612267870012438268458914652129391150217932076946886301294155031704279222594842585123671871118879574946424138391703308869753154497665630799300138651304835205755177940116680821142858923842124294529640719629497853598914963074656319325664210104788201957945801990296604585721820046391439235286951088086966253038989586737352467905401107613763487302070546247282406664431777475</span></span><br><span class="line">p = pow(c1,d1,n1) + <span class="number">1</span></span><br><span class="line">n = <span class="number">22346087036331379968192118389403047568445805414881948978518580277027027486284293415097623011228506968071753709256352246733181304513713003096615266613365080909760605498017330085960699607777361429562376124376340215426398797920168016137830563564636922257215066266075494625782943973857490781916694118187094786034792437781964601089843549995939887939410763350338658901108020658475956489391300528691289604149598720803012371765770928211044755626045817053870803040863722458554924076011151695567147976903053993914859714631837755435592006986598006207692599019026644753575853382810261910332197447386727419606073948645238377595719</span></span><br><span class="line">q = n // p</span><br><span class="line"><span class="keyword">assert</span> p * q == n</span><br><span class="line"></span><br><span class="line">cipher = <span class="number">12732299056226934743176360461051108799706450051853623472248552066649321279227693844417404789169416642586313895494292082308084823101092675162498154181999270703392144766031531668783213589136974486867571090321426005719333327425286160436925591205840653712046866950957876967715226097699016798471712274797888761218915345301238306497841970203137048433491914195023230951832644259526895087301990301002618450573323078919808182376666320244077837033894089805640452791930176084416087344594957596135877833163152566525019063919662459299054294655118065279192807949989681674190983739625056255497842063989284921411358232926435537518406</span></span><br><span class="line">phi = (p<span class="number">-1</span>) * (q<span class="number">-1</span>)</span><br><span class="line">print(p)</span><br><span class="line">print(q)</span><br></pre></td></tr></table></figure>
+
+<p><code>real_tirck</code>中给出了<code>e</code>的下界，以及告诉<code>e</code>和<code>phi</code>并不互素，所以我们猜测 $e\mid\varphi(n)$ （这里其实应该有证明的，有时间了再回来证），所以我们从下界爆破<code>e</code>，并使用AMM测试，能够跑出<code>flag</code>的即为正确的<code>e</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># About 3 seconds to run</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">AMM</span>(<span class="params">o, r, q</span>):</span></span><br><span class="line">    g = GF(q)</span><br><span class="line">    o = g(o)</span><br><span class="line">    p = g(random.randint(<span class="number">1</span>, q))</span><br><span class="line">    <span class="keyword">while</span> p ^ ((q<span class="number">-1</span>) // r) == <span class="number">1</span>:</span><br><span class="line">        p = g(random.randint(<span class="number">1</span>, q))</span><br><span class="line">    t = <span class="number">0</span></span><br><span class="line">    s = q - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> s % r == <span class="number">0</span>:</span><br><span class="line">        t += <span class="number">1</span></span><br><span class="line">        s = s // r</span><br><span class="line">    k = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> (k * s + <span class="number">1</span>) % r != <span class="number">0</span>:</span><br><span class="line">        k += <span class="number">1</span></span><br><span class="line">    alp = (k * s + <span class="number">1</span>) // r</span><br><span class="line">    a = p ^ (r**(t<span class="number">-1</span>) * s)</span><br><span class="line">    b = o ^ (r*alp - <span class="number">1</span>)</span><br><span class="line">    c = p ^ s</span><br><span class="line">    h = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, t):</span><br><span class="line">        d = b ^ (r^(t<span class="number">-1</span>-i))</span><br><span class="line">        <span class="keyword">if</span> d == <span class="number">1</span>:</span><br><span class="line">            j = <span class="number">0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            j = - discrete_log(d, a)</span><br><span class="line">        b = b * (c^r)^j</span><br><span class="line">        h = h * c^j</span><br><span class="line">        c = c^r</span><br><span class="line">    result = o^alp * h</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findAllPRoot</span>(<span class="params">p, e</span>):</span></span><br><span class="line">    start = time.time()</span><br><span class="line">    proot = set()</span><br><span class="line">    <span class="keyword">while</span> len(proot) &lt; e:</span><br><span class="line">        proot.add(pow(random.randint(<span class="number">2</span>, p<span class="number">-1</span>), (p<span class="number">-1</span>)//e, p))</span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="keyword">return</span> proot</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findAllSolutions</span>(<span class="params">mp, proot, cp, p</span>):</span></span><br><span class="line">    start = time.time()</span><br><span class="line">    all_mp = set()</span><br><span class="line">    <span class="keyword">for</span> root <span class="keyword">in</span> proot:</span><br><span class="line">        mp2 = mp * root % p</span><br><span class="line">        <span class="keyword">assert</span>(pow(mp2, e, p) == cp)</span><br><span class="line">        all_mp.add(mp2)</span><br><span class="line">    end = time.time()</span><br><span class="line">    <span class="keyword">return</span> all_mp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c = <span class="number">12732299056226934743176360461051108799706450051853623472248552066649321279227693844417404789169416642586313895494292082308084823101092675162498154181999270703392144766031531668783213589136974486867571090321426005719333327425286160436925591205840653712046866950957876967715226097699016798471712274797888761218915345301238306497841970203137048433491914195023230951832644259526895087301990301002618450573323078919808182376666320244077837033894089805640452791930176084416087344594957596135877833163152566525019063919662459299054294655118065279192807949989681674190983739625056255497842063989284921411358232926435537518406</span></span><br><span class="line">p = <span class="number">199138677823743837339927520157607820029746574557746549094921488292877226509198315016018919385259781238148402833316033634968163276198999279327827901879426429664674358844084491830543271625147280950273934405879341438429171453002453838897458102128836690385604150324972907981960626767679153125735677417397078196059</span></span><br><span class="line">q = <span class="number">112213695905472142415221444515326532320352429478341683352811183503269676555434601229013679319423878238944956830244386653674413411658696751173844443394608246716053086226910581400528167848306119179879115809778793093611381764939789057524575349501163689452810148280625226541609383166347879832134495444706697124741</span></span><br><span class="line">e = <span class="number">0x1337</span></span><br><span class="line">cp = c % p</span><br><span class="line">cq = c % q</span><br><span class="line">mp = AMM(cp, e, p)</span><br><span class="line">mq = AMM(cq, e, q)</span><br><span class="line">p_proot = findAllPRoot(p, e)</span><br><span class="line">q_proot = findAllPRoot(q, e)</span><br><span class="line">mps = findAllSolutions(mp, p_proot, cp, p)</span><br><span class="line">mqs = findAllSolutions(mq, q_proot, cq, q)</span><br><span class="line">print(mps, mqs)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">check</span>(<span class="params">m</span>):</span></span><br><span class="line">    h = m.hex()</span><br><span class="line">    <span class="keyword">if</span> len(h) &amp; <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">if</span> bytes.fromhex(h).startswith(<span class="string">b&#x27;*CTF&#x27;</span>) <span class="keyword">or</span> bytes.fromhex(h).startswith(<span class="string">b&#x27;*ctf&#x27;</span>):</span><br><span class="line">        print(bytes.fromhex(h))</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">qwq = []</span><br><span class="line"></span><br><span class="line">start = time.time()</span><br><span class="line">print(<span class="string">&#x27;Start&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> mpp <span class="keyword">in</span> mps:</span><br><span class="line">    <span class="keyword">for</span> mqq <span class="keyword">in</span> mqs:</span><br><span class="line">        solution = CRT_list([int(mpp), int(mqq)], [p, q])</span><br><span class="line">        <span class="keyword">if</span> check(solution):</span><br><span class="line">            print(solution)</span><br><span class="line">            qwq.append(solution)</span><br><span class="line">    print(time.time() - start)</span><br><span class="line"></span><br><span class="line">print(qwq)</span><br><span class="line">end = time.time()</span><br><span class="line">print(<span class="string">&quot;&#123;&#125; s.&quot;</span>.format(end - start))</span><br><span class="line"><span class="comment"># 1061.3823564052582 s.</span></span><br><span class="line"><span class="comment"># b&#x27;*CTF&#123;S0_Y0u_ARE_REA11Y_GOOd_At_Pla1_This&#125;Ifyoumissthetrainimonyouwillknowthatiamgoneyoucanheartheflagfluwwwwwwwwww&#x27;</span></span><br><span class="line"><span class="comment"># 5715792447162584004830995621288196364667316788985719423575200593843082226610550301623816157835166569193582787431644910982754181340491582409788340367828925355394884518044538804653367543125682677650052644197537897019515168750419392615178911318381369421233129629180441067485047</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="MyCurve"><a href="#MyCurve" class="headerlink" title="MyCurve"></a>MyCurve</h3><p>先放个神仙的sol和资料，有时间回来复现</p>
+<p>binary edwards curve<br>这个曲线和正常的ecc有一个一一对应的映射<br>映射回去的曲线的阶光滑<br>容易算dlp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">name binary Edwards curves</span><br><span class="line">parameter d1</span><br><span class="line">parameter d2</span><br><span class="line">coordinate x</span><br><span class="line">coordinate y</span><br><span class="line">satisfying d1(x+y)+d2(x^2+y^2) &#x3D; (x+x^2)(y+y^2)</span><br><span class="line">addition x &#x3D; (d1(x1+x2)+d2(x1+y1)(x2+y2)+(x1+x1^2)(x2(y1+y2+1)+y1 y2)) &#x2F; (d1+(x1+x1^2)(x2+y2))</span><br><span class="line">addition y &#x3D; (d1(y1+y2)+d2(x1+y1)(x2+y2)+(y1+y1^2)(y2(x1+x2+1)+x1 x2)) &#x2F; (d1+(y1+y1^2)(x2+y2))</span><br><span class="line">doubling x &#x3D; (d1(x1+x1)+d2(x1+y1)(x1+y1)+(x1+x1^2)(x1(y1+y1+1)+y1 y1)) &#x2F; (d1+(x1+x1^2)(x1+y1))</span><br><span class="line">doubling y &#x3D; (d1(y1+y1)+d2(x1+y1)(x1+y1)+(y1+y1^2)(y1(x1+x1+1)+x1 x1)) &#x2F; (d1+(y1+y1^2)(x1+y1))</span><br><span class="line">negation x &#x3D; y1</span><br><span class="line">negation y &#x3D; x1</span><br><span class="line">toweierstrass u &#x3D; d1(d1^2+d1+d2)(x+y)&#x2F;(x y+d1(x+y))</span><br><span class="line">toweierstrass v &#x3D; d1(d1^2+d1+d2)(x&#x2F;(x y+d1(x+y))+d1+1)</span><br><span class="line">a0 &#x3D; 1</span><br><span class="line">a1 &#x3D; 1</span><br><span class="line">a2 &#x3D; d1^2+d2</span><br><span class="line">a3 &#x3D; 0</span><br><span class="line">a4 &#x3D; 0</span><br><span class="line">a6 &#x3D; d1^4(d1^4+d1^2+d2^2)</span><br><span class="line">fromweierstrass x &#x3D; d1(u+d1^2+d1+d2)&#x2F;(u+v+(d1^2+d1)(d1^2+d1+d2))</span><br><span class="line">fromweierstrass y &#x3D; d1(u+d1^2+d1+d2)&#x2F;(v+(d1^2+d1)(d1^2+d1+d2))</span><br></pre></td></tr></table></figure>
+
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>最后摸了好久的鱼，不然就能AK了，呜呜，爬了</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dawn_whisper
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/" title="Write up for *ctf2020">http://example.com/2020/12/07/Wp_for_星ctf's_crypto/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/06/Wp_for_C1CTF2020/" rel="prev" title="Write up for C1CTF's Crypto">
+      <i class="fa fa-chevron-left"></i> Write up for C1CTF's Crypto
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/07/Wp_for_SWPUCTF2020/" rel="next" title="Write up for SWPUCTF2020's Crypto">
+      Write up for SWPUCTF2020's Crypto <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WP-for-ctf2020"><span class="nav-number">1.</span> <span class="nav-text">WP for *ctf2020</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web"><span class="nav-number">1.1.</span> <span class="nav-text">Web</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lottery-again"><span class="nav-number">1.1.1.</span> <span class="nav-text">lottery again</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Crypto"><span class="nav-number">1.2.</span> <span class="nav-text">Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GuessKey"><span class="nav-number">1.2.1.</span> <span class="nav-text">GuessKey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GuessKey2"><span class="nav-number">1.2.2.</span> <span class="nav-text">GuessKey2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyEnc"><span class="nav-number">1.2.3.</span> <span class="nav-text">MyEnc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#little-case"><span class="nav-number">1.2.4.</span> <span class="nav-text">little case</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MyCurve"><span class="nav-number">1.2.5.</span> <span class="nav-text">MyCurve</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">1.3.</span> <span class="nav-text">Summary</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dawn_whisper"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Dawn_whisper</p>
+  <div class="site-description" itemprop="description">一个弱到不行的crypto手+退役OI选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dawnwhisper" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dawnwhisper" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dawn_whisper@qq.com" title="E-Mail → mailto:dawn_whisper@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blank-vax.github.io/" title="https:&#x2F;&#x2F;blank-vax.github.io&#x2F;" rel="noopener" target="_blank">Blank</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blackbird-bb.github.io/" title="https:&#x2F;&#x2F;blackbird-bb.github.io&#x2F;" rel="noopener" target="_blank">Blackbird</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://shal10w.github.io/" title="https:&#x2F;&#x2F;shal10w.github.io&#x2F;" rel="noopener" target="_blank">shallow</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://am473ur.com/" title="http:&#x2F;&#x2F;am473ur.com&#x2F;" rel="noopener" target="_blank">Am473ur</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://0xdktb.top/" title="https:&#x2F;&#x2F;0xdktb.top&#x2F;" rel="noopener" target="_blank">0xdktb</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.wootec.top/" title="https:&#x2F;&#x2F;www.wootec.top&#x2F;" rel="noopener" target="_blank">Reverier</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.soreatu.com/" title="https:&#x2F;&#x2F;blog.soreatu.com&#x2F;" rel="noopener" target="_blank">Soreat_u</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://miaotony.xyz/" title="https:&#x2F;&#x2F;miaotony.xyz&#x2F;" rel="noopener" target="_blank">MiaoTony</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dawn_whisper</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>

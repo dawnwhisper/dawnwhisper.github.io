@@ -20,30 +20,36 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一个弱到不行的crypto手+退役OI选手">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dawn_whisper&#39;s blog">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="Wp for 华为XCTF2020鸿蒙计算专场’s cryptoRRSSAA题目分三个level，加密了三次，我们反过来解密就好了 level3观察e的生成代码，发现存在 $e&#x3D;4\times (1+k\times (p-1))+3$ 这一关系，即 $e&#x3D;7+k\times(p-1)$ ，所以由费马小定理有 $m^e&#x3D;m^7\ (mod\ p)$ ，所以可知 $p\mid m^e-m^7$ ，那么">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Wp for 华为XCTF2020鸿蒙计算专场&#39;s crypto">
+<meta property="og:url" content="http://example.com/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/index.html">
 <meta property="og:site_name" content="Dawn_whisper&#39;s blog">
-<meta property="og:description" content="一个弱到不行的crypto手+退役OI选手">
+<meta property="og:description" content="Wp for 华为XCTF2020鸿蒙计算专场’s cryptoRRSSAA题目分三个level，加密了三次，我们反过来解密就好了 level3观察e的生成代码，发现存在 $e&#x3D;4\times (1+k\times (p-1))+3$ 这一关系，即 $e&#x3D;7+k\times(p-1)$ ，所以由费马小定理有 $m^e&#x3D;m^7\ (mod\ p)$ ，所以可知 $p\mid m^e-m^7$ ，那么">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/12/23/ghpPnrLlq2FT8RI.png">
+<meta property="article:published_time" content="2020-12-23T09:02:49.000Z">
+<meta property="article:modified_time" content="2021-01-19T02:35:57.821Z">
 <meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/23/ghpPnrLlq2FT8RI.png">
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Dawn_whisper's blog</title>
+  <title>Wp for 华为XCTF2020鸿蒙计算专场's crypto | Dawn_whisper's blog</title>
   
 
 
@@ -141,9 +147,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -159,10 +166,9 @@
       <meta itemprop="name" content="Dawn_whisper's blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/" class="post-title-link" itemprop="url">Wp for 华为XCTF2020鸿蒙计算专场's crypto</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Wp for 华为XCTF2020鸿蒙计算专场's crypto
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -201,7 +207,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto"><a href="#Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto" class="headerlink" title="Wp for 华为XCTF2020鸿蒙计算专场’s crypto"></a>Wp for 华为XCTF2020鸿蒙计算专场’s crypto</h1><h2 id="RRSSAA"><a href="#RRSSAA" class="headerlink" title="RRSSAA"></a>RRSSAA</h2><p>题目分三个level，加密了三次，我们反过来解密就好了</p>
+        <h1 id="Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto"><a href="#Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto" class="headerlink" title="Wp for 华为XCTF2020鸿蒙计算专场’s crypto"></a>Wp for 华为XCTF2020鸿蒙计算专场’s crypto</h1><h2 id="RRSSAA"><a href="#RRSSAA" class="headerlink" title="RRSSAA"></a>RRSSAA</h2><p>题目分三个level，加密了三次，我们反过来解密就好了</p>
 <h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>观察<code>e</code>的生成代码，发现存在 $e=4\times (1+k\times (p-1))+3$ 这一关系，即 $e=7+k\times(p-1)$ ，所以由费马小定理有 $m^e=m^7\ (mod\ p)$ ，所以可知 $p\mid m^e-m^7$ ，那么可以算出 $p=gcd(m^e-m^7,n)$</p>
 <h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>因为<code>t = next_prime(o) u = next_prime(s)</code>，所以<code>p1q1、p1q2、p2q1、p2q2</code>都比较相近，联想费马分解，因为 $n=x^2-y^2=(x+y)\times(x-y)=a\times b$ ，所以我们使用费马分解在 $\sqrt{n}$ 附近寻找<code>x</code>并计算<code>y</code>，而此时我们得到的 <code>(x,y)</code> 则是<code>p1q1与p2q2</code>、<code>p1q2与p2p1</code>、<code>p1p2与q1q2</code>中的其中一个，那当我们得到两组合法的<code>(x,y)</code>后，即可通过<code>gcd</code>来得到<code>p1,p2,q1,q2</code>了</p>
 <h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>又是<code>next_prime</code>，观察到  $y$ 与 $21\cdot x$ 相近， $z$ 与 $3\cdot x\cdot y$ 相近，可知 $n = x\cdot y\cdot z\approx 1363\cdot x^4$ ，所以我们在 $\sqrt[4]\frac{n}{1363}$ 的周围即可找到 $x$</p>
@@ -211,729 +217,52 @@
 <h2 id="combinelfsr"><a href="#combinelfsr" class="headerlink" title="combinelfsr"></a>combinelfsr</h2><p>没看，想起来了就复现，爬了</p>
 <h2 id="backpack"><a href="#backpack" class="headerlink" title="backpack"></a>backpack</h2><p>没看，想起来了就复现，爬了</p>
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/Wp_for_SWPUCTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/07/Wp_for_SWPUCTF2020/" class="post-title-link" itemprop="url">Write up for SWPUCTF2020's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-07 16:37:08 / 修改时间：16:38:30" itemprop="dateCreated datePublished" datetime="2020-12-07T16:37:08+08:00">2020-12-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-SWPUTF2020-39-s-Crypto"><a href="#WP-for-SWPUTF2020-39-s-Crypto" class="headerlink" title="WP for SWPUTF2020&#39;s Crypto"></a>WP for SWPUTF2020&#39;s Crypto</h1><p>很无语，T1刚开始数据给错，T2T3连不上，活活让人等到中午才更新</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/07/Wp_for_SWPUCTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dawn_whisper
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/" title="Wp for 华为XCTF2020鸿蒙计算专场&#39;s crypto">http://example.com/2020/12/23/Wp-for-华为XCTF2020-s-crypto/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/" class="post-title-link" itemprop="url">Write up for *ctf2020</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-07 16:37:08" itemprop="dateCreated datePublished" datetime="2020-12-07T16:37:08+08:00">2020-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-19 13:54:12" itemprop="dateModified" datetime="2021-01-19T13:54:12+08:00">2021-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-ctf2020"><a href="#WP-for-ctf2020" class="headerlink" title="WP for *ctf2020"></a>WP for *ctf2020</h1><p>第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！</p>
-<p>最后没AK，不好（悲）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/06/Wp_for_C1CTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/06/Wp_for_C1CTF2020/" class="post-title-link" itemprop="url">Write up for C1CTF's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-06 21:09:47 / 修改时间：22:20:03" itemprop="dateCreated datePublished" datetime="2020-12-06T21:09:47+08:00">2020-12-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-C1CTF2020-39-s-Crypto"><a href="#WP-for-C1CTF2020-39-s-Crypto" class="headerlink" title="WP for C1CTF2020&#39;s Crypto"></a>WP for C1CTF2020&#39;s Crypto</h1><p>先放一句话<strong>role=Tsunate;</strong></p>
-<p>题目倒是蛮好玩的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/06/Wp_for_C1CTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/07/Wp_for_SWPUCTF2020/" rel="prev" title="Write up for SWPUCTF2020's Crypto">
+      <i class="fa fa-chevron-left"></i> Write up for SWPUCTF2020's Crypto
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/Wp_for_NCTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/23/Wp_for_NCTF2020/" class="post-title-link" itemprop="url">Write up for NCTF's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-23 16:58:05 / 修改时间：17:35:56" itemprop="dateCreated datePublished" datetime="2020-11-23T16:58:05+08:00">2020-11-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-NCTF2020-39-s-Crypto"><a href="#WP-for-NCTF2020-39-s-Crypto" class="headerlink" title="WP for NCTF2020&#39;s Crypto"></a>WP for NCTF2020&#39;s Crypto</h1><p>题目很难，嗯，就是很难</p>
-<p>题目质量<del>（我啥也不会也不敢评论）</del></p>
-<p><del>我是废物！（大声）</del></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/23/Wp_for_NCTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">数论笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-11 23:04:06" itemprop="dateCreated datePublished" datetime="2020-11-11T23:04:06+08:00">2020-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 09:48:59" itemprop="dateModified" datetime="2020-11-14T09:48:59+08:00">2020-11-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数论笔记"><a href="#数论笔记" class="headerlink" title="数论笔记"></a>数论笔记</h1><p>垃圾Dawn_whisper的数论学习史</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/many_time_pad_attack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/11/many_time_pad_attack/" class="post-title-link" itemprop="url">Many time pad attack</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-11 17:24:09 / 修改时间：17:24:16" itemprop="dateCreated datePublished" datetime="2020-11-11T17:24:09+08:00">2020-11-11</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Many-time-pad-attack"><a href="#Many-time-pad-attack" class="headerlink" title="Many time pad attack"></a>Many time pad attack</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到了 2020HGAME week1 里的一道题，随手复现一下</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/11/many_time_pad_attack/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/07/RSA_Factorization_Algorithm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/07/RSA_Factorization_Algorithm/" class="post-title-link" itemprop="url">RSA Factorization Algorithm</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-07 16:22:20" itemprop="dateCreated datePublished" datetime="2020-11-07T16:22:20+08:00">2020-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 16:32:01" itemprop="dateModified" datetime="2020-11-14T16:32:01+08:00">2020-11-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Summary-of-RSA-Factorization-Algorithm"><a href="#Summary-of-RSA-Factorization-Algorithm" class="headerlink" title="Summary of RSA Factorization Algorithm"></a>Summary of RSA Factorization Algorithm</h1><p>爪巴了，数学知识它不进脑子啊</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/07/RSA_Factorization_Algorithm/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/07/Wp_for_Hackergame2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/07/Wp_for_Hackergame2020/" class="post-title-link" itemprop="url">Write up for hackergame2020</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-07 16:22:20" itemprop="dateCreated datePublished" datetime="2020-11-07T16:22:20+08:00">2020-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 09:37:29" itemprop="dateModified" datetime="2020-11-14T09:37:29+08:00">2020-11-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-hackergame2020"><a href="#WP-for-hackergame2020" class="headerlink" title="WP for hackergame2020"></a>WP for hackergame2020</h1><p>最后几天没时间玩了，<del>屯的flag都没交</del>，哭哭</p>
-<p>但u1s1，shallow师傅推荐的比赛确实质量高，<del>shallow，永远滴神！</del></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/07/Wp_for_Hackergame2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/21/MiaoTony's_task/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/21/MiaoTony's_task/" class="post-title-link" itemprop="url">MiaoTony's 2020春节套娃题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-10-21 18:24:03 / 修改时间：19:36:58" itemprop="dateCreated datePublished" datetime="2020-10-21T18:24:03+08:00">2020-10-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-MiaoTony-39-s-task"><a href="#WP-for-MiaoTony-39-s-task" class="headerlink" title="WP for MiaoTony&#39;s task"></a>WP for MiaoTony&#39;s task</h1><p>2020年10月20日，结识了Misc神Miao师傅，死而无憾了</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/21/MiaoTony's_task/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
@@ -985,6 +314,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020%E9%B8%BF%E8%92%99%E8%AE%A1%E7%AE%97%E4%B8%93%E5%9C%BA%E2%80%99s-crypto"><span class="nav-number">1.</span> <span class="nav-text">Wp for 华为XCTF2020鸿蒙计算专场’s crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RRSSAA"><span class="nav-number">1.1.</span> <span class="nav-text">RRSSAA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#level3"><span class="nav-number">1.1.1.</span> <span class="nav-text">level3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level2"><span class="nav-number">1.1.2.</span> <span class="nav-text">level2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#level1"><span class="nav-number">1.1.3.</span> <span class="nav-text">level1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#combinelfsr"><span class="nav-number">1.2.</span> <span class="nav-text">combinelfsr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#backpack"><span class="nav-number">1.3.</span> <span class="nav-text">backpack</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
