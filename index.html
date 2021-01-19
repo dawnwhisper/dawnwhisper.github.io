@@ -147,6 +147,82 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Dawn_whisper">
+      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dawn_whisper's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/" class="post-title-link" itemprop="url">Write up for *ctf2020</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-19 13:57:11 / 修改时间：13:57:38" itemprop="dateCreated datePublished" datetime="2021-01-19T13:57:11+08:00">2021-01-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="WP-for-ctf2020"><a href="#WP-for-ctf2020" class="headerlink" title="WP for *ctf2020"></a>WP for *ctf2020</h1><p>第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！</p>
+<p>最后没AK，不好（悲）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,7 +254,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-19 10:35:57" itemprop="dateModified" datetime="2021-01-19T10:35:57+08:00">2021-01-19</time>
+                <time title="修改时间：2021-01-19 13:56:41" itemprop="dateModified" datetime="2021-01-19T13:56:41+08:00">2021-01-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -201,16 +277,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto"><a href="#Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto" class="headerlink" title="Wp for 华为XCTF2020鸿蒙计算专场’s crypto"></a>Wp for 华为XCTF2020鸿蒙计算专场’s crypto</h1><h2 id="RRSSAA"><a href="#RRSSAA" class="headerlink" title="RRSSAA"></a>RRSSAA</h2><p>题目分三个level，加密了三次，我们反过来解密就好了</p>
-<h3 id="level3"><a href="#level3" class="headerlink" title="level3"></a>level3</h3><p>观察<code>e</code>的生成代码，发现存在 $e=4\times (1+k\times (p-1))+3$ 这一关系，即 $e=7+k\times(p-1)$ ，所以由费马小定理有 $m^e=m^7\ (mod\ p)$ ，所以可知 $p\mid m^e-m^7$ ，那么可以算出 $p=gcd(m^e-m^7,n)$</p>
-<h3 id="level2"><a href="#level2" class="headerlink" title="level2"></a>level2</h3><p>因为<code>t = next_prime(o) u = next_prime(s)</code>，所以<code>p1q1、p1q2、p2q1、p2q2</code>都比较相近，联想费马分解，因为 $n=x^2-y^2=(x+y)\times(x-y)=a\times b$ ，所以我们使用费马分解在 $\sqrt{n}$ 附近寻找<code>x</code>并计算<code>y</code>，而此时我们得到的 <code>(x,y)</code> 则是<code>p1q1与p2q2</code>、<code>p1q2与p2p1</code>、<code>p1p2与q1q2</code>中的其中一个，那当我们得到两组合法的<code>(x,y)</code>后，即可通过<code>gcd</code>来得到<code>p1,p2,q1,q2</code>了</p>
-<h3 id="level1"><a href="#level1" class="headerlink" title="level1"></a>level1</h3><p>又是<code>next_prime</code>，观察到  $y$ 与 $21\cdot x$ 相近， $z$ 与 $3\cdot x\cdot y$ 相近，可知 $n = x\cdot y\cdot z\approx 1363\cdot x^4$ ，所以我们在 $\sqrt[4]\frac{n}{1363}$ 的周围即可找到 $x$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line"><span class="comment">#level3</span></span><br><span class="line">c4 = <span class="number">2223858574968933504319836040365324804971094330459462393944127171432282147604729897704345429059208580970050059952008010773685842392707183675848552727061753816604521338667996166424030688312622416918364914092916834363424563757848785094598668876885795408211613686469658206698800530604510586036849762682266643367887969834461905627352683770069831534697242348271330554339411094917823350455146582135451453515538908713886757653213973927096082</span>********************************************</span><br><span class="line">m4 = <span class="number">81225738828166640599054154023183465870678960906769673605358084529196871174429427936591822589995476552044227730868809310992934103731850597399114246762836121101348301079296663951503688072299542357013093324718850936925265954204973634470836187733828189312553819810470</span>********************************************</span><br><span class="line">c3 = <span class="number">23850649176609488069574576816416148886692179606070063605432689009210174812454985632639914109186048913143848105334392538145230671686367689762200590281089005923231195246579033646977003291454535177690932650527152046258702322882034275451509830373108765348015483098908530262342484124214979398113857256424921042629540596777935387076042051793448841426568428955677950006478374618351793957423993726834602082713108846572798935325391218935581430299</span>********************************************</span><br><span class="line">n3 = <span class="number">245027309396554072925434368973821962975166642272733206023979068786967233722428777765504465639508676248193528531220331147117321254335887247798699854774950988027443444489150326074699546422578258559318722819082323316238297250430318005357394321339486074483626412040345465814449044087548920371100312025734633992016258120056152646898775372319740238700067921969618291620584466621726342124271864707245999413528305460437729692977332395186047416381</span>********************************************</span><br><span class="line"></span><br><span class="line">p3 = gcd(c4 - pow(m4,<span class="number">7</span>,n3),n3)</span><br><span class="line">q3 = n3 // p3</span><br><span class="line"><span class="keyword">assert</span> p3 * q3 == n3</span><br><span class="line">phi3 = (p3<span class="number">-1</span>) * (q3<span class="number">-1</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    s = getPrime(<span class="number">10</span>)</span><br><span class="line">    <span class="keyword">if</span>(gcd(s,p3<span class="number">-1</span>) == <span class="number">1</span>):</span><br><span class="line">        sinv = invert(s,p3<span class="number">-1</span>)</span><br><span class="line">        e = <span class="number">4</span>*s*sinv+<span class="number">3</span></span><br><span class="line">        <span class="keyword">if</span>(gcd(phi3,e) == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span>(pow(m4,e,n3)==c4):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">e3 = e</span><br><span class="line">d3 = invert(e3,phi3)</span><br><span class="line">m3 = pow(c3,d3,n3)</span><br><span class="line">print(<span class="string">&#x27;Level3 passed!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fermat_factorization</span>(<span class="params">n</span>):</span></span><br><span class="line">    factor_list = []</span><br><span class="line">    get_context().precision = <span class="number">2048</span></span><br><span class="line">    x = int(sqrt(n))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x += <span class="number">1</span></span><br><span class="line">        y2 = x ** <span class="number">2</span> - n</span><br><span class="line">        <span class="keyword">if</span> is_square(y2):</span><br><span class="line">            <span class="comment">#print(&#x27;x = &#x27;,x)</span></span><br><span class="line">            y2 = mpz(y2)</span><br><span class="line">            get_context().precision = <span class="number">2048</span></span><br><span class="line">            y = int(sqrt(y2))</span><br><span class="line">            factor_list.append([x+y, x-y])</span><br><span class="line">        <span class="keyword">if</span> len(factor_list) == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> factor_list</span><br><span class="line"></span><br><span class="line"><span class="comment">#level2</span></span><br><span class="line">c2 = m3</span><br><span class="line">n2 = <span class="number">87994385997075478104135902527696370476697303732829349373685150934389771812000800579489779988597377758155357032119662485786694473083701713238817766110307526481354801968791624978964643229368334587752275506234350005276147810555241459363533576625362804706641125169760333584993303919294358578117889235906667830900166286169</span>********************************************</span><br><span class="line">e2 = <span class="number">65537</span></span><br><span class="line">factor_list = fermat_factorization(n2)</span><br><span class="line">[X1, Y1] = factor_list[<span class="number">0</span>]</span><br><span class="line">[X2, Y2] = factor_list[<span class="number">1</span>]</span><br><span class="line"><span class="keyword">assert</span> X1 * Y1 == n2</span><br><span class="line"><span class="keyword">assert</span> X2 * Y2 == n2</span><br><span class="line">p21 = gcd(X1, X2)</span><br><span class="line">q21 = X1 // p21</span><br><span class="line">p22 = gcd(Y1, Y2)</span><br><span class="line">q22 = Y1 // p22</span><br><span class="line"><span class="keyword">assert</span> p21 *p22 * q21 * q22 == n2</span><br><span class="line">phi2 = (p21 - <span class="number">1</span>) * (q21 - <span class="number">1</span>) * (p22 - <span class="number">1</span>) * (q22 - <span class="number">1</span>)</span><br><span class="line">d2 = inverse(e2,phi2)</span><br><span class="line">m2 = pow(c2,d2,n2)</span><br><span class="line">print(<span class="string">&#x27;Level2 passed!&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#level1</span></span><br><span class="line">c1 = m2</span><br><span class="line">n1 = <span class="number">72968331464378596578736213097836639538889759902365332315018563128110329234698340288949958887638828272808811489147149910844881732898599415772529999325992095319128544723262119362648159655825918097703197797125275721741525608198285972415832787315444112461546745146260018587323632627512444194155444076538738583091</span>********************************************</span><br><span class="line">e1 = <span class="number">65537</span></span><br><span class="line"></span><br><span class="line">base = iroot(n1//<span class="number">21</span>//<span class="number">63</span>,<span class="number">4</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">-10000</span>,<span class="number">10000</span>):</span><br><span class="line">    x = base + i</span><br><span class="line">    <span class="keyword">if</span>(isPrime(x)):</span><br><span class="line">        y = next_prime(<span class="number">21</span>*x)</span><br><span class="line">        z = next_prime(<span class="number">3</span>*x*y)</span><br><span class="line">        <span class="keyword">if</span>(x*y*z==n1):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">print(<span class="string">&#x27;Level1 passed!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">phi1 = (x<span class="number">-1</span>) * (y<span class="number">-1</span>) * (z<span class="number">-1</span>)</span><br><span class="line">d1 = inverse(e1,phi1)</span><br><span class="line">m1 = pow(c1,d1,n1)</span><br><span class="line">flag = long_to_bytes(m1)</span><br><span class="line">print(flag)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2020/12/23/ghpPnrLlq2FT8RI.png" alt="27.png"> </p>
-<h2 id="combinelfsr"><a href="#combinelfsr" class="headerlink" title="combinelfsr"></a>combinelfsr</h2><p>没看，想起来了就复现，爬了</p>
-<h2 id="backpack"><a href="#backpack" class="headerlink" title="backpack"></a>backpack</h2><p>没看，想起来了就复现，爬了</p>
-
+          <h1 id="Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto"><a href="#Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto" class="headerlink" title="Wp for 华为XCTF2020鸿蒙计算专场’s crypto"></a>Wp for 华为XCTF2020鸿蒙计算专场’s crypto</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -281,88 +356,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/12/07/Wp_for_SWPUCTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/" class="post-title-link" itemprop="url">Write up for *ctf2020</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-07 16:37:08" itemprop="dateCreated datePublished" datetime="2020-12-07T16:37:08+08:00">2020-12-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-19 13:54:12" itemprop="dateModified" datetime="2021-01-19T13:54:12+08:00">2021-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-ctf2020"><a href="#WP-for-ctf2020" class="headerlink" title="WP for *ctf2020"></a>WP for *ctf2020</h1><p>第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！</p>
-<p>最后没AK，不好（悲）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/07/Wp_for_%E6%98%9Fctf's_crypto/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1009,7 +1002,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
