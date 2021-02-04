@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="A study for MT19937寒假前被一个伪随机数卡了，终于有时间来看看">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Many time pad attack">
+<meta property="og:url" content="http://example.com/2021/02/03/A_study_for_MT19937/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="A study for MT19937寒假前被一个伪随机数卡了，终于有时间来看看">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-03T13:08:43.000Z">
+<meta property="article:modified_time" content="2021-02-04T01:25:38.362Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/02/03/A_study_for_MT19937/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Many time pad attack | Dawn_whisper's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dawn_whisper's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/A_study_for_MT19937/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Dawn_whisper">
+      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dawn_whisper's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Many time pad attack
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-02-03 21:08:43" itemprop="dateCreated datePublished" datetime="2021-02-03T21:08:43+08:00">2021-02-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-02-04 09:25:38" itemprop="dateModified" datetime="2021-02-04T09:25:38+08:00">2021-02-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="A-study-for-MT19937"><a href="#A-study-for-MT19937" class="headerlink" title="A study for MT19937"></a>A study for MT19937</h1><p>寒假前被一个伪随机数卡了，终于有时间来看看</p>
+<a id="more"></a>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如前文，不会就得学（悲</p>
+<p><a target="_blank" rel="noopener" href="https://badmonkey.site/archives/mt19937.html">参考博客</a></p>
+<h2 id="MT19937"><a href="#MT19937" class="headerlink" title="MT19937"></a>MT19937</h2><p>​    MT19937是许多语言的默认伪随机数生成器，其优点为：周期非常长（达到 $2^{19937}-1$ ）、在 $1\leq k\leq 623$ 的维度之间都可以均等分布、速度较快。</p>
+<p>​    MT19937算法主要分为三个部分：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、基础的梅森旋转链</span><br><span class="line">2、输出处理算法（Tamper）</span><br><span class="line">3、旋转链的旋转算法（Twist）</span><br></pre></td></tr></table></figure>
+
+<p>python中Random类采用MT19937算法，getrandbits(32)返回一个32位随机数，详细代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_int32</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> int(<span class="number">0xFFFFFFFF</span> &amp; x)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MT19937</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, seed</span>):</span></span><br><span class="line">        self.mt = [<span class="number">0</span>] * <span class="number">624</span></span><br><span class="line">        self.mt[<span class="number">0</span>] = seed</span><br><span class="line">        self.mti = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">624</span>):</span><br><span class="line">            self.mt[i] = _int32(<span class="number">1812433253</span> * (self.mt[i - <span class="number">1</span>] ^ self.mt[i - <span class="number">1</span>] &gt;&gt; <span class="number">30</span>) + i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">extract_number</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.mti == <span class="number">0</span>:</span><br><span class="line">            self.twist()</span><br><span class="line">        y = self.mt[self.mti]</span><br><span class="line">        y = y ^ y &gt;&gt; <span class="number">11</span></span><br><span class="line">        y = y ^ y &lt;&lt; <span class="number">7</span> &amp; <span class="number">2636928640</span></span><br><span class="line">        y = y ^ y &lt;&lt; <span class="number">15</span> &amp; <span class="number">4022730752</span></span><br><span class="line">        y = y ^ y &gt;&gt; <span class="number">18</span></span><br><span class="line">        self.mti = (self.mti + <span class="number">1</span>) % <span class="number">624</span></span><br><span class="line">        <span class="keyword">return</span> _int32(y)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twist</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">624</span>):</span><br><span class="line">            y = _int32((self.mt[i] &amp; <span class="number">0x80000000</span>) + (self.mt[(i + <span class="number">1</span>) % <span class="number">624</span>] &amp; <span class="number">0x7fffffff</span>))</span><br><span class="line">            self.mt[i] = (y &gt;&gt; <span class="number">1</span>) ^ self.mt[(i + <span class="number">397</span>) % <span class="number">624</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> y % <span class="number">2</span> != <span class="number">0</span>:</span><br><span class="line">                self.mt[i] = self.mt[i] ^ <span class="number">0x9908b0df</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="针对题目"><a href="#针对题目" class="headerlink" title="针对题目"></a>针对题目</h2><h3 id="1-逆向extract-number"><a href="#1-逆向extract-number" class="headerlink" title="1.逆向extract_number"></a>1.逆向extract_number</h3><p>我们发现这其中有两种操作是较难的，我们先来看这一种</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = y ^ y &gt;&gt; <span class="number">11</span></span><br></pre></td></tr></table></figure>
+
+<p>显而易见，这种操作并不会对<code>y</code>的高18位有任何影响，所以<code>y&#39;=y ^ y &gt;&gt; 11</code>的高18位就是<code>y</code>的高18位，而<code>y&#39;</code>接下来的18位正是<code>y</code>的高18位和<code>y</code>接下来的18位异或得来的，所以我们可以使用已知的高18位得到接下来的18位，同上，每操作一次我们就可得到<code>y</code>的18位，所以我们就能利用<code>y&#39;</code>通过有限的操作后复原之前的<code>y</code>，实现代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">y1 = </span><br><span class="line">y = y1^y1&gt;&gt;<span class="number">11</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span>//<span class="number">11</span>):</span><br><span class="line">    y = y1^(y&gt;&gt;<span class="number">11</span>)</span><br><span class="line">print(y)</span><br><span class="line">print(y1)</span><br></pre></td></tr></table></figure>
+
+<p>分析完这一种，我们来看下一种</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y = y ^ y &lt;&lt; <span class="number">7</span> &amp; <span class="number">2636928640</span></span><br></pre></td></tr></table></figure>
+
+<p>类比上一种，<code>y&#39;</code>的低7位实际上就是<code>y^2636928640</code>的结果，可以轻松的获得<code>y</code>的低7位，我们可以将<code>y&lt;&lt;7&amp;2636928640</code>当做一个整体（也就是说掩码其实并没有实质性的作用），这样模仿前一种操作，复原代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y1 = </span><br><span class="line">y = y1^ y1 &lt;&lt; <span class="number">7</span> &amp; <span class="number">2636928640</span></span><br><span class="line">tmp = y</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">32</span> // <span class="number">7</span>):</span><br><span class="line">    y = tmp ^ y &lt;&lt; <span class="number">7</span> &amp; <span class="number">2636928640</span></span><br><span class="line">print(y)</span><br><span class="line">print(y1)</span><br></pre></td></tr></table></figure>
+
+<p>我们将左移和右移（带掩码与不带掩码）的复原代码整理如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">unBitShift</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RightXor</span>(<span class="params">self,value,shift,bits=<span class="number">32</span></span>):</span></span><br><span class="line">        tmp = value</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(bits // shift):</span><br><span class="line">            tmp = value ^ tmp &gt;&gt; shift</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">RightXorMasked</span>(<span class="params">self,value,shift,mask</span>):</span></span><br><span class="line">        tmp = value</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(bits // shift):</span><br><span class="line">            tmp = value ^ tmp &gt;&gt; shift &amp; mask</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">LeftXor</span>(<span class="params">self,value, shift</span>):</span></span><br><span class="line">        tmp = value</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(bits // shift):</span><br><span class="line">            tmp = value ^ tmp &lt;&lt; shift</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">LeftXorMasked</span>(<span class="params">self,value, shift, mask</span>):</span></span><br><span class="line">        tmp = value</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(bits // shift):</span><br><span class="line">            tmp = value ^ tmp &lt;&lt; shift &amp; mask</span><br><span class="line">        <span class="keyword">return</span> tmp</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-逆向Twist"><a href="#2-逆向Twist" class="headerlink" title="2.逆向Twist"></a>2.逆向Twist</h3><p>观察<code>twist</code>函数，可知新的<code>state[i]</code>只和原来的<code>state[i]</code>、<code>state[i+1]</code>与<code>state[i+397]</code>有关，首先异或掉<code>state[i+397]</code>，之后我们讨论是否将结果与<code>0x9908b0df</code>异或，因为<code>0x9908b0df=0b10011001000010001011000011011111</code>，又因为<code>y&gt;&gt;1</code>操作得知之前的数的高位一定是<code>0</code>，所以我们之间判断最高位即可知道是否需要异或<code>0x9908b0df</code>，也就是能得知原来<code>state[i]</code>的最高位，那么再对<code>state[i-1]</code>进行还原，即可得到完整的<code>state[i]</code>了，具体代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">backtrace</span>(<span class="params">cur</span>):</span></span><br><span class="line">    high = <span class="number">0x80000000</span></span><br><span class="line">    low = <span class="number">0x7fffffff</span></span><br><span class="line">    mask = <span class="number">0x9908b0df</span></span><br><span class="line">    state = cur</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">623</span>,<span class="number">-1</span>,<span class="number">-1</span>):</span><br><span class="line">        tmp = state[i]^state[(i+<span class="number">397</span>)%<span class="number">624</span>]</span><br><span class="line">        <span class="comment"># recover Y(tmp)</span></span><br><span class="line">        <span class="keyword">if</span> tmp &amp; high == high:</span><br><span class="line">            tmp ^= mask</span><br><span class="line">            tmp &lt;&lt;= <span class="number">1</span></span><br><span class="line">            tmp |= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tmp &lt;&lt;=<span class="number">1</span></span><br><span class="line">        <span class="comment"># recover highest bit</span></span><br><span class="line">        res = tmp&amp;high</span><br><span class="line">        <span class="comment"># recover other 31 bits</span></span><br><span class="line">        tmp = state[i<span class="number">-1</span>]^state[(i+<span class="number">396</span>)%<span class="number">624</span>]</span><br><span class="line">        <span class="comment"># recover Y(tmp)</span></span><br><span class="line">        <span class="keyword">if</span> tmp &amp; high == high:</span><br><span class="line">            tmp ^= mask</span><br><span class="line">            tmp &lt;&lt;= <span class="number">1</span></span><br><span class="line">            tmp |= <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            tmp &lt;&lt;=<span class="number">1</span></span><br><span class="line">        res |= (tmp)&amp;low</span><br><span class="line">        state[i] = res    </span><br><span class="line">    <span class="keyword">return</span> state</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dawn_whisper
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2021/02/03/A_study_for_MT19937/" title="Many time pad attack">http://example.com/2021/02/03/A_study_for_MT19937/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/" rel="prev" title="Write up for *ctf2021">
+      <i class="fa fa-chevron-left"></i> Write up for *ctf2021
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A-study-for-MT19937"><span class="nav-number">1.</span> <span class="nav-text">A study for MT19937</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MT19937"><span class="nav-number">1.2.</span> <span class="nav-text">MT19937</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%88%E5%AF%B9%E9%A2%98%E7%9B%AE"><span class="nav-number">1.3.</span> <span class="nav-text">针对题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%86%E5%90%91extract-number"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.逆向extract_number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%80%86%E5%90%91Twist"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.逆向Twist</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dawn_whisper"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Dawn_whisper</p>
+  <div class="site-description" itemprop="description">一个弱到不行的crypto手+退役OI选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dawnwhisper" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dawnwhisper" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dawn_whisper@qq.com" title="E-Mail → mailto:dawn_whisper@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blank-vax.github.io/" title="https:&#x2F;&#x2F;blank-vax.github.io&#x2F;" rel="noopener" target="_blank">Blank</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blackbird-bb.github.io/" title="https:&#x2F;&#x2F;blackbird-bb.github.io&#x2F;" rel="noopener" target="_blank">Blackbird</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://shal10w.github.io/" title="https:&#x2F;&#x2F;shal10w.github.io&#x2F;" rel="noopener" target="_blank">shallow</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://am473ur.com/" title="http:&#x2F;&#x2F;am473ur.com&#x2F;" rel="noopener" target="_blank">Am473ur</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://0xdktb.top/" title="https:&#x2F;&#x2F;0xdktb.top&#x2F;" rel="noopener" target="_blank">0xdktb</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.wootec.top/" title="https:&#x2F;&#x2F;www.wootec.top&#x2F;" rel="noopener" target="_blank">Reverier</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.soreatu.com/" title="https:&#x2F;&#x2F;blog.soreatu.com&#x2F;" rel="noopener" target="_blank">Soreat_u</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://miaotony.xyz/" title="https:&#x2F;&#x2F;miaotony.xyz&#x2F;" rel="noopener" target="_blank">MiaoTony</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dawn_whisper</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
