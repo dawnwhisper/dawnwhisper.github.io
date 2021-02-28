@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="WP for C1CTF2020&#39;s Crypto先放一句话role&#x3D;Tsunate; 题目倒是蛮好玩的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Write up for C1CTF&#39;s Crypto">
+<meta property="og:url" content="http://example.com/2020/12/06/Wp_for_C1CTF2020/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="WP for C1CTF2020&#39;s Crypto先放一句话role&#x3D;Tsunate; 题目倒是蛮好玩的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/12/06/sroGtT2x5jzYDwl.png">
+<meta property="og:image" content="https://i.loli.net/2020/12/06/LVnxE4GJjwizqaP.png">
+<meta property="article:published_time" content="2020-12-06T13:09:47.000Z">
+<meta property="article:modified_time" content="2020-12-06T14:20:03.177Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/12/06/sroGtT2x5jzYDwl.png">
+
+<link rel="canonical" href="http://example.com/2020/12/06/Wp_for_C1CTF2020/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Write up for C1CTF's Crypto | Dawn_whisper's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dawn_whisper's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/06/Wp_for_C1CTF2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.jpg">
+      <meta itemprop="name" content="Dawn_whisper">
+      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dawn_whisper's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Write up for C1CTF's Crypto
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-06 21:09:47 / 修改时间：22:20:03" itemprop="dateCreated datePublished" datetime="2020-12-06T21:09:47+08:00">2020-12-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="WP-for-C1CTF2020-39-s-Crypto"><a href="#WP-for-C1CTF2020-39-s-Crypto" class="headerlink" title="WP for C1CTF2020&#39;s Crypto"></a>WP for C1CTF2020&#39;s Crypto</h1><p>先放一句话<strong>role=Tsunate;</strong></p>
+<p>题目倒是蛮好玩的</p>
+<a id="more"></a>
+
+<h2 id="Base的千层套路"><a href="#Base的千层套路" class="headerlink" title="Base的千层套路"></a>Base的千层套路</h2><p>拿到的是一个base编码后的结果，写个脚本一直解码，最后得到flag</p>
+<blockquote>
+<p>c1ctf{Ba5e_3nc0ding_i5_e4sy}</p>
+</blockquote>
+<h2 id="PigIsSoCute"><a href="#PigIsSoCute" class="headerlink" title="PigIsSoCute"></a>PigIsSoCute</h2><p>题目给了一个<code>piggggggg.txt</code>，打开是base64编码的一个图片，在线转换一下得到一个图片</p>
+<p><img src="https://i.loli.net/2020/12/06/sroGtT2x5jzYDwl.png" alt="25.png"></p>
+<p>猪圈密码解一下得到一个字符串，根据题目描述尝试栅栏后得到一个有意义的字符串</p>
+<blockquote>
+<p>c1ctf{pigissocutebutporkissoexp}</p>
+</blockquote>
+<h2 id="ezrsa"><a href="#ezrsa" class="headerlink" title="ezrsa"></a>ezrsa</h2><p>刚开始看到 $e=3$ ，而且三个密文都一样，并且比 $n$ 小得多，尝试直接开三次方后无果，<del>其实是出题人自己把数据给错了，给的c根本就不是立方，直接就是flag。</del></p>
+<p>后来更新了附件， $c$ 和 $n$ 大小差不多，但是给了三次加密，拓展欧几里得合并一下就有了</p>
+<h2 id="MITM"><a href="#MITM" class="headerlink" title="MITM"></a>MITM</h2><p><del>刚开始出题人把题目名称写错了哈哈哈哈哈</del></p>
+<p>既然是中间人攻击，那么我们就应该在与<code>A</code>交互时伪装成<code>B</code>，在与<code>B</code>交互时伪装成<code>A</code></p>
+<p>过了pow之后给了 $g$ 和 $p$ ，这里一定要把和谁交互分清楚，<del>因为出题人名字起的太像了，所以刚开始把自己给绕进去了</del>，我们把与<code>Hiro</code>交互的数据统一加上<code>Hiro</code>前缀，把与<code>Zero</code>交互的数据统一加上<code>Zero</code>前缀，根据题目在<code>[2,p-1)</code>随便选个数计算 $Hiro_A =g^{Hiro_a}\ mod\ q$ ，并且得到 $Zero_A$ ，然后再与<code>Hiro</code>进行一次秘钥交换，得到 $Hiro_B$ 和 $ZeroB$ ，这样我们就可以得到与两个人分别的<code>Key</code>，因为 $Hiro_{Key}= {Hiro_B}^{Hiro_a} = {Hiro_A}^{Hiro_b}$ ，所以再两人交换 $m$ 时就可以进行自如的加密解密，最后得到的两个 $m$ 拼起来就是<code>flag</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">table = digits+ascii_letters</span><br><span class="line">r = remote(<span class="string">&quot;8.136.142.239&quot;</span>, <span class="string">&quot;30400&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">passpow</span>():</span></span><br><span class="line">	rev = r.recvuntil(<span class="string">&quot;sha256(XXXX+&quot;</span>)</span><br><span class="line">	suffix = r.recv(<span class="number">16</span>).decode()</span><br><span class="line">	r.recvuntil(<span class="string">&quot; == &quot;</span>)</span><br><span class="line">	res = r.recv(<span class="number">64</span>).decode()</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">		hashresult = hashlib.sha256((x+suffix).encode()).hexdigest()</span><br><span class="line">		<span class="keyword">if</span> hashresult == res:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	prefix = util.iters.mbruteforce(f,table,<span class="number">4</span>,<span class="string">&#x27;upto&#x27;</span>)</span><br><span class="line">	r.recvuntil(<span class="string">&quot;Give me XXXX:&quot;</span>)</span><br><span class="line">	r.sendline(str(prefix))</span><br><span class="line"></span><br><span class="line">passpow()</span><br><span class="line">print(<span class="string">&#x27;Successfully pass the pow!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Hiro]: g = &quot;</span>)</span><br><span class="line">g = int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Hiro]: p = &quot;</span>)</span><br><span class="line">p = int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line"></span><br><span class="line">Hiro_a = <span class="number">3</span></span><br><span class="line">Hiro_A = pow(g,Hiro_a,p)</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Zero&#x27;s message, which is `A = &quot;</span>)</span><br><span class="line">Zero_A = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">r.sendline(str(Hiro_A))</span><br><span class="line"></span><br><span class="line">Zero_b = <span class="number">3</span></span><br><span class="line">Zero_B = pow(g,Zero_b,p)</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Hiro&#x27;s message, which is `B = &quot;</span>)</span><br><span class="line">Hiro_B = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">r.sendline(str(Zero_B))</span><br><span class="line"></span><br><span class="line">Hiro_Key = pow(Hiro_B,Hiro_a,p)</span><br><span class="line">Zero_Key = pow(Zero_A,Zero_b,p)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Hiro&#x27;s message, which is `C_b = &quot;</span>)</span><br><span class="line">Hiro_got = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">m = (Hiro_got * inverse(Hiro_Key,p)) % p</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">Zero_give = (m * Zero_Key) % p</span><br><span class="line">r.sendline(str(Zero_give))</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Zero&#x27;s message, which is `C_a = &quot;</span>)</span><br><span class="line">Zero_got = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">m = (Zero_got * inverse(Zero_Key,p)) % p</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">Hiro_give = (m * Hiro_Key) % p</span><br><span class="line">r.sendline(str(Hiro_give))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>c1ctf{Dif7ie_he1lman_is_n0t_p3rfect}</p>
+</blockquote>
+<h2 id="aesstudy1"><a href="#aesstudy1" class="headerlink" title="aesstudy1"></a>aesstudy1</h2><p>写题解之前说点有的没的，因为出题人太爱讲故事，所以…</p>
+<p><img src="https://i.loli.net/2020/12/06/LVnxE4GJjwizqaP.png" alt="26.png"></p>
+<p>题目就是套娃AES，给一步做一步就好了，</p>
+<h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>给了<code>key</code>，给了<code>msg</code>，要我们返回加密后的结果</p>
+<h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>看来半天不知道要我干啥，也不知道要我返回啥，自己一个人傻看了一个小时才去问了出题人</p>
+<p><del>我怎么知道要把Tsunate换成Kakashi啊</del></p>
+<p>因为AES是16个字节一块块加密的，而且是ECB模式，因为出题人的精心构造，正好4块并且结构很整齐，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Tsunate can see </span><br><span class="line">AAA Message and </span><br><span class="line">Kakashi can see </span><br><span class="line">BBB Message.....</span><br></pre></td></tr></table></figure>
+
+<p>所以，只需要把第三块的密文覆盖到第一块再打回去就行了</p>
+<p><del>另外，我怎么知道要把前面那句话一起打回去啊</del></p>
+<p>step2过了之后就能拿到第一个flag了</p>
+<h3 id="setp3"><a href="#setp3" class="headerlink" title="setp3"></a>setp3</h3><p>要登录，并且一共有两块，第一块会作为<code>iv</code>和解密后的第二块异或，而题目告诉了我们明文第二块是<code>MN;role=Konoha;</code>，给第一块异或<code>\x00\x00\x00\x00\x00\x00\x00\x00Kakashi;</code>和<code>\x00\x00\x00\x00\x00\x00\x00\x00Tsunate;</code>就可以使得明文变成<code>role=Tsunate;</code></p>
+<p><del>我怎么知道要换成Tsunate啊，不是Konoka的登录系统吗</del></p>
+<h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>服务器提供一次AES的解密，让我们猜<code>iv</code>，我们给服务器发送32位<code>\x00</code>，得到两块结果，根据AES.CBC的解密，可以知道第一块是<code>D(input1)^iv</code>，第二块是<code>D(input2)^input1</code>，因为我们构造的<code>input1</code>和<code>input2</code>都是16位<code>\x00</code>，所以这两块异或所得就是<code>iv</code>，再发回服务器就行了</p>
+<p>step4过掉，第二个flag就拿到了</p>
+<h3 id="finalexp-py"><a href="#finalexp-py" class="headerlink" title="finalexp.py"></a>finalexp.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line">table = digits+ascii_letters</span><br><span class="line">r = remote(<span class="string">&quot;8.136.131.7&quot;</span>, <span class="string">&quot;30339&quot;</span>)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;The key in hex is &quot;</span>)</span><br><span class="line">key1 = long_to_bytes(int(r.recvuntil(<span class="string">&#x27;,&#x27;</span>)[:<span class="number">-1</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">r.recvuntil(<span class="string">&quot;the msg in hex is &quot;</span>)</span><br><span class="line">msg1 = long_to_bytes(int(r.recvuntil(<span class="string">&#x27;,&#x27;</span>)[:<span class="number">-1</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">r.recvuntil(<span class="string">&quot;the AES-ECB-128 encryption:&quot;</span>)</span><br><span class="line"></span><br><span class="line">aes1 = AES.new(key1,AES.MODE_ECB)</span><br><span class="line">cipher1 = aes1.encrypt(msg1)</span><br><span class="line">cipher1 = hex(bytes_to_long(cipher1))[<span class="number">2</span>:]</span><br><span class="line">r.sendline(cipher1)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;.....|&quot;</span>)</span><br><span class="line">cipher2 = r.recvline(<span class="literal">False</span>)</span><br><span class="line">cipherlist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">	cipherlist.append(cipher2[i*<span class="number">32</span>:(i+<span class="number">1</span>)*<span class="number">32</span>])</span><br><span class="line">payload2 = <span class="string">b&#x27;Kakashi can see AAA Message and Kakashi can see BBB Message.....|&#x27;</span>+cipherlist[<span class="number">2</span>]+cipherlist[<span class="number">1</span>]+cipherlist[<span class="number">2</span>]+cipherlist[<span class="number">3</span>]</span><br><span class="line">r.recvuntil(<span class="string">&quot;Input the message after you modified:&quot;</span>)</span><br><span class="line">r.sendline(payload2)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;And you interrupt the ciphertext &quot;</span>)</span><br><span class="line"><span class="comment"># m = b&#x27;SSID=AVsasbSJtpTMN;role=Konoha;&#x27;</span></span><br><span class="line">iv = long_to_bytes(int(r.recv(<span class="number">32</span>).strip().decode(),<span class="number">16</span>))</span><br><span class="line">cipher3 = r.recv(<span class="number">32</span>)</span><br><span class="line">r.recvline()</span><br><span class="line">aaa = <span class="string">b&#x27;        Kakashi;&#x27;</span></span><br><span class="line">bbb = <span class="string">b&#x27;        Tsunate;&#x27;</span></span><br><span class="line">payload3 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(aaa)):</span><br><span class="line">	tmp = aaa[i] ^ bbb[i] ^ iv[i]</span><br><span class="line">	payload3 += chr(tmp)</span><br><span class="line">payload3 = payload3.encode(<span class="string">&#x27;latin1&#x27;</span>)</span><br><span class="line">payload3 = hex(bytes_to_long(payload3))[<span class="number">2</span>:]</span><br><span class="line">payload3 = payload3+str(cipher3)[<span class="number">2</span>:<span class="number">-1</span>]</span><br><span class="line">r.sendline(payload3)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&#x27;Input something:&#x27;</span>)</span><br><span class="line">r.sendline(<span class="string">&#x27;\x00&#x27;</span>*<span class="number">32</span>)</span><br><span class="line">r.recvuntil(<span class="string">&#x27;your input (in hex): &#x27;</span>)</span><br><span class="line">iiv = r.recvline(<span class="literal">False</span>)</span><br><span class="line">print(iiv)</span><br><span class="line">iiv1 = long_to_bytes(int(iiv[<span class="number">0</span>:<span class="number">32</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">iiv2 = long_to_bytes(int(iiv[<span class="number">32</span>:<span class="number">64</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">print(iiv1)</span><br><span class="line">print(iiv2)</span><br><span class="line">payload4 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(iiv1)):</span><br><span class="line">	tmp = iiv1[i] ^ iiv2[i]</span><br><span class="line">	payload4 += chr(tmp)</span><br><span class="line">payload4 = payload4.encode(<span class="string">&#x27;latin1&#x27;</span>)</span><br><span class="line">payload4 = hex(bytes_to_long(payload4))[<span class="number">2</span>:]</span><br><span class="line">r.recvuntil(<span class="string">&#x27;Tell me the iv in hex:&#x27;</span>)</span><br><span class="line">r.sendline(payload4)</span><br><span class="line"></span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+
+<h2 id="BuyAndSell-2"><a href="#BuyAndSell-2" class="headerlink" title="BuyAndSell 2"></a>BuyAndSell 2</h2><p>PaddingOracleAttack确实很简单，但这压轴web我是一点办法都没有（</p>
+<p>我是废物！</p>
+<p><del>假装自己AK了，爬了爬了</del></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Dawn_whisper
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://example.com/2020/12/06/Wp_for_C1CTF2020/" title="Write up for C1CTF&#39;s Crypto">http://example.com/2020/12/06/Wp_for_C1CTF2020/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CTF/" rel="tag"># CTF</a>
+              <a href="/tags/Crypto/" rel="tag"># Crypto</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/23/Wp_for_NCTF2020/" rel="prev" title="Write up for NCTF's Crypto">
+      <i class="fa fa-chevron-left"></i> Write up for NCTF's Crypto
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/07/Wp_for_SWPUCTF2020/" rel="next" title="Write up for SWPUCTF2020's Crypto">
+      Write up for SWPUCTF2020's Crypto <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WP-for-C1CTF2020-39-s-Crypto"><span class="nav-number">1.</span> <span class="nav-text">WP for C1CTF2020&#39;s Crypto</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Base%E7%9A%84%E5%8D%83%E5%B1%82%E5%A5%97%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">Base的千层套路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PigIsSoCute"><span class="nav-number">1.2.</span> <span class="nav-text">PigIsSoCute</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ezrsa"><span class="nav-number">1.3.</span> <span class="nav-text">ezrsa</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MITM"><span class="nav-number">1.4.</span> <span class="nav-text">MITM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#aesstudy1"><span class="nav-number">1.5.</span> <span class="nav-text">aesstudy1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1"><span class="nav-number">1.5.1.</span> <span class="nav-text">step1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step2"><span class="nav-number">1.5.2.</span> <span class="nav-text">step2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setp3"><span class="nav-number">1.5.3.</span> <span class="nav-text">setp3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4"><span class="nav-number">1.5.4.</span> <span class="nav-text">step4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#finalexp-py"><span class="nav-number">1.5.5.</span> <span class="nav-text">finalexp.py</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BuyAndSell-2"><span class="nav-number">1.6.</span> <span class="nav-text">BuyAndSell 2</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dawn_whisper"
+      src="/images/author.jpg">
+  <p class="site-author-name" itemprop="name">Dawn_whisper</p>
+  <div class="site-description" itemprop="description">一个弱到不行的crypto手+退役OI选手</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/dawnwhisper" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dawnwhisper" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:dawn_whisper@qq.com" title="E-Mail → mailto:dawn_whisper@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blank-vax.github.io/" title="https:&#x2F;&#x2F;blank-vax.github.io&#x2F;" rel="noopener" target="_blank">Blank</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blackbird-bb.github.io/" title="https:&#x2F;&#x2F;blackbird-bb.github.io&#x2F;" rel="noopener" target="_blank">Blackbird</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://shal10w.github.io/" title="https:&#x2F;&#x2F;shal10w.github.io&#x2F;" rel="noopener" target="_blank">shallow</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://am473ur.com/" title="http:&#x2F;&#x2F;am473ur.com&#x2F;" rel="noopener" target="_blank">Am473ur</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://0xdktb.top/" title="https:&#x2F;&#x2F;0xdktb.top&#x2F;" rel="noopener" target="_blank">0xdktb</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.wootec.top/" title="https:&#x2F;&#x2F;www.wootec.top&#x2F;" rel="noopener" target="_blank">Reverier</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.soreatu.com/" title="https:&#x2F;&#x2F;blog.soreatu.com&#x2F;" rel="noopener" target="_blank">Soreat_u</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://miaotony.xyz/" title="https:&#x2F;&#x2F;miaotony.xyz&#x2F;" rel="noopener" target="_blank">MiaoTony</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dawn_whisper</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
+
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
