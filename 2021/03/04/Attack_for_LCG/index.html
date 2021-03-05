@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Many time pad attack前言看到了 2020HGAME week1 里的一道题，随手复现一下">
+  <meta name="description" content="Attack for LCG发现自己没有整过线性同余生成器的东西，今天专门来总解一下">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Many time pad attack">
-<meta property="og:url" content="http://example.com/2020/11/11/many_time_pad_attack/index.html">
+<meta property="og:title" content="Attack for LCG">
+<meta property="og:url" content="http://example.com/2021/03/04/Attack_for_LCG/index.html">
 <meta property="og:site_name" content="Dawn_whisper&#39;s blog">
-<meta property="og:description" content="Many time pad attack前言看到了 2020HGAME week1 里的一道题，随手复现一下">
+<meta property="og:description" content="Attack for LCG发现自己没有整过线性同余生成器的东西，今天专门来总解一下">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-11T09:24:09.000Z">
-<meta property="article:modified_time" content="2020-11-11T09:24:16.513Z">
+<meta property="article:published_time" content="2021-03-04T01:33:32.000Z">
+<meta property="article:modified_time" content="2021-03-05T04:11:34.489Z">
 <meta property="article:author" content="Dawn_whisper">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/11/11/many_time_pad_attack/">
+<link rel="canonical" href="http://example.com/2021/03/04/Attack_for_LCG/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>Many time pad attack | Dawn_whisper's blog</title>
+  <title>Attack for LCG | Dawn_whisper's blog</title>
   
 
 
@@ -152,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/many_time_pad_attack/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/Attack_for_LCG/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Many time pad attack
+          Attack for LCG
         </h1>
 
         <div class="post-meta">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-11 17:24:09 / 修改时间：17:24:16" itemprop="dateCreated datePublished" datetime="2020-11-11T17:24:09+08:00">2020-11-11</time>
+              <time title="创建时间：2021-03-04 09:33:32" itemprop="dateCreated datePublished" datetime="2021-03-04T09:33:32+08:00">2021-03-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-05 12:11:34" itemprop="dateModified" datetime="2021-03-05T12:11:34+08:00">2021-03-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -199,15 +205,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Many-time-pad-attack"><a href="#Many-time-pad-attack" class="headerlink" title="Many time pad attack"></a>Many time pad attack</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到了 2020HGAME week1 里的一道题，随手复现一下</p>
+        <h1 id="Attack-for-LCG"><a href="#Attack-for-LCG" class="headerlink" title="Attack for LCG"></a>Attack for LCG</h1><p>发现自己没有整过线性同余生成器的东西，今天专门来总解一下</p>
 <a id="more"></a>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><del>懒得搭docker部署服务器了，就自己写个函数调用着假装交互</del></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line">flag = flag.encode()</span><br><span class="line"><span class="keyword">assert</span> flag.startswith(<span class="string">b&#x27;flag&#123;&#x27;</span>) <span class="keyword">and</span> flag.endswith(<span class="string">b&#x27;&#125;&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">flag_len = len(flag)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor</span>(<span class="params">s1, s2</span>):</span></span><br><span class="line">    <span class="comment">#assert len(s1)==len(s2)</span></span><br><span class="line">    <span class="keyword">return</span> bytes(map((<span class="keyword">lambda</span> x: x[<span class="number">0</span>] ^ x[<span class="number">1</span>]), zip(s1, s2)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>():</span></span><br><span class="line">    random.seed(os.urandom(<span class="number">8</span>))</span><br><span class="line">    keystream = <span class="string">&#x27;&#x27;</span>.join([random.choice(string.ascii_letters+string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> range(flag_len)])</span><br><span class="line">    keystream = keystream.encode()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(xor(flag, keystream)).decode()</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="https://tailcall.net/blog/cracking-randomness-lcgs/">参考资料</a></p>
+<h2 id="1、线性同余生成方法"><a href="#1、线性同余生成方法" class="headerlink" title="1、线性同余生成方法"></a>1、线性同余生成方法</h2><p>设A,B,M是一定常数，按照递推公式 $state_{i+1}=(A\times state_i+B)\pmod{M}$ ，其中A称为乘数(multiplier)，B称为增量(increment)，M称为模数(modulus)</p>
+<p>LCG的生成周期理论上应该是M，但大部分情况下会小于M，如果想要追求LCG的最大周期，应符合以下几个条件：</p>
+<ul>
+<li>A与B都是正整数</li>
+<li>A、B、N[0]都比M要小</li>
+<li>B与M互质</li>
+<li>M的所有质因数都能整除A-1</li>
+</ul>
+<h2 id="2、攻击方法"><a href="#2、攻击方法" class="headerlink" title="2、攻击方法"></a>2、攻击方法</h2><p>我们把<code>state</code>均简称为<code>s</code></p>
+<h3 id="1、B未知"><a href="#1、B未知" class="headerlink" title="1、B未知"></a>1、B未知</h3><p>只需获取中间的两个状态值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s_1 &#x3D; (s_0*A+B)%M</span><br></pre></td></tr></table></figure>
 
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目使用与<code>flag</code>等长的<code>key</code>与其异或并且交给我们，而想要知道<code>key</code>显然是不可能的，<del>（除非你脸够欧）</del>，所以我们就要从异或这一算法下手，我们知道flag是以<code>flag&#123;</code>开头，而异或所能够得到的结果终究是个很小的有限集，所以我们可以通过足够多的结果来不断缩小这一集，进而达到找到原文的效果。</p>
-<p>举个例子：<code>flag</code>的第一位<code>f</code>，某次我们得到密文的第一位为<code>7</code>，通过枚举我们可以知道<code>7 = a ^ V = b ^ U = c ^ T = d ^ S = f ^ Q ......</code>，显然这个集是比较大的，而对于每一个密文，我们都可以得到一个可能的集，通过不断地获取密文并取交集，就能很快的得到原来的明文，但是必须保证<code>flag</code>中的所有字符在脚本中的<code>table</code>里包含，不然会跑不出交集的，<del>（你都没有我从哪里给你搞出来啊）</del></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line">flag = flag.encode()</span><br><span class="line"><span class="keyword">assert</span> flag.startswith(<span class="string">b&#x27;flag&#123;&#x27;</span>) <span class="keyword">and</span> flag.endswith(<span class="string">b&#x27;&#125;&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">flag_len = len(flag)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor</span>(<span class="params">s1, s2</span>):</span></span><br><span class="line">    <span class="comment">#assert len(s1)==len(s2)</span></span><br><span class="line">    <span class="keyword">return</span> bytes(map((<span class="keyword">lambda</span> x: x[<span class="number">0</span>] ^ x[<span class="number">1</span>]), zip(s1, s2)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>():</span></span><br><span class="line">    random.seed(os.urandom(<span class="number">8</span>))</span><br><span class="line">    keystream = <span class="string">&#x27;&#x27;</span>.join([random.choice(string.ascii_letters+string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> range(flag_len)])</span><br><span class="line">    keystream = keystream.encode()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(xor(flag, keystream)).decode()</span><br><span class="line"></span><br><span class="line">clist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    c = get_data()</span><br><span class="line">    c = base64.b64decode(c)</span><br><span class="line">    clist.append(c)</span><br><span class="line">print(<span class="string">&#x27;Data ready!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">table = <span class="string">b&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#123;&#125;-_!@#$%^&amp;*()=+|&#x27;</span></span><br><span class="line"><span class="comment"># &#123;&#125;-_!@#$%^&amp;*()=+|</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getdir</span>(<span class="params">x</span>):</span></span><br><span class="line">    dic = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    length = len(table)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,length):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i,length):</span><br><span class="line">            <span class="keyword">if</span>(x == (table[i] ^ table[j])):</span><br><span class="line">                dic += chr(table[i]) + chr(table[j])</span><br><span class="line">    <span class="keyword">return</span> dic</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sol</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    ans = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(a)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,len(b)):</span><br><span class="line">            <span class="keyword">if</span>(a[i] == b[j] <span class="keyword">and</span> ans.find(a[i]) == <span class="number">-1</span>):</span><br><span class="line">                ans += a[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(clist[<span class="number">0</span>])):</span><br><span class="line">    res = sol(getdir(clist[<span class="number">0</span>][i]),getdir(clist[<span class="number">1</span>][i]))</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>,len(clist)):</span><br><span class="line">        res = sol(getdir(clist[j][i]),res)</span><br><span class="line">    <span class="keyword">if</span>(len(res)==<span class="number">0</span>):</span><br><span class="line">        print(<span class="string">&#x27;Table is too small!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span>(len(res)&gt;<span class="number">1</span>):</span><br><span class="line">        print(<span class="string">&#x27;Data is too little!&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(res,end = <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>显然 $B = s_1 - s_0\times a\pmod{M}$</p>
+<h3 id="2、A与B未知"><a href="#2、A与B未知" class="headerlink" title="2、A与B未知"></a>2、A与B未知</h3><p>只需获取中间的三个状态值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s_1 &#x3D; (s_0*A+B)%M</span><br><span class="line">s_2 &#x3D; (s_1*A+B)%M</span><br></pre></td></tr></table></figure>
+
+<p>线性方程，解起来还是挺简单的</p>
+<p>显然 $A = \frac{s_2-s_1}{s_1-s_0}\pmod{M}$ ，于是就转化成了问题1了</p>
+<h3 id="3、A、B、M都不知道-一问三不知"><a href="#3、A、B、M都不知道-一问三不知" class="headerlink" title="3、A、B、M都不知道 一问三不知"></a>3、A、B、M都不知道 <del>一问三不知</del></h3><p>如果获取中间的7个状态值，就很有可能能够成功，数论里：如果有几个随机数分别乘以n，那么这几个数的欧几里德算法(gcd)就很可能等于n</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">114514</span></span><br><span class="line">print(reduce(gcd, [randint(<span class="number">1</span>, <span class="number">1000000</span>)*x, randint(<span class="number">1</span>, <span class="number">1000000</span>)*x, randint(<span class="number">1</span>, <span class="number">1000000</span>)*x, randint(<span class="number">1</span>, <span class="number">1000000</span>)*x]))</span><br><span class="line"><span class="comment"># 114514</span></span><br></pre></td></tr></table></figure>
+
+<p>所以我们可以利用这个性质，来尝试得到M，于是问题就被转化成了问题2</p>
+<h2 id="整合"><a href="#整合" class="headerlink" title="整合"></a>整合</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">lcg_attack</span>:</span></span><br><span class="line">    <span class="comment"># unknown B (increment)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lcgattack1</span>(<span class="params">self, states, modulus, multiplier</span>):</span></span><br><span class="line">        <span class="keyword">if</span>(len(states)&lt;<span class="number">2</span>):</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;#####Invalid lenth of states! The lenth should be 2 at least!##### - Dawn_whisper&quot;</span>)</span><br><span class="line">        increment = (states[<span class="number">1</span>] - states[<span class="number">0</span>] * multiplier) % modulus</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&#x27;multiplier&#x27;</span>:int(multiplier), <span class="string">&#x27;increment&#x27;</span>:int(increment), <span class="string">&#x27;modulus&#x27;</span>:int(modulus)&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># unknown A (multiplier)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lcgattack2</span>(<span class="params">self, states, modulus</span>):</span></span><br><span class="line">        <span class="keyword">if</span>(len(states)&lt;<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;#####Invalid lenth of states! The lenth should be 3 at least!##### - Dawn_whisper&quot;</span>)</span><br><span class="line">        multiplier = (states[<span class="number">2</span>] - states[<span class="number">1</span>]) * inverse(states[<span class="number">1</span>] - states[<span class="number">0</span>], modulus) % modulus</span><br><span class="line">        <span class="keyword">return</span> self.lcgattack1(states, modulus, multiplier)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># unknown M (modulus)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lcgattack3</span>(<span class="params">self, states</span>):</span></span><br><span class="line">        <span class="keyword">if</span>(len(states)&lt;<span class="number">6</span>):</span><br><span class="line">            <span class="keyword">raise</span> Exception(<span class="string">&quot;#####Invalid lenth of states! The lenth should be 6 at least!##### - Dawn_whisper&quot;</span>)</span><br><span class="line">        diffs = [s1 - s0 <span class="keyword">for</span> s0, s1 <span class="keyword">in</span> zip(states, states[<span class="number">1</span>:])]</span><br><span class="line">        zeroes = [t2*t0 - t1*t1 <span class="keyword">for</span> t0, t1, t2 <span class="keyword">in</span> zip(diffs, diffs[<span class="number">1</span>:], diffs[<span class="number">2</span>:])]</span><br><span class="line">        modulus = abs(reduce(gcd, zeroes))</span><br><span class="line">        <span class="keyword">return</span> self.lcgattack2(states, modulus)</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
     
@@ -222,7 +248,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2020/11/11/many_time_pad_attack/" title="Many time pad attack">http://example.com/2020/11/11/many_time_pad_attack/</a>
+    <a href="http://example.com/2021/03/04/Attack_for_LCG/" title="Attack for LCG">http://example.com/2021/03/04/Attack_for_LCG/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -243,13 +269,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/07/RSA_Factorization_Algorithm/" rel="prev" title="RSA Factorization Algorithm">
-      <i class="fa fa-chevron-left"></i> RSA Factorization Algorithm
+    <a href="/2021/02/26/Study_for_discrete_logarithm/" rel="prev" title="Study for discrete logarithm">
+      <i class="fa fa-chevron-left"></i> Study for discrete logarithm
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" rel="next" title="数论笔记">
-      数论笔记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -308,7 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Many-time-pad-attack"><span class="nav-number">1.</span> <span class="nav-text">Many time pad attack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Attack-for-LCG"><span class="nav-number">1.</span> <span class="nav-text">Attack for LCG</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%BA%BF%E6%80%A7%E5%90%8C%E4%BD%99%E7%94%9F%E6%88%90%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1、线性同余生成方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">2、攻击方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81B%E6%9C%AA%E7%9F%A5"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、B未知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81A%E4%B8%8EB%E6%9C%AA%E7%9F%A5"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、A与B未知</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81A%E3%80%81B%E3%80%81M%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93-%E4%B8%80%E9%97%AE%E4%B8%89%E4%B8%8D%E7%9F%A5"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、A、B、M都不知道 一问三不知</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E5%90%88"><span class="nav-number">1.3.</span> <span class="nav-text">整合</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

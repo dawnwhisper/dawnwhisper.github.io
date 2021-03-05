@@ -20,21 +20,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Many time pad attack前言看到了 2020HGAME week1 里的一道题，随手复现一下">
+  <meta name="description" content="Study for discrete logarithm发现自己只是知道离散对数很难求，而且自己拿这玩意也没办法，专门来学一下带老婆问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Many time pad attack">
-<meta property="og:url" content="http://example.com/2020/11/11/many_time_pad_attack/index.html">
+<meta property="og:title" content="Study for discrete logarithm">
+<meta property="og:url" content="http://example.com/2021/02/26/Study_for_discrete_logarithm/index.html">
 <meta property="og:site_name" content="Dawn_whisper&#39;s blog">
-<meta property="og:description" content="Many time pad attack前言看到了 2020HGAME week1 里的一道题，随手复现一下">
+<meta property="og:description" content="Study for discrete logarithm发现自己只是知道离散对数很难求，而且自己拿这玩意也没办法，专门来学一下带老婆问题">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-11T09:24:09.000Z">
-<meta property="article:modified_time" content="2020-11-11T09:24:16.513Z">
+<meta property="article:published_time" content="2021-02-26T10:54:16.000Z">
+<meta property="article:modified_time" content="2021-03-05T04:12:14.246Z">
 <meta property="article:author" content="Dawn_whisper">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Crypto">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/11/11/many_time_pad_attack/">
+<link rel="canonical" href="http://example.com/2021/02/26/Study_for_discrete_logarithm/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>Many time pad attack | Dawn_whisper's blog</title>
+  <title>Study for discrete logarithm | Dawn_whisper's blog</title>
   
 
 
@@ -152,7 +152,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/many_time_pad_attack/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/Study_for_discrete_logarithm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/author.jpg">
@@ -165,7 +165,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Many time pad attack
+          Study for discrete logarithm
         </h1>
 
         <div class="post-meta">
@@ -174,10 +174,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-11 17:24:09 / 修改时间：17:24:16" itemprop="dateCreated datePublished" datetime="2020-11-11T17:24:09+08:00">2020-11-11</time>
+              <time title="创建时间：2021-02-26 18:54:16" itemprop="dateCreated datePublished" datetime="2021-02-26T18:54:16+08:00">2021-02-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-05 12:12:14" itemprop="dateModified" datetime="2021-03-05T12:12:14+08:00">2021-03-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -199,15 +205,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Many-time-pad-attack"><a href="#Many-time-pad-attack" class="headerlink" title="Many time pad attack"></a>Many time pad attack</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看到了 2020HGAME week1 里的一道题，随手复现一下</p>
+        <h1 id="Study-for-discrete-logarithm"><a href="#Study-for-discrete-logarithm" class="headerlink" title="Study for discrete logarithm"></a>Study for discrete logarithm</h1><p>发现自己只是知道离散对数很难求，而且自己拿这玩意也没办法，专门来学一下<del>带老婆问题</del></p>
 <a id="more"></a>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><del>懒得搭docker部署服务器了，就自己写个函数调用着假装交互</del></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line">flag = flag.encode()</span><br><span class="line"><span class="keyword">assert</span> flag.startswith(<span class="string">b&#x27;flag&#123;&#x27;</span>) <span class="keyword">and</span> flag.endswith(<span class="string">b&#x27;&#125;&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">flag_len = len(flag)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor</span>(<span class="params">s1, s2</span>):</span></span><br><span class="line">    <span class="comment">#assert len(s1)==len(s2)</span></span><br><span class="line">    <span class="keyword">return</span> bytes(map((<span class="keyword">lambda</span> x: x[<span class="number">0</span>] ^ x[<span class="number">1</span>]), zip(s1, s2)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>():</span></span><br><span class="line">    random.seed(os.urandom(<span class="number">8</span>))</span><br><span class="line">    keystream = <span class="string">&#x27;&#x27;</span>.join([random.choice(string.ascii_letters+string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> range(flag_len)])</span><br><span class="line">    keystream = keystream.encode()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(xor(flag, keystream)).decode()</span><br></pre></td></tr></table></figure>
+<h2 id="基本定义"><a href="#基本定义" class="headerlink" title="基本定义"></a>基本定义</h2><h3 id="生成元"><a href="#生成元" class="headerlink" title="生成元"></a>生成元</h3><p>​    在一个群 G 中，如果 g 是 G 的生成元，即所有 G 中的所有元素都可以被表示成 $y = g^x$ ，此时的 x 我们称为 y 在 G 中的对数</p>
+<h3 id="阶"><a href="#阶" class="headerlink" title="阶"></a>阶</h3><p>​    设 $m\geq 1$ ， $gcd(a,m)=1$ ，使得 $a^d=1\pmod{m}$ 成立的最小正整数 d 称为 a 对模 m 的指数或者阶，我们一般将其记为 $\delta_m(a)$</p>
+<p>​    另：满足 $a^d=1\pmod{m}$ 的<code>d</code>一定满足 $d\mid\varphi(m)$</p>
+<h3 id="原根"><a href="#原根" class="headerlink" title="原根"></a>原根</h3><p>​    当 $\delta_m(a)=\varphi(m)$ 时，称 a 是模 m 的原根，简称 m 的原根</p>
+<p>​    只有 $m=2,4,p^\alpha,2p^\alpha （p为奇素数，\alpha为正整数）$ 时，模 m 的剩余系存在原根（充要条件）</p>
+<h2 id="离散对数"><a href="#离散对数" class="headerlink" title="离散对数"></a>离散对数</h2><h3 id="暴力枚举"><a href="#暴力枚举" class="headerlink" title="暴力枚举"></a>暴力枚举</h3><p><del>万物皆可暴力</del></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ForceDLP</span>(<span class="params">A,B,P</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(P):</span><br><span class="line">        <span class="keyword">if</span> pow(A,i,P)==B:</span><br><span class="line">            <span class="keyword">return</span> int(i)</span><br></pre></td></tr></table></figure>
 
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>题目使用与<code>flag</code>等长的<code>key</code>与其异或并且交给我们，而想要知道<code>key</code>显然是不可能的，<del>（除非你脸够欧）</del>，所以我们就要从异或这一算法下手，我们知道flag是以<code>flag&#123;</code>开头，而异或所能够得到的结果终究是个很小的有限集，所以我们可以通过足够多的结果来不断缩小这一集，进而达到找到原文的效果。</p>
-<p>举个例子：<code>flag</code>的第一位<code>f</code>，某次我们得到密文的第一位为<code>7</code>，通过枚举我们可以知道<code>7 = a ^ V = b ^ U = c ^ T = d ^ S = f ^ Q ......</code>，显然这个集是比较大的，而对于每一个密文，我们都可以得到一个可能的集，通过不断地获取密文并取交集，就能很快的得到原来的明文，但是必须保证<code>flag</code>中的所有字符在脚本中的<code>table</code>里包含，不然会跑不出交集的，<del>（你都没有我从哪里给你搞出来啊）</del></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"><span class="keyword">from</span> flag <span class="keyword">import</span> flag</span><br><span class="line">flag = flag.encode()</span><br><span class="line"><span class="keyword">assert</span> flag.startswith(<span class="string">b&#x27;flag&#123;&#x27;</span>) <span class="keyword">and</span> flag.endswith(<span class="string">b&#x27;&#125;&#x27;</span>)</span><br><span class="line"> </span><br><span class="line">flag_len = len(flag)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">xor</span>(<span class="params">s1, s2</span>):</span></span><br><span class="line">    <span class="comment">#assert len(s1)==len(s2)</span></span><br><span class="line">    <span class="keyword">return</span> bytes(map((<span class="keyword">lambda</span> x: x[<span class="number">0</span>] ^ x[<span class="number">1</span>]), zip(s1, s2)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_data</span>():</span></span><br><span class="line">    random.seed(os.urandom(<span class="number">8</span>))</span><br><span class="line">    keystream = <span class="string">&#x27;&#x27;</span>.join([random.choice(string.ascii_letters+string.digits) <span class="keyword">for</span> _ <span class="keyword">in</span> range(flag_len)])</span><br><span class="line">    keystream = keystream.encode()</span><br><span class="line">    <span class="keyword">return</span> base64.b64encode(xor(flag, keystream)).decode()</span><br><span class="line"></span><br><span class="line">clist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    c = get_data()</span><br><span class="line">    c = base64.b64decode(c)</span><br><span class="line">    clist.append(c)</span><br><span class="line">print(<span class="string">&#x27;Data ready!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">table = <span class="string">b&#x27;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789&#123;&#125;-_!@#$%^&amp;*()=+|&#x27;</span></span><br><span class="line"><span class="comment"># &#123;&#125;-_!@#$%^&amp;*()=+|</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getdir</span>(<span class="params">x</span>):</span></span><br><span class="line">    dic = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    length = len(table)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,length):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i,length):</span><br><span class="line">            <span class="keyword">if</span>(x == (table[i] ^ table[j])):</span><br><span class="line">                dic += chr(table[i]) + chr(table[j])</span><br><span class="line">    <span class="keyword">return</span> dic</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sol</span>(<span class="params">a,b</span>):</span></span><br><span class="line">    ans = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(a)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">0</span>,len(b)):</span><br><span class="line">            <span class="keyword">if</span>(a[i] == b[j] <span class="keyword">and</span> ans.find(a[i]) == <span class="number">-1</span>):</span><br><span class="line">                ans += a[i]</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,len(clist[<span class="number">0</span>])):</span><br><span class="line">    res = sol(getdir(clist[<span class="number">0</span>][i]),getdir(clist[<span class="number">1</span>][i]))</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>,len(clist)):</span><br><span class="line">        res = sol(getdir(clist[j][i]),res)</span><br><span class="line">    <span class="keyword">if</span>(len(res)==<span class="number">0</span>):</span><br><span class="line">        print(<span class="string">&#x27;Table is too small!&#x27;</span>)</span><br><span class="line">    <span class="keyword">elif</span>(len(res)&gt;<span class="number">1</span>):</span><br><span class="line">        print(<span class="string">&#x27;Data is too little!&#x27;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(res,end = <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Baby-step-giant-step"><a href="#Baby-step-giant-step" class="headerlink" title="Baby-step giant-step"></a>Baby-step giant-step</h3><p><del>（又称北上广深算法</del></p>
+<p>已知 $y = g^x$ ，我们不妨假设 $x=i<em>m+j$ ，$m = \sqrt{x}$ ，这样 $m^2&gt;n$ ，则这时候一定在<code>[0,m]</code>内存在一组<code>(i,j)</code>满足 $x=i</em>m+j$</p>
+<p>具体做法就是：因为 $y = g^x=g^{i<em>m+j}$ ， 则 $y</em>(g^{-m})^i=g^j$ ，所以我们首先枚举所有的<code>j</code>并存在一个盒子里，接着枚举<code>i</code>，如果能找到相同的结果，这说明我们得到了<code>(i,j)</code></p>
+<p>据说</p>
+<ul>
+<li>每一次 j 的增加表示 “baby-step”，一次乘上 $g$</li>
+<li>每一次 i 的增加表示 “giant-step”，一次乘上 $g^{-m}$</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BSGS</span>(<span class="params">g, y, p</span>):</span></span><br><span class="line">    m = int(sqrt(p))</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> is_square(p):</span><br><span class="line">        m += <span class="number">1</span></span><br><span class="line">    S = &#123;pow(g, j, p): j <span class="keyword">for</span> j <span class="keyword">in</span> range(m)&#125;</span><br><span class="line">    gs = pow(g, inverse(m, p), p)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">        <span class="keyword">if</span> y <span class="keyword">in</span> S:</span><br><span class="line">            <span class="keyword">return</span> i * m + S[y]</span><br><span class="line">        y = y * gs % p</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Pohlig-Hellman-Algorithm"><a href="#Pohlig-Hellman-Algorithm" class="headerlink" title="Pohlig-Hellman Algorithm"></a>Pohlig-Hellman Algorithm</h3><p>​    这种方法适用于当<code>p-1</code>是个光滑数，因为<code>p</code>是个质数，所以 $\varphi(p)=p-1$ ，根据唯一分解定理，我们可以假设 $p-1 =q_1^{e_1}\cdot q_2^{e_2}\cdot q_3^{e_3}\cdots q_n^{e_n}$ ，我们首先分解 $p-1$ 得到因子列表<code>listq</code>，接着计算每一个因子对应的 $g^{\frac{p-1}{q^e}}$ 与 $h^{\frac{p-1}{q^e}}$ ，此时我们就可以较轻松地计算出满足 $({g^{\frac{p-1}{q^e}}})^x=h^{\frac{p-1}{q^e}}\pmod{p}$ 的<code>x&#39;</code>，而此时的<code>x&#39;</code>也满足 $x’ =x\pmod{p^e}$ ，那么我们可以通过许多的因子来得到许多的<code>x&#39;</code>，最后通过CRT即可找到我们最终要求的<code>x</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># g^x = h (mod p)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">PohligHellmanDLP</span>(<span class="params">g,h,p</span>):</span></span><br><span class="line">    Lq=pollard_rho_Factor(p<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">assert</span> reduce(<span class="keyword">lambda</span> x,y: x*y, Lq) == p<span class="number">-1</span></span><br><span class="line">    print(Lq)</span><br><span class="line">    Lg=[pow(g,(p<span class="number">-1</span>)//i,p) <span class="keyword">for</span> i <span class="keyword">in</span> Lq]</span><br><span class="line">    Lh=[pow(h,(p<span class="number">-1</span>)//i,p) <span class="keyword">for</span> i <span class="keyword">in</span> Lq]</span><br><span class="line">    length=len(Lq)</span><br><span class="line">    La=[]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(length):</span><br><span class="line">        La.append(ForceDLP(Lg[i],Lh[i],p))</span><br><span class="line">    X=CRT(Lq,La)</span><br><span class="line">    <span class="keyword">if</span> pow(g,X,p)==h:</span><br><span class="line">        print(<span class="string">&quot;Found x! x =&quot;</span>,X)</span><br><span class="line">        <span class="keyword">return</span> X</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;Error!&quot;</span>)</span><br><span class="line"></span><br><span class="line">p=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line">g=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line">h=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line">start_time=time.time()</span><br><span class="line">x = PohligHellmanDLP(g,h,p)</span><br><span class="line">print(x)</span><br><span class="line">print(<span class="string">&quot;it takes&quot;</span>,time.time()-start_time,<span class="string">&quot;seconds&quot;</span>,)</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -222,7 +242,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://example.com/2020/11/11/many_time_pad_attack/" title="Many time pad attack">http://example.com/2020/11/11/many_time_pad_attack/</a>
+    <a href="http://example.com/2021/02/26/Study_for_discrete_logarithm/" title="Study for discrete logarithm">http://example.com/2021/02/26/Study_for_discrete_logarithm/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -243,12 +263,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/07/RSA_Factorization_Algorithm/" rel="prev" title="RSA Factorization Algorithm">
-      <i class="fa fa-chevron-left"></i> RSA Factorization Algorithm
+    <a href="/2021/02/03/A_study_for_MT19937/" rel="prev" title="A study for MT19937">
+      <i class="fa fa-chevron-left"></i> A study for MT19937
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" rel="next" title="数论笔记">
-      数论笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/04/Attack_for_LCG/" rel="next" title="Attack for LCG">
+      Attack for LCG <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -308,7 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Many-time-pad-attack"><span class="nav-number">1.</span> <span class="nav-text">Many time pad attack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.2.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">分析</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Study-for-discrete-logarithm"><span class="nav-number">1.</span> <span class="nav-text">Study for discrete logarithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">基本定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%85%83"><span class="nav-number">1.1.1.</span> <span class="nav-text">生成元</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%98%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">阶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E6%A0%B9"><span class="nav-number">1.1.3.</span> <span class="nav-text">原根</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A6%BB%E6%95%A3%E5%AF%B9%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">离散对数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9A%B4%E5%8A%9B%E6%9E%9A%E4%B8%BE"><span class="nav-number">1.2.1.</span> <span class="nav-text">暴力枚举</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Baby-step-giant-step"><span class="nav-number">1.2.2.</span> <span class="nav-text">Baby-step giant-step</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pohlig-Hellman-Algorithm"><span class="nav-number">1.2.3.</span> <span class="nav-text">Pohlig-Hellman Algorithm</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
