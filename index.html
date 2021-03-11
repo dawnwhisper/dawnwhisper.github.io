@@ -1,1206 +1,380 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="一个弱到不行的crypto手+退役OI选手">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dawn_whisper's blog</title><meta name="author" content="Dawn_whisper"><meta name="copyright" content="Dawn_whisper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一个弱到不行的crypto手+退役OI选手">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Dawn_whisper&#39;s blog">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Dawn_whisper&#39;s blog">
 <meta property="og:description" content="一个弱到不行的crypto手+退役OI选手">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avatar.jpg">
 <meta property="article:author" content="Dawn_whisper">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'zh-CN'
-  };
-</script>
-
-  <title>Dawn_whisper's blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2021-03-11 14:16:35'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-</head>
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">Dawn_whisper's blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">20</span></a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Dawn_whisper's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/top_img.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dawn_whisper's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Dawn_whisper's blog</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fas fa-heartbeat"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left_radius"><a href="/2021/03/08/Wp_for_AntCTF_X_D%5E3CTF's_crypto/" title="Write up for AntCTF X D^3CTF's crypto">     <img class="post_bg" src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Write up for AntCTF X D^3CTF's crypto"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/08/Wp_for_AntCTF_X_D%5E3CTF's_crypto/" title="Write up for AntCTF X D^3CTF's crypto">Write up for AntCTF X D^3CTF's crypto</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-08T14:53:03.000Z" title="发表于 2021-03-08 22:53:03">2021-03-08</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">Wp for AntCTF X D^3CTF&#39;s crypto我的格子和椭圆曲线实在是太烂了，奈何这次比赛基本都是（
+这次只贡献了1k分，我对不起V&amp;N的师傅们呜呜呜
 
 
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
+babyLattice联合第二题，发现此题应该要分解n，观察秘钥生成代码，发现如下关系：
+$$a_1 = k \cdot n + a_{11} \cdot q \cdot inv(q,p) + a_{21} \cdot p \cdot inv(p,q)$$$$a_2 = k \cdot n + a_{12} \cdot q \cdot inv(q,p) + a_{22} \cdot p \cdot inv(p,q)$$
+所以$$a_1 = a_{11} \pmod{p} = a_{21} \pmod{q}$$$$a_2 = a_{12} \pmod{p} = a_{22} \pmod{q}$$
+所以易知$$b =\frac{a_{11}}{a_{12}}\pmod{p}=\frac{a_{21}}{a_{22}}\pmod{q}$$
+即
+$$b\cdot a_{12} - a_{11} = 0 \pm ...</div></div></div><div class="recent-post-item"><div class="post_cover right_radius"><a href="/2021/03/04/LCG/" title="LCG">     <img class="post_bg" src="/img/top_img.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="LCG"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/03/04/LCG/" title="LCG">LCG</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-03-04T01:33:32.000Z" title="发表于 2021-03-04 09:33:32">2021-03-04</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Crypto/">Crypto</a></span></div><div class="content">LCG发现自己没有整过线性同余生成器的东西，今天专门来总解一下
 
-          <div class="content index posts-expand">
+
+参考资料
+1、线性同余生成方法设A,B,M是一定常数，按照递推公式 $state_{i+1}=(A\times state_i+B)\pmod{M}$ ，其中A称为乘数(multiplier)，B称为增量(increment)，M称为模数(modulus)
+LCG的生成周期理论上应该是M，但大部分情况下会小于M，如果想要追求LCG的最大周期，应符合以下几个条件：
+
+A与B都是正整数
+A、B、N[0]都比M要小
+B与M互质
+M的所有质因数都能整除A-1
+
+2、攻击方法我们把state均简称为s
+1、B未知只需获取中间的两个状态值
+1s_1 &#x3D; (s_0*A+B)%M
+
+显然 $B = s_1 - s_0\times a\pmod{M}$
+2、A与B未知只需获取中间的三个状态值
+12s_1 &#x3D; (s_0*A+B)%Ms_2 &#x3D; (s_1*A+B)%M
+
+线性方程，解起来还是挺简单的
+显然 $A = \frac{s_2-s_1}{s_1-s_0}\pmod{M}$ ，于是就转化成了问题1了
+3、 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/02/26/Discrete_logarithm_problem/" title="Discrete logarithm problem">Discrete logarithm problem</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-26T10:54:16.000Z" title="发表于 2021-02-26 18:54:16">2021-02-26</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Crypto/">Crypto</a></span></div><div class="content">Discrete logarithm problem发现自己只是知道离散对数很难求，而且自己拿这玩意也没办法，专门来学一下带老婆问题
+
+
+基本定义生成元​    在一个群 G 中，如果 g 是 G 的生成元，即所有 G 中的所有元素都可以被表示成 $y = g^x$ ，此时的 x 我们称为 y 在 G 中的对数
+阶​    设 $m\geq 1$ ， $gcd(a,m)=1$ ，使得 $a^d=1\pmod{m}$ 成立的最小正整数 d 称为 a 对模 m 的指数或者阶，我们一般将其记为 $\delta_m(a)$
+​    另：满足 $a^d=1\pmod{m}$ 的d一定满足 $d\mid\varphi(m)$
+原根​    当 $\delta_m(a)=\varphi(m)$ 时，称 a 是模 m 的原根，简称 m 的原根
+​    只有 $m=2,4,p^\alpha,2p^\alpha （p为奇素数，\alpha为正整数）$ 时，模 m 的剩余系存在原根（充要条件）
+离散对数暴力枚举万物皆可暴力
+1234def ForceDLP(A,B,P):    for i in ran ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/02/03/MT19937/" title="MT19937">MT19937</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-02-03T13:08:43.000Z" title="发表于 2021-02-03 21:08:43">2021-02-03</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Crypto/">Crypto</a></span></div><div class="content">A study for MT19937寒假前被一个伪随机数卡了，终于有时间来看看
+
+
+前言如前文，不会就得学（悲
+参考博客
+MT19937​    MT19937是许多语言的默认伪随机数生成器，其优点为：周期非常长（达到 $2^{19937}-1$ ）、在 $1\leq k\leq 623$ 的维度之间都可以均等分布、速度较快。
+​    MT19937算法主要分为三个部分：
+1231、基础的梅森旋转链2、输出处理算法（Tamper）3、旋转链的旋转算法（Twist）
+
+python中Random类采用MT19937算法，getrandbits(32)返回一个32位随机数，详细代码如下：
+1234567891011121314151617181920212223242526272829def _int32(x):    return int(0xFFFFFFFF &amp; x)class MT19937:    def __init__(self, seed):        self.mt = [0] * 624        self.mt[0] = seed        se ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/" title="Write up for *ctf2021">Write up for *ctf2021</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-01-19T05:57:11.000Z" title="发表于 2021-01-19 13:57:11">2021-01-19</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">WP for *ctf2021第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！
+最后没AK，不好（悲）
+
+
+Weblottery again看源码，找关键代码
+加密部分
+
+解密部分
+
+兑换彩票部分
+
+分析函数可以发现在兑换彩票的时候，会对彩票密文进行解码，通过解码得到的彩票lottery内容从数据库中找到对应数据，取得可兑换的coin数量，并把coin加到解码得到的user账号的硬币中。
+分析代码可知，从密文中取得的user账号没有与在数据库中的信息进行验证，故如果我们可以篡改密文中对应的user信息，那么就可以让a用户购买的彩票，给b用户使用，从而让b用户达到白嫖的目的。
+我们发现加密方式为MCRYPT_RIJNDAEL_256，ECB模式，通过手动测试发现该算法的分组方式为32字节为一组，在这样的前提下，我们可以尝试替换储存在其中的user数据。
+以下来逐步分析如何替换全部user-uuid信息
+我们已有的密文数据是：
+1234&#123;&quot;lottery&quot;:&quot;b52d5239-24a5-4627-ba46-58a00645c3e4&quot; ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/" title="Wp for 华为XCTF2020鸿蒙计算专场's crypto">Wp for 华为XCTF2020鸿蒙计算专场's crypto</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-23T09:02:49.000Z" title="发表于 2020-12-23 17:02:49">2020-12-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">Wp for 华为XCTF2020鸿蒙计算专场’s crypto
+
+RRSSAA题目分三个level，加密了三次，我们反过来解密就好了
+level3观察e的生成代码，发现存在 $e=4\times (1+k\times (p-1))+3$ 这一关系，即 $e=7+k\times(p-1)$ ，所以由费马小定理有 $m^e=m^7\ (mod\ p)$ ，所以可知 $p\mid m^e-m^7$ ，那么可以算出 $p=gcd(m^e-m^7,n)$
+level2因为t = next_prime(o) u = next_prime(s)，所以p1q1、p1q2、p2q1、p2q2都比较相近，联想费马分解，因为 $n=x^2-y^2=(x+y)\times(x-y)=a\times b$ ，所以我们使用费马分解在 $\sqrt{n}$ 附近寻找x并计算y，而此时我们得到的 (x,y) 则是p1q1与p2q2、p1q2与p2p1、p1p2与q1q2中的其中一个，那当我们得到两组合法的(x,y)后，即可通过gcd来得到p1,p2,q1,q2了
+level1又是next_prime，观察到  $y ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/12/07/Wp_for_SWPUCTF2020/" title="Write up for SWPUCTF2020's Crypto">Write up for SWPUCTF2020's Crypto</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-07T08:37:08.000Z" title="发表于 2020-12-07 16:37:08">2020-12-07</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">Wp for SWPUTF2020&#39;s Crypto很无语，T1刚开始数据给错，T2T3连不上，活活让人等到中午才更新
+
+
+Happy基础RSA，题目给出 $q+q\cdot p^3$ 和 $q\cdot p+q\cdot p^2$ 
+我们简记为 $data_1$ 与 $data_2$ ，那么显然有 $data_1=q\cdot(p^3+1)$ 、 $data_2=q\cdot(p^2+p)$ 、 $data_1+3\cdot data_2=q\cdot(p^3+3p^2+3p+1)=q\cdot(p+1)^3$ 且 $gcd(data_1,data_2)=q\cdot(p+1)$ ，那么显然可得 $p=\sqrt{ \frac{data_1+3\cdot dota_2}{gcd(data_1,data_2)}}-1$ ，随后可得 $q=\frac{data_1}{p^3+1}$ 
+然后RSA相关的数据都有了，直接解密即可
+1234567891011121314151617181920from Crypto.Util.number import *from gmpy2 impo ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/12/06/Wp_for_C1CTF2020/" title="Write up for C1CTF's Crypto">Write up for C1CTF's Crypto</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-12-06T13:09:47.000Z" title="发表于 2020-12-06 21:09:47">2020-12-06</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">Wp for C1CTF2020&#39;s Crypto先放一句话role=Tsunate;
+题目倒是蛮好玩的
+
+
+Base的千层套路拿到的是一个base编码后的结果，写个脚本一直解码，最后得到flag
+
+c1ctf{Ba5e_3nc0ding_i5_e4sy}
+
+PigIsSoCute题目给了一个piggggggg.txt，打开是base64编码的一个图片，在线转换一下得到一个图片
+
+猪圈密码解一下得到一个字符串，根据题目描述尝试栅栏后得到一个有意义的字符串
+
+c1ctf{pigissocutebutporkissoexp}
+
+ezrsa刚开始看到 $e=3$ ，而且三个密文都一样，并且比 $n$ 小得多，尝试直接开三次方后无果，其实是出题人自己把数据给错了，给的c根本就不是立方，直接就是flag。
+后来更新了附件， $c$ 和 $n$ 大小差不多，但是给了三次加密，拓展欧几里得合并一下就有了
+MITM刚开始出题人把题目名称写错了哈哈哈哈哈
+既然是中间人攻击，那么我们就应该在与A交互时伪装成B，在与B交互时伪装成A
+过了pow之后给了 $g$ 和 $p$ ，这里一定要把和谁交互分清 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/11/23/Wp_for_NCTF2020/" title="Write up for NCTF's Crypto">Write up for NCTF's Crypto</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-23T08:58:05.000Z" title="发表于 2020-11-23 16:58:05">2020-11-23</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Writeup/">Writeup</a></span></div><div class="content">Wp for NCTF2020&#39;s Crypto题目很难，嗯，就是很难
+题目质量（我啥也不会也不敢评论）
+我是废物！（大声）
+
+
+RRSA签到题，看完代码后发现是共膜，而且可以拿五次c，exgcd解决即可
+12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364from string import digits, ascii_lettersfrom pwn import *from hashlib import sha256from Crypto.Util.number import *from gmpy2 import *table = &#x27;1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#x27;r = remote(&quot;42.192.180.50&quot;, &quot;30002&quot;)de ...</div></div></div><div class="recent-post-item"><div class="recent-post-info"><a class="article-title" href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" title="数论笔记">数论笔记</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2020-11-11T15:04:06.000Z" title="发表于 2020-11-11 23:04:06">2020-11-11</time></span><span class="article-meta"><span class="article-meta__separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Crypto/">Crypto</a></span></div><div class="content">数论笔记垃圾Dawn_whisper的数论学习史
+
+
+同余费马小定理
+设 $a$ 为整数， $p$ 为质数，则 $a^{p-1}\equiv 1\ (mod\ p)$ 
+可写为 $a^p\equiv a\ (mod\ n)$
+
+
+可用于求逆元 $a*a^{p-2}\equiv 1\ (mod\ p)$
+
+gcd相关
+$gcd(a,b)=gcd(b,a)$
+$gcd(a,b)=gcd(a-b,b)\ (a\geq b)$
+$gcd(a,b)=gcd(a\ % \ b,b)$
+$gcd(a,b,c)=gcd(gcd(a,b),c)$
+$gcd(a,0)=a$
+$lcm(a,b)=\frac{a\times b}{gcd(a,b)}$
+
+拓展欧几里得考虑方程 $a\cdot x+b\cdot y=c$ ，a、b、c都是已知正整数
+方程有解的充要条件为 $gcd(a,b)|c$
+简化问题：考虑方程 $a\cdot x+b\cdot y=gcd(a,b)$ ，它的解为
+$$\begin{cases} x=x_0+\frac{b}{d}t\  y=y_0-\frac{a}{d}t \end{cas ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Dawn_whisper</div><div class="author-info__description">一个弱到不行的crypto手+退役OI选手</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fas fa-heartbeat"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/03/08/Wp_for_AntCTF_X_D%5E3CTF's_crypto/" title="Write up for AntCTF X D^3CTF's crypto">Write up for AntCTF X D^3CTF's crypto</a><time datetime="2021-03-08T14:53:03.000Z" title="发表于 2021-03-08 22:53:03">2021-03-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/03/04/LCG/" title="LCG">LCG</a><time datetime="2021-03-04T01:33:32.000Z" title="发表于 2021-03-04 09:33:32">2021-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/02/26/Discrete_logarithm_problem/" title="Discrete logarithm problem">Discrete logarithm problem</a><time datetime="2021-02-26T10:54:16.000Z" title="发表于 2021-02-26 18:54:16">2021-02-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/02/03/MT19937/" title="MT19937">MT19937</a><time datetime="2021-02-03T13:08:43.000Z" title="发表于 2021-02-03 21:08:43">2021-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/" title="Write up for *ctf2021">Write up for *ctf2021</a><time datetime="2021-01-19T05:57:11.000Z" title="发表于 2021-01-19 13:57:11">2021-01-19</time></div></div></div></div><div class="card-widget" id="card-newest-comments"><div class="item-headline"><i class="fas fa-bolt"></i><span>最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/08/Wp_for_AntCTF_X_D^3CTF's_crypto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/08/Wp_for_AntCTF_X_D%5E3CTF's_crypto/" class="post-title-link" itemprop="url">Write up for AntCTF X D^3CTF's crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-03-08 22:53:03 / 修改时间：23:27:59" itemprop="dateCreated datePublished" datetime="2021-03-08T22:53:03+08:00">2021-03-08</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Wp-for-AntCTF-X-D-3CTF-39-s-crypto"><a href="#Wp-for-AntCTF-X-D-3CTF-39-s-crypto" class="headerlink" title="Wp for AntCTF X D^3CTF&#39;s crypto"></a>Wp for AntCTF X D^3CTF&#39;s crypto</h1><p>我的格子和椭圆曲线实在是太烂了，奈何这次比赛基本都是（</p>
-<p>这次只贡献了1k分，我对不起V&amp;N的师傅们呜呜呜</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/08/Wp_for_AntCTF_X_D%5E3CTF's_crypto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Crypto/"><span class="card-category-list-name">Crypto</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Text/"><span class="card-category-list-name">Text</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Writeup/"><span class="card-category-list-name">Writeup</span><span class="card-category-list-count">11</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Crypto/" style="font-size: 1.5em; color: #99a9bf">Crypto</a> <a href="/tags/Misc/" style="font-size: 1.3em; color: #99a1ac">Misc</a> <a href="/tags/Pwn/" style="font-size: 1.1em; color: #999">Pwn</a> <a href="/tags/Reverse/" style="font-size: 1.1em; color: #999">Reverse</a> <a href="/tags/Text/" style="font-size: 1.1em; color: #999">Text</a> <a href="/tags/Web/" style="font-size: 1.2em; color: #999da3">Web</a> <a href="/tags/Writeup/" style="font-size: 1.4em; color: #99a5b6">Writeup</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/03/"><span class="card-archive-list-date">三月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/02/"><span class="card-archive-list-date">二月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/01/"><span class="card-archive-list-date">一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/12/"><span class="card-archive-list-date">十二月 2020</span><span class="card-archive-list-count">3</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/11/"><span class="card-archive-list-date">十一月 2020</span><span class="card-archive-list-count">5</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2020/10/"><span class="card-archive-list-date">十月 2020</span><span class="card-archive-list-count">7</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">已运行时间 :</div><div class="item-count" id="runtimeshow" data-publishDate="2020-10-07T16:00:00.000Z"></div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2021-03-11T06:16:35.164Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/top_img.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Dawn_whisper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/04/Attack_for_LCG/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/04/Attack_for_LCG/" class="post-title-link" itemprop="url">Attack for LCG</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-04 09:33:32" itemprop="dateCreated datePublished" datetime="2021-03-04T09:33:32+08:00">2021-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-05 12:11:34" itemprop="dateModified" datetime="2021-03-05T12:11:34+08:00">2021-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Attack-for-LCG"><a href="#Attack-for-LCG" class="headerlink" title="Attack for LCG"></a>Attack for LCG</h1><p>发现自己没有整过线性同余生成器的东西，今天专门来总解一下</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/04/Attack_for_LCG/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/26/Study_for_discrete_logarithm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/26/Study_for_discrete_logarithm/" class="post-title-link" itemprop="url">Study for discrete logarithm</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-26 18:54:16" itemprop="dateCreated datePublished" datetime="2021-02-26T18:54:16+08:00">2021-02-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-06 20:42:41" itemprop="dateModified" datetime="2021-03-06T20:42:41+08:00">2021-03-06</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Study-for-discrete-logarithm"><a href="#Study-for-discrete-logarithm" class="headerlink" title="Study for discrete logarithm"></a>Study for discrete logarithm</h1><p>发现自己只是知道离散对数很难求，而且自己拿这玩意也没办法，专门来学一下<del>带老婆问题</del></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/26/Study_for_discrete_logarithm/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/03/A_study_for_MT19937/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/02/03/A_study_for_MT19937/" class="post-title-link" itemprop="url">A study for MT19937</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-02-03 21:08:43" itemprop="dateCreated datePublished" datetime="2021-02-03T21:08:43+08:00">2021-02-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-08 22:04:26" itemprop="dateModified" datetime="2021-02-08T22:04:26+08:00">2021-02-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-study-for-MT19937"><a href="#A-study-for-MT19937" class="headerlink" title="A study for MT19937"></a>A study for MT19937</h1><p>寒假前被一个伪随机数卡了，终于有时间来看看</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/02/03/A_study_for_MT19937/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/" class="post-title-link" itemprop="url">Write up for *ctf2021</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-19 13:57:11 / 修改时间：14:04:10" itemprop="dateCreated datePublished" datetime="2021-01-19T13:57:11+08:00">2021-01-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-ctf2021"><a href="#WP-for-ctf2021" class="headerlink" title="WP for *ctf2021"></a>WP for *ctf2021</h1><p>第一次和V&amp;N的师傅们打比赛就冲到了第六，好耶！</p>
-<p>最后没AK，不好（悲）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/19/Wp_for_%E6%98%9Fctf's_crypto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/" class="post-title-link" itemprop="url">Wp for 华为XCTF2020鸿蒙计算专场's crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-23 17:02:49" itemprop="dateCreated datePublished" datetime="2020-12-23T17:02:49+08:00">2020-12-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-19 13:56:41" itemprop="dateModified" datetime="2021-01-19T13:56:41+08:00">2021-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto"><a href="#Wp-for-华为XCTF2020鸿蒙计算专场’s-crypto" class="headerlink" title="Wp for 华为XCTF2020鸿蒙计算专场’s crypto"></a>Wp for 华为XCTF2020鸿蒙计算专场’s crypto</h1>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/23/Wp-for-%E5%8D%8E%E4%B8%BAXCTF2020-s-crypto/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/07/Wp_for_SWPUCTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/07/Wp_for_SWPUCTF2020/" class="post-title-link" itemprop="url">Write up for SWPUCTF2020's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-07 16:37:08 / 修改时间：16:38:30" itemprop="dateCreated datePublished" datetime="2020-12-07T16:37:08+08:00">2020-12-07</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-SWPUTF2020-39-s-Crypto"><a href="#WP-for-SWPUTF2020-39-s-Crypto" class="headerlink" title="WP for SWPUTF2020&#39;s Crypto"></a>WP for SWPUTF2020&#39;s Crypto</h1><p>很无语，T1刚开始数据给错，T2T3连不上，活活让人等到中午才更新</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/07/Wp_for_SWPUCTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/06/Wp_for_C1CTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/06/Wp_for_C1CTF2020/" class="post-title-link" itemprop="url">Write up for C1CTF's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-06 21:09:47 / 修改时间：22:20:03" itemprop="dateCreated datePublished" datetime="2020-12-06T21:09:47+08:00">2020-12-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-C1CTF2020-39-s-Crypto"><a href="#WP-for-C1CTF2020-39-s-Crypto" class="headerlink" title="WP for C1CTF2020&#39;s Crypto"></a>WP for C1CTF2020&#39;s Crypto</h1><p>先放一句话<strong>role=Tsunate;</strong></p>
-<p>题目倒是蛮好玩的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/06/Wp_for_C1CTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/23/Wp_for_NCTF2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/23/Wp_for_NCTF2020/" class="post-title-link" itemprop="url">Write up for NCTF's Crypto</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-23 16:58:05 / 修改时间：17:35:56" itemprop="dateCreated datePublished" datetime="2020-11-23T16:58:05+08:00">2020-11-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="WP-for-NCTF2020-39-s-Crypto"><a href="#WP-for-NCTF2020-39-s-Crypto" class="headerlink" title="WP for NCTF2020&#39;s Crypto"></a>WP for NCTF2020&#39;s Crypto</h1><p>题目很难，嗯，就是很难</p>
-<p>题目质量<del>（我啥也不会也不敢评论）</del></p>
-<p><del>我是废物！（大声）</del></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/23/Wp_for_NCTF2020/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/author.jpg">
-      <meta itemprop="name" content="Dawn_whisper">
-      <meta itemprop="description" content="一个弱到不行的crypto手+退役OI选手">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dawn_whisper's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">数论笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-11 23:04:06" itemprop="dateCreated datePublished" datetime="2020-11-11T23:04:06+08:00">2020-11-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-14 09:48:59" itemprop="dateModified" datetime="2020-11-14T09:48:59+08:00">2020-11-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index"><span itemprop="name">CTF</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="数论笔记"><a href="#数论笔记" class="headerlink" title="数论笔记"></a>数论笔记</h1><p>垃圾Dawn_whisper的数论学习史</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/11/%E6%95%B0%E8%AE%BA%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
   }
-</script>
-
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Dawn_whisper"
-      src="/images/author.jpg">
-  <p class="site-author-name" itemprop="name">Dawn_whisper</p>
-  <div class="site-description" itemprop="description">一个弱到不行的crypto手+退役OI选手</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">20</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-        <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">分类</span>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">标签</span>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author motion-element">
-      <span class="links-of-author-item">
-        <a href="https://github.com/dawnwhisper" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;dawnwhisper" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:dawn_whisper@qq.com" title="E-Mail → mailto:dawn_whisper@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
-  <div class="cc-license motion-element" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zn-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-  <div class="links-of-blogroll motion-element">
-    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
-      Links
-    </div>
-    <ul class="links-of-blogroll-list">
-        <li class="links-of-blogroll-item">
-          <a href="https://blank-vax.github.io/" title="https:&#x2F;&#x2F;blank-vax.github.io&#x2F;" rel="noopener" target="_blank">Blank</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://blackbird-bb.github.io/" title="https:&#x2F;&#x2F;blackbird-bb.github.io&#x2F;" rel="noopener" target="_blank">Blackbird</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://shal10w.github.io/" title="https:&#x2F;&#x2F;shal10w.github.io&#x2F;" rel="noopener" target="_blank">shallow</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="http://am473ur.com/" title="http:&#x2F;&#x2F;am473ur.com&#x2F;" rel="noopener" target="_blank">Am473ur</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://0xdktb.top/" title="https:&#x2F;&#x2F;0xdktb.top&#x2F;" rel="noopener" target="_blank">0xdktb</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://www.wootec.top/" title="https:&#x2F;&#x2F;www.wootec.top&#x2F;" rel="noopener" target="_blank">Reverier</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://blog.soreatu.com/" title="https:&#x2F;&#x2F;blog.soreatu.com&#x2F;" rel="noopener" target="_blank">Soreat_u</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://miaotony.xyz/" title="https:&#x2F;&#x2F;miaotony.xyz&#x2F;" rel="noopener" target="_blank">MiaoTony</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://d33b4t0.com/" title="https:&#x2F;&#x2F;d33b4t0.com&#x2F;" rel="noopener" target="_blank">Deebato</a>
-        </li>
-        <li class="links-of-blogroll-item">
-          <a href="https://coinc1dens.github.io/" title="https:&#x2F;&#x2F;coinc1dens.github.io&#x2F;" rel="noopener" target="_blank">Coinc1dens</a>
-        </li>
-    </ul>
-  </div>
-
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Dawn_whisper</span>
-</div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-          load: ['[tex]/mhchem'],
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-          packages: {'[+]': ['mhchem']},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>function subtitleType () {
+  if (true) { 
+    var typed = new Typed("#subtitle", {
+      strings: "天亮前的 黎明 才最黑暗,风雨前的 呢喃 才最平静".split(","),
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50
+    })
   } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
+    document.getElementById("subtitle").innerHTML = '天亮前的 黎明 才最黑暗'
   }
-</script>
+}
 
-    
+if (true) {
+  if (typeof Typed === 'function') {
+    subtitleType()
+  } else {
+    getScript('https://cdn.jsdelivr.net/npm/typed.js/lib/typed.min.js').then(subtitleType)
+  }
+} else {
+  subtitleType()
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  '#config-diff',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
 
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  typeof preloader === 'object' && preloader.initLoading()
   
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
 
-</body>
-</html>
+  typeof typed === 'object' && typed.destroy()
 
-<script type="text/javascript" src="/js/src/clicklove.js"></script>
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
