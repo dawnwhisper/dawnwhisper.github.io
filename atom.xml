@@ -123,9 +123,9 @@
     
     <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
     <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
     
   </entry>
   
@@ -309,11 +309,11 @@
     
     <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
+    <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
+    
     <category term="Misc" scheme="http://example.com/tags/Misc/"/>
     
     <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
-    <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
     
     <category term="Pwn" scheme="http://example.com/tags/Pwn/"/>
     
@@ -338,9 +338,9 @@
     <category term="Writeup" scheme="http://example.com/categories/Writeup/"/>
     
     
-    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
-    
     <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
+    
+    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
     
   </entry>
   
@@ -426,9 +426,9 @@
     <category term="Writeup" scheme="http://example.com/categories/Writeup/"/>
     
     
-    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
-    
     <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
+    
+    <category term="Misc" scheme="http://example.com/tags/Misc/"/>
     
   </entry>
   
