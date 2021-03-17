@@ -5,10 +5,10 @@
     
     <entry>
       <title>Thanks for reward</title>
-      <link href="2021/03/14/Thanks_for_reward/"/>
-      <url>2021/03/14/Thanks_for_reward/</url>
+      <link href="2021/03/17/Thanks_for_reward/"/>
+      <url>2021/03/17/Thanks_for_reward/</url>
       
-        <content type="html"><![CDATA[<h1 id="打赏鸣谢"><a href="#打赏鸣谢" class="headerlink" title="打赏鸣谢"></a>打赏鸣谢</h1><p>会有的吧会有的吧会有的吧会有的吧会有的吧（哭</p><table><thead><tr><th align="left">ID</th><th align="left">Time</th><th align="left">Money</th></tr></thead><tbody><tr><td align="left">xxxx</td><td align="left">xxxx</td><td align="left">xxxx</td></tr></tbody></table><p><img src="/img/wechat.png" alt="img"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="打赏鸣谢"><a href="#打赏鸣谢" class="headerlink" title="打赏鸣谢"></a>打赏鸣谢</h1><p>会有的吧会有的吧会有的吧会有的吧会有的吧（哭</p><table><thead><tr><th align="left">ID</th><th align="left">Time</th><th align="left">Money</th></tr></thead><tbody><tr><td align="left">幸福一生</td><td align="left">2021-03-06 00:07:55</td><td align="left">￥1</td></tr></tbody></table><p><img src="/img/wechat.png" alt="img"></p>]]></content>
       
       
       <categories>
@@ -21,6 +21,31 @@
         <tags>
             
             <tag> Thanks </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Lattice learning 1</title>
+      <link href="2021/03/17/Lattice_learning1/"/>
+      <url>2021/03/17/Lattice_learning1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Lattice-learning-1"><a href="#Lattice-learning-1" class="headerlink" title="Lattice learning 1"></a>Lattice learning 1</h1><h2 id="Preface"><a href="#Preface" class="headerlink" title="Preface"></a>Preface</h2><p>花了一下午的时间学完了线代<br>数学家们上辈子一定是天使吧，才能发明出这么美妙的东西<br>线性代数 相见恨晚</p><h2 id="Chapter-1-The-world-of-the-Lattice"><a href="#Chapter-1-The-world-of-the-Lattice" class="headerlink" title="Chapter 1 The world of the Lattice"></a>Chapter 1 The world of the Lattice</h2><p>As we all know, a vector can be anything in our world. So if we want to describe linear space $V$ , we need to find out two Basis Vector, for example $\vec{i}$ and $\vec{j}$, so that any vector can be shown by linear combination with them, as the same as $\vec{x}=a\cdot\vec{i}+b\cdot\vec{j}$. The set of the vector space created by $\vec{i}$ and $\vec{j}$ is this linear space $V$. But in that case, all the ‘$a$’s and ‘$b$’s can be any number, so might as well let us make $a$ and $b$ both are integers, then we got our Integer Lattice. </p><p>We can make sure that all the vector starts from the origin, and all the vector can be distingguished by the end dot, then, our linear vector space $V$ is just like many dots placed neatly and discretely. By the way, you can also do some linear transformation to the easy cartesian coordinate system and create a new lattice.</p><p>Think that now we have a lattice and its bases $\vec{b_1},\vec{b_2},\cdots,\vec{b_n}$, so all the members of this lattice can also be shown as a matrix $A$, which is<br>$$<br>A=\sum^n_{i=1}(b_i\cdot \mathbb{Z})<br>$$<br>Of course, you can also integrate all the base vectors as a matrix $B$, which means<br>$$<br>A=\sum^n_{i=1}(b_i\cdot\mathbb{Z})=B\cdot x(x\in\mathbb{Z}^n)<br>$$<br>So what is lattice? We can say lattice is just a set of vectors, but vector can be interesting.</p><h2 id="Chapher-2-Notions-in-Lattice"><a href="#Chapher-2-Notions-in-Lattice" class="headerlink" title="Chapher 2 Notions in Lattice"></a>Chapher 2 Notions in Lattice</h2><h3 id="Determinant"><a href="#Determinant" class="headerlink" title="Determinant"></a>Determinant</h3><p>Determinant can be seen as a very special proportion — the proportion by a <strong>change</strong> of a linear transformation in the area of a quadrilateral or the volume of a polyhedron constituted by all the base vector.</p><h3 id="Shortest-distance"><a href="#Shortest-distance" class="headerlink" title="Shortest distance"></a>Shortest distance</h3><p>Imagine there is a lattice based on the matrix $B$, and we often use $\lambda$ to describe the shortest distance in a lattice. It’s easy to see that<br>$$<br>\lambda_1=min||x-y||\ \ \ (x,y\in B,x\not=y)\\<br>=min||x||\ \ \ (x\in B,x\not=\vec{0})~~~~~~<br>$$<br>What’s more, we choose $\lambda_2,\lambda_3,\cdots,\lambda_n$ to describe the $i$st shortest distance in $B$, so there’s no doubt that<br>$$<br>\lambda_1\leq\lambda_2\leq\lambda_3\leq\cdots\leq\lambda_n<br>$$</p><h2 id="Chapher-3-Problems-in-Lattice"><a href="#Chapher-3-Problems-in-Lattice" class="headerlink" title="Chapher 3 Problems in Lattice"></a>Chapher 3 Problems in Lattice</h2><h3 id="SVP-Shortest-Vector-Problem"><a href="#SVP-Shortest-Vector-Problem" class="headerlink" title="SVP (Shortest Vector Problem)"></a>SVP (Shortest Vector Problem)</h3><p>Let’s talk about a lattice $L$ based on matrix $B$, so try to find out a vector which fits<br><img src="/img/Lattice_learning1/1.png" alt="SVP"><br>$$<br>||B\vec{x}||= \lambda_1\ \ \ (x\in \mathbb{Z}^k)<br>$$<br>It doesn’t sounds like a tough deal, isn’t it? But when we get a bad pair of vectors as bases, $SVP$ is a big problem. However, ways usually can be found in easier problem, $SVP$ does it so, which is called $SVP_\gamma$. In $SVP_\gamma$ problem, we only need to find a vector<br>$$<br>||B\vec{x}||\leq \gamma\lambda_1\ \ \ (x\in \mathbb{Z}^k)<br>$$</p><h3 id="CVP-Closest-Vector-Problem"><a href="#CVP-Closest-Vector-Problem" class="headerlink" title="CVP (Closest Vector Problem)"></a>CVP (Closest Vector Problem)</h3><p>This problem is in a lattice $L$ based on matrix $B$, and try to find a vector closest to this point $t$, which means<br>$$<br>||B\vec{x}-\vec{t}||\leq\mu<br>$$</p><p><img src="/img/Lattice_learning1/2.png" alt="CVP"></p><p>$CVP$ also have an easier problem called $SVP_\gamma$, which means<br>$$<br>||B\vec{x}-\vec{t}||\leq \gamma\mu\ \ \ (x\in \mathbb{Z}^k)<br>$$</p><h2 id="Chapher-4-Geometric-structure-in-Lattice"><a href="#Chapher-4-Geometric-structure-in-Lattice" class="headerlink" title="Chapher 4 Geometric structure in Lattice"></a>Chapher 4 Geometric structure in Lattice</h2><h3 id="Try-to-solve-nphard-problems"><a href="#Try-to-solve-nphard-problems" class="headerlink" title="Try to solve nphard problems"></a>Try to solve nphard problems</h3><p>So as we know that $CVP$ is a hard problem, but sometimes isn’t. Imagine a Littice based in cartesian coordinate system. which means all the base vectors are vertical to each other(orthogonal basis). We find that it is quite easy to solve $SVP$ or $CVP$(round up and down), which means if we can change a lattice $\Lambda$ into a lattice $L$ with almost orthogonal basis, it will be easier for us to solve the nphard problem. By the way, we named the process ‘Lattice Basis Reduction’, such as Gram-Schmidt. But the answer we get by round up and down in Gram-Schmidt isn’t truly right, Only $||\vec{t}-\vec{v}||\leq min\frac{||\vec{b_i}||}{2}$ we can get the right answer().</p><p><img src="/img/Lattice_learning1/3.png" alt="Gram-Schmidt"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Writeup </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Crypto </tag>
             
         </tags>
       
