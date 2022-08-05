@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="2022/08/05/test/"/>
+      <url>2022/08/05/test/</url>
+      
+        <content type="html"><![CDATA[<p>阿巴阿巴阿巴</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>内网渗透笔记</title>
       <link href="2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/"/>
       <url>2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/</url>
