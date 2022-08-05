@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Write up for C1CTF's Crypto | Dawn_whisper's blog</title><meta name="keywords" content="Crypto,Writeup"><meta name="author" content="Dawn_whisper"><meta name="copyright" content="Dawn_whisper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Wp for C1CTF2020&#39;s Crypto先放一句话role&#x3D;Tsunate; 题目倒是蛮好玩的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Write up for C1CTF&#39;s Crypto">
+<meta property="og:url" content="http://example.com/2020/12/06/Wp_for_C1CTF2020/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="Wp for C1CTF2020&#39;s Crypto先放一句话role&#x3D;Tsunate; 题目倒是蛮好玩的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-12-06T13:09:47.000Z">
+<meta property="article:modified_time" content="2021-03-11T01:22:36.000Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="Crypto">
+<meta property="article:tag" content="Writeup">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2020/12/06/Wp_for_C1CTF2020/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Dawn_whisper","link":"链接: ","source":"来源: Dawn_whisper's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-11 09:22:36'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Dawn_whisper's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dawn_whisper's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Write up for C1CTF's Crypto</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-12-06T13:09:47.000Z" title="发表于 2020-12-06 21:09:47">2020-12-06</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-11T01:22:36.000Z" title="更新于 2021-03-11 09:22:36">2021-03-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Writeup/">Writeup</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Wp-for-C1CTF2020-39-s-Crypto"><a href="#Wp-for-C1CTF2020-39-s-Crypto" class="headerlink" title="Wp for C1CTF2020&#39;s Crypto"></a>Wp for C1CTF2020&#39;s Crypto</h1><p>先放一句话<strong>role=Tsunate;</strong></p>
+<p>题目倒是蛮好玩的</p>
+<a id="more"></a>
+
+<h2 id="Base的千层套路"><a href="#Base的千层套路" class="headerlink" title="Base的千层套路"></a>Base的千层套路</h2><p>拿到的是一个base编码后的结果，写个脚本一直解码，最后得到flag</p>
+<blockquote>
+<p>c1ctf{Ba5e_3nc0ding_i5_e4sy}</p>
+</blockquote>
+<h2 id="PigIsSoCute"><a href="#PigIsSoCute" class="headerlink" title="PigIsSoCute"></a>PigIsSoCute</h2><p>题目给了一个<code>piggggggg.txt</code>，打开是base64编码的一个图片，在线转换一下得到一个图片</p>
+<p><img src="https://i.loli.net/2020/12/06/sroGtT2x5jzYDwl.png" alt="25.png"></p>
+<p>猪圈密码解一下得到一个字符串，根据题目描述尝试栅栏后得到一个有意义的字符串</p>
+<blockquote>
+<p>c1ctf{pigissocutebutporkissoexp}</p>
+</blockquote>
+<h2 id="ezrsa"><a href="#ezrsa" class="headerlink" title="ezrsa"></a>ezrsa</h2><p>刚开始看到 $e=3$ ，而且三个密文都一样，并且比 $n$ 小得多，尝试直接开三次方后无果，<del>其实是出题人自己把数据给错了，给的c根本就不是立方，直接就是flag。</del></p>
+<p>后来更新了附件， $c$ 和 $n$ 大小差不多，但是给了三次加密，拓展欧几里得合并一下就有了</p>
+<h2 id="MITM"><a href="#MITM" class="headerlink" title="MITM"></a>MITM</h2><p><del>刚开始出题人把题目名称写错了哈哈哈哈哈</del></p>
+<p>既然是中间人攻击，那么我们就应该在与<code>A</code>交互时伪装成<code>B</code>，在与<code>B</code>交互时伪装成<code>A</code></p>
+<p>过了pow之后给了 $g$ 和 $p$ ，这里一定要把和谁交互分清楚，<del>因为出题人名字起的太像了，所以刚开始把自己给绕进去了</del>，我们把与<code>Hiro</code>交互的数据统一加上<code>Hiro</code>前缀，把与<code>Zero</code>交互的数据统一加上<code>Zero</code>前缀，根据题目在<code>[2,p-1)</code>随便选个数计算 $Hiro_A =g^{Hiro_a}\ mod\ q$ ，并且得到 $Zero_A$ ，然后再与<code>Hiro</code>进行一次秘钥交换，得到 $Hiro_B$ 和 $ZeroB$ ，这样我们就可以得到与两个人分别的<code>Key</code>，因为 $Hiro_{Key}= {Hiro_B}^{Hiro_a} = {Hiro_A}^{Hiro_b}$ ，所以再两人交换 $m$ 时就可以进行自如的加密解密，最后得到的两个 $m$ 拼起来就是<code>flag</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">table = digits+ascii_letters</span><br><span class="line">r = remote(<span class="string">&quot;8.136.142.239&quot;</span>, <span class="string">&quot;30400&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">passpow</span>():</span></span><br><span class="line">	rev = r.recvuntil(<span class="string">&quot;sha256(XXXX+&quot;</span>)</span><br><span class="line">	suffix = r.recv(<span class="number">16</span>).decode()</span><br><span class="line">	r.recvuntil(<span class="string">&quot; == &quot;</span>)</span><br><span class="line">	res = r.recv(<span class="number">64</span>).decode()</span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">f</span>(<span class="params">x</span>):</span></span><br><span class="line">		hashresult = hashlib.sha256((x+suffix).encode()).hexdigest()</span><br><span class="line">		<span class="keyword">if</span> hashresult == res:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	prefix = util.iters.mbruteforce(f,table,<span class="number">4</span>,<span class="string">&#x27;upto&#x27;</span>)</span><br><span class="line">	r.recvuntil(<span class="string">&quot;Give me XXXX:&quot;</span>)</span><br><span class="line">	r.sendline(str(prefix))</span><br><span class="line"></span><br><span class="line">passpow()</span><br><span class="line">print(<span class="string">&#x27;Successfully pass the pow!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Hiro]: g = &quot;</span>)</span><br><span class="line">g = int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Hiro]: p = &quot;</span>)</span><br><span class="line">p = int(r.recvline(<span class="literal">False</span>).strip().decode())</span><br><span class="line"></span><br><span class="line">Hiro_a = <span class="number">3</span></span><br><span class="line">Hiro_A = pow(g,Hiro_a,p)</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Zero&#x27;s message, which is `A = &quot;</span>)</span><br><span class="line">Zero_A = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">r.sendline(str(Hiro_A))</span><br><span class="line"></span><br><span class="line">Zero_b = <span class="number">3</span></span><br><span class="line">Zero_B = pow(g,Zero_b,p)</span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Hiro&#x27;s message, which is `B = &quot;</span>)</span><br><span class="line">Hiro_B = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">r.sendline(str(Zero_B))</span><br><span class="line"></span><br><span class="line">Hiro_Key = pow(Hiro_B,Hiro_a,p)</span><br><span class="line">Zero_Key = pow(Zero_A,Zero_b,p)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Hiro&#x27;s message, which is `C_b = &quot;</span>)</span><br><span class="line">Hiro_got = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">m = (Hiro_got * inverse(Hiro_Key,p)) % p</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">Zero_give = (m * Zero_Key) % p</span><br><span class="line">r.sendline(str(Zero_give))</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;[Aside]: You intercepted Zero&#x27;s message, which is `C_a = &quot;</span>)</span><br><span class="line">Zero_got = int(r.recvuntil(<span class="string">&quot;`&quot;</span>)[:<span class="number">-1</span>].strip().decode())</span><br><span class="line">r.recvuntil(<span class="string">&quot;&gt; &quot;</span>)</span><br><span class="line">m = (Zero_got * inverse(Zero_Key,p)) % p</span><br><span class="line">print(long_to_bytes(m))</span><br><span class="line">Hiro_give = (m * Hiro_Key) % p</span><br><span class="line">r.sendline(str(Hiro_give))</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>c1ctf{Dif7ie_he1lman_is_n0t_p3rfect}</p>
+</blockquote>
+<h2 id="aesstudy1"><a href="#aesstudy1" class="headerlink" title="aesstudy1"></a>aesstudy1</h2><p>写题解之前说点有的没的，因为出题人太爱讲故事，所以…</p>
+<p><img src="https://i.loli.net/2020/12/06/LVnxE4GJjwizqaP.png" alt="26.png"></p>
+<p>题目就是套娃AES，给一步做一步就好了，</p>
+<h3 id="step1"><a href="#step1" class="headerlink" title="step1"></a>step1</h3><p>给了<code>key</code>，给了<code>msg</code>，要我们返回加密后的结果</p>
+<h3 id="step2"><a href="#step2" class="headerlink" title="step2"></a>step2</h3><p>看来半天不知道要我干啥，也不知道要我返回啥，自己一个人傻看了一个小时才去问了出题人</p>
+<p><del>我怎么知道要把Tsunate换成Kakashi啊</del></p>
+<p>因为AES是16个字节一块块加密的，而且是ECB模式，因为出题人的精心构造，正好4块并且结构很整齐，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Tsunate can see </span><br><span class="line">AAA Message and </span><br><span class="line">Kakashi can see </span><br><span class="line">BBB Message.....</span><br></pre></td></tr></table></figure>
+
+<p>所以，只需要把第三块的密文覆盖到第一块再打回去就行了</p>
+<p><del>另外，我怎么知道要把前面那句话一起打回去啊</del></p>
+<p>step2过了之后就能拿到第一个flag了</p>
+<h3 id="setp3"><a href="#setp3" class="headerlink" title="setp3"></a>setp3</h3><p>要登录，并且一共有两块，第一块会作为<code>iv</code>和解密后的第二块异或，而题目告诉了我们明文第二块是<code>MN;role=Konoha;</code>，给第一块异或<code>\x00\x00\x00\x00\x00\x00\x00\x00Kakashi;</code>和<code>\x00\x00\x00\x00\x00\x00\x00\x00Tsunate;</code>就可以使得明文变成<code>role=Tsunate;</code></p>
+<p><del>我怎么知道要换成Tsunate啊，不是Konoka的登录系统吗</del></p>
+<h3 id="step4"><a href="#step4" class="headerlink" title="step4"></a>step4</h3><p>服务器提供一次AES的解密，让我们猜<code>iv</code>，我们给服务器发送32位<code>\x00</code>，得到两块结果，根据AES.CBC的解密，可以知道第一块是<code>D(input1)^iv</code>，第二块是<code>D(input2)^input1</code>，因为我们构造的<code>input1</code>和<code>input2</code>都是16位<code>\x00</code>，所以这两块异或所得就是<code>iv</code>，再发回服务器就行了</p>
+<p>step4过掉，第二个flag就拿到了</p>
+<h3 id="finalexp-py"><a href="#finalexp-py" class="headerlink" title="finalexp.py"></a>finalexp.py</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> Crypto.Cipher <span class="keyword">import</span> AES</span><br><span class="line"></span><br><span class="line">table = digits+ascii_letters</span><br><span class="line">r = remote(<span class="string">&quot;8.136.131.7&quot;</span>, <span class="string">&quot;30339&quot;</span>)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;The key in hex is &quot;</span>)</span><br><span class="line">key1 = long_to_bytes(int(r.recvuntil(<span class="string">&#x27;,&#x27;</span>)[:<span class="number">-1</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">r.recvuntil(<span class="string">&quot;the msg in hex is &quot;</span>)</span><br><span class="line">msg1 = long_to_bytes(int(r.recvuntil(<span class="string">&#x27;,&#x27;</span>)[:<span class="number">-1</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">r.recvuntil(<span class="string">&quot;the AES-ECB-128 encryption:&quot;</span>)</span><br><span class="line"></span><br><span class="line">aes1 = AES.new(key1,AES.MODE_ECB)</span><br><span class="line">cipher1 = aes1.encrypt(msg1)</span><br><span class="line">cipher1 = hex(bytes_to_long(cipher1))[<span class="number">2</span>:]</span><br><span class="line">r.sendline(cipher1)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;.....|&quot;</span>)</span><br><span class="line">cipher2 = r.recvline(<span class="literal">False</span>)</span><br><span class="line">cipherlist = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">	cipherlist.append(cipher2[i*<span class="number">32</span>:(i+<span class="number">1</span>)*<span class="number">32</span>])</span><br><span class="line">payload2 = <span class="string">b&#x27;Kakashi can see AAA Message and Kakashi can see BBB Message.....|&#x27;</span>+cipherlist[<span class="number">2</span>]+cipherlist[<span class="number">1</span>]+cipherlist[<span class="number">2</span>]+cipherlist[<span class="number">3</span>]</span><br><span class="line">r.recvuntil(<span class="string">&quot;Input the message after you modified:&quot;</span>)</span><br><span class="line">r.sendline(payload2)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&quot;And you interrupt the ciphertext &quot;</span>)</span><br><span class="line"><span class="comment"># m = b&#x27;SSID=AVsasbSJtpTMN;role=Konoha;&#x27;</span></span><br><span class="line">iv = long_to_bytes(int(r.recv(<span class="number">32</span>).strip().decode(),<span class="number">16</span>))</span><br><span class="line">cipher3 = r.recv(<span class="number">32</span>)</span><br><span class="line">r.recvline()</span><br><span class="line">aaa = <span class="string">b&#x27;        Kakashi;&#x27;</span></span><br><span class="line">bbb = <span class="string">b&#x27;        Tsunate;&#x27;</span></span><br><span class="line">payload3 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(aaa)):</span><br><span class="line">	tmp = aaa[i] ^ bbb[i] ^ iv[i]</span><br><span class="line">	payload3 += chr(tmp)</span><br><span class="line">payload3 = payload3.encode(<span class="string">&#x27;latin1&#x27;</span>)</span><br><span class="line">payload3 = hex(bytes_to_long(payload3))[<span class="number">2</span>:]</span><br><span class="line">payload3 = payload3+str(cipher3)[<span class="number">2</span>:<span class="number">-1</span>]</span><br><span class="line">r.sendline(payload3)</span><br><span class="line"></span><br><span class="line">r.recvuntil(<span class="string">&#x27;Input something:&#x27;</span>)</span><br><span class="line">r.sendline(<span class="string">&#x27;\x00&#x27;</span>*<span class="number">32</span>)</span><br><span class="line">r.recvuntil(<span class="string">&#x27;your input (in hex): &#x27;</span>)</span><br><span class="line">iiv = r.recvline(<span class="literal">False</span>)</span><br><span class="line">print(iiv)</span><br><span class="line">iiv1 = long_to_bytes(int(iiv[<span class="number">0</span>:<span class="number">32</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">iiv2 = long_to_bytes(int(iiv[<span class="number">32</span>:<span class="number">64</span>].strip().decode(),<span class="number">16</span>))</span><br><span class="line">print(iiv1)</span><br><span class="line">print(iiv2)</span><br><span class="line">payload4 = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(iiv1)):</span><br><span class="line">	tmp = iiv1[i] ^ iiv2[i]</span><br><span class="line">	payload4 += chr(tmp)</span><br><span class="line">payload4 = payload4.encode(<span class="string">&#x27;latin1&#x27;</span>)</span><br><span class="line">payload4 = hex(bytes_to_long(payload4))[<span class="number">2</span>:]</span><br><span class="line">r.recvuntil(<span class="string">&#x27;Tell me the iv in hex:&#x27;</span>)</span><br><span class="line">r.sendline(payload4)</span><br><span class="line"></span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+
+<h2 id="BuyAndSell-2"><a href="#BuyAndSell-2" class="headerlink" title="BuyAndSell 2"></a>BuyAndSell 2</h2><p>PaddingOracleAttack确实很简单，但这压轴web我是一点办法都没有（</p>
+<p>我是废物！</p>
+<p><del>假装自己AK了，爬了爬了</del></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dawn_whisper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/12/06/Wp_for_C1CTF2020/">http://example.com/2020/12/06/Wp_for_C1CTF2020/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Dawn_whisper's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Crypto/">Crypto</a><a class="post-meta__tags" href="/tags/Writeup/">Writeup</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/12/07/Wp_for_SWPUCTF2020/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Write up for SWPUCTF2020's Crypto</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/23/Wp_for_NCTF2020/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Write up for NCTF's Crypto</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-16</div><div class="title">Writeup for MRCTF2021 crypto</div></div></a></div><div><a href="/2021/04/04/Wp_for_红明谷_crypto/" title="Writeup for 红明谷 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-04</div><div class="title">Writeup for 红明谷 crypto</div></div></a></div><div><a href="/2021/03/27/Writeup_for_MAR_DASCTF's_crypto/" title="Writeup for MAR DASCTF's crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-27</div><div class="title">Writeup for MAR DASCTF's crypto</div></div></a></div><div><a href="/2021/03/14/Writeup_for_V&NCTF2021's_crypto/" title="Writeup for V&NCTF's crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-14</div><div class="title">Writeup for V&NCTF's crypto</div></div></a></div><div><a href="/2021/03/08/Wp_for_AntCTF_X_D^3CTF's_crypto/" title="Write up for AntCTF X D^3CTF's crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-08</div><div class="title">Write up for AntCTF X D^3CTF's crypto</div></div></a></div><div><a href="/2021/01/19/Wp_for_星ctf's_crypto/" title="Write up for *ctf2021"><img class="cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-01-19</div><div class="title">Write up for *ctf2021</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Dawn_whisper</div><div class="author-info__description">弱到不行的crypto手+退役OI选手</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fas fa-heartbeat"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Dawn_whisper's blog~   If you have any idea about my blog, plz send an email to me~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Wp-for-C1CTF2020-39-s-Crypto"><span class="toc-number">1.</span> <span class="toc-text">Wp for C1CTF2020&#39;s Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Base%E7%9A%84%E5%8D%83%E5%B1%82%E5%A5%97%E8%B7%AF"><span class="toc-number">1.1.</span> <span class="toc-text">Base的千层套路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PigIsSoCute"><span class="toc-number">1.2.</span> <span class="toc-text">PigIsSoCute</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ezrsa"><span class="toc-number">1.3.</span> <span class="toc-text">ezrsa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MITM"><span class="toc-number">1.4.</span> <span class="toc-text">MITM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#aesstudy1"><span class="toc-number">1.5.</span> <span class="toc-text">aesstudy1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step1"><span class="toc-number">1.5.1.</span> <span class="toc-text">step1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step2"><span class="toc-number">1.5.2.</span> <span class="toc-text">step2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setp3"><span class="toc-number">1.5.3.</span> <span class="toc-text">setp3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step4"><span class="toc-number">1.5.4.</span> <span class="toc-text">step4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#finalexp-py"><span class="toc-number">1.5.5.</span> <span class="toc-text">finalexp.py</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BuyAndSell-2"><span class="toc-number">1.6.</span> <span class="toc-text">BuyAndSell 2</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/" title="内网渗透笔记">内网渗透笔记</a><time datetime="2022-07-13T02:58:41.000Z" title="发表于 2022-07-13 10:58:41">2022-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/09/2021%E9%A2%86%E8%88%AA%E6%9D%AF/" title="2021领航杯 &amp; 蚌埠住了">2021领航杯 &amp; 蚌埠住了</a><time datetime="2021-10-09T15:09:20.000Z" title="发表于 2021-10-09 23:09:20">2021-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/26/AWD%E6%A1%86%E6%9E%B6/" title="AWD框架">AWD框架</a><time datetime="2021-06-26T11:42:06.000Z" title="发表于 2021-06-26 19:42:06">2021-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021">First AWD at ciscn2021</a><time datetime="2021-06-20T04:51:30.000Z" title="发表于 2021-06-20 12:51:30">2021-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto">Writeup for MRCTF2021 crypto</a><time datetime="2021-04-16T11:58:26.000Z" title="发表于 2021-04-16 19:58:26">2021-04-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Dawn_whisper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

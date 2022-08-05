@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>RSA parity oracle | Dawn_whisper's blog</title><meta name="keywords" content="Crypto"><meta name="author" content="Dawn_whisper"><meta name="copyright" content="Dawn_whisper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="RSA Parity OracleDawn_whisper和他的辣鸡代码成长史（雾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RSA parity oracle">
+<meta property="og:url" content="http://example.com/2020/10/10/RSA_Parity_Oracle/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="RSA Parity OracleDawn_whisper和他的辣鸡代码成长史（雾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-10-10T07:46:23.000Z">
+<meta property="article:modified_time" content="2021-03-11T01:19:24.000Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2020/10/10/RSA_Parity_Oracle/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Dawn_whisper","link":"链接: ","source":"来源: Dawn_whisper's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-11 09:19:24'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Dawn_whisper's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dawn_whisper's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">RSA parity oracle</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-10T07:46:23.000Z" title="发表于 2020-10-10 15:46:23">2020-10-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-11T01:19:24.000Z" title="更新于 2021-03-11 09:19:24">2021-03-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Crypto/">Crypto</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="RSA-Parity-Oracle"><a href="#RSA-Parity-Oracle" class="headerlink" title="RSA Parity Oracle"></a>RSA Parity Oracle</h1><p>Dawn_whisper和他的辣鸡代码成长史（雾</p>
+<a id="more"></a>
+
+<p>先挂个CTFwiki的<a target="_blank" rel="noopener" href="https://wiki.x10sec.org/crypto/asymmetric/rsa/rsa_chosen_cipher/">链接</a>，<del>如果能看懂就不用接着往下看我这个垃圾博客了</del></p>
+<h2 id="适用条件"><a href="#适用条件" class="headerlink" title="适用条件"></a>适用条件</h2><p>搬一段wiki上的原话：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">假设目前存在一个 Oracle，它会对一个给定的密文进行解密，并且会检查解密的明文的奇偶性，并根据奇偶性返回相应的值，比如 1 表示奇数，0 表示偶数。那么给定一个加密后的密文，我们只需要 log(N) 次就可以知道这个密文对应的明文消息。</span><br></pre></td></tr></table></figure>
+
+<p><del>说的是个啥玩意</del></p>
+<p>简单来说就是有个服务器，他会提供一个不完整的解密功能，而不完整体现在哪里呢？这个服务器只会提供给你解密之后的数据的二进制的最后一位（你可以理解为他只返回明文m%2之后的结果），那么我们可以通过分析返回的这个值来判断明文m与n之间的关系，进而可以推出m。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>我们已知$c = m^e(mod n)$，那么我们第一次给服务器发送$c\cdot2^e$，接下来服务器会计算$(c\cdot2^e)^d=c^d\cdot2^{e\cdot d}=2\cdot m$，所以服务器返回的是2m%2的结果，接下来<strong>划重点</strong>：</p>
+<ul>
+<li>如果返回0，说明$2m &lt; n$，因为乘2之后必定是一个偶数，膜2之后一定等于0（亦可以理解为2m变为二进制后最低位是0），也就说明$0 &lt; m &lt; \dfrac{n}{2}$</li>
+<li>如果返回1，说明$2m &gt; n$，因为乘2之后必定是一个偶数，而n一定是一个奇数（俩质数相乘肯定是个奇数），返回1的原因是$2m$在膜$n$时，因为比n大，所以会变成$2m-n$，这样得到的就是一个奇数，膜2之后一定等于1（2m变为二进制后最低位是1），也就说明$ \dfrac{n}{2} &lt; m &lt; n$</li>
+</ul>
+<p>如果上面没有看懂，请务必<strong>仔细理解</strong>！因为接下来会不断利用这个部分进行运算，也就是<em>数学归纳</em></p>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>那么接下来我们继续分析，为了使其理解更容易，我们举个例子来想一想</p>
+<ul>
+<li>我们假定$  \dfrac{3\cdot n}{4}&lt; m &lt;n$，而通过第一次我们的分析我们得知$ \dfrac{n}{2} &lt; m &lt; n$，接下来该怎么办呢？</li>
+</ul>
+<p>我们第二次给服务器发送$c\cdot 4^e$，服务器则会输出$4m$与$n$的关系，而$3n&lt;4m&lt;4n$，所以在膜$n$之后会变成$4m-3n$，而减去了一个奇数，我们自然就会得到1！</p>
+<ul>
+<li>如果假定$  \dfrac{n}{2}&lt; m&lt;\dfrac{3\cdot n}{4} $，我们就会得到0！</li>
+</ul>
+<p>这个过程是不是很熟悉？没错当我们把2m当做一个整体时，就相当于我们又<strong>重复</strong>了一遍<strong>第一步</strong>！</p>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>草:hammer:，​还等着我给你再写一遍啊，接着乘二就完事了</p>
+<p>……</p>
+<p>次数足够多之后，我们就可以通过二分法来找到最后的明文m</p>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="1-2020-0xGame-Crypto-parityOracle"><a href="#1-2020-0xGame-Crypto-parityOracle" class="headerlink" title="1.2020 0xGame Crypto parityOracle"></a>1.2020 0xGame Crypto parityOracle</h3><p>拿到题目一顿胡乱分析</p>
+<p><img src="https://i.loli.net/2020/10/10/SHtsJ47OKF8myoN.png" alt="8.png"></p>
+<p>看看代码，发现基本是板子题，只是把膜2换成了膜4</p>
+<p><img src="https://i.loli.net/2020/10/10/KjqMvh1CVXx4Q3k.png" alt="9.png"></p>
+<p>处理方法和平时基本一样，只是在数据分析时攻击函数从二分变成四分，</p>
+<ul>
+<li>如果返回0，则$0&lt; m&lt;\dfrac{n}{4} $</li>
+<li>如果返回1，则$\dfrac{n}{4}&lt; m&lt;\dfrac{n}{2}$</li>
+<li>如果返回2，则$\dfrac{n}{2}&lt; m&lt;\dfrac{3\cdot n}{4}$</li>
+<li>如果返回3，则$\dfrac{3\cdot n}{4}&lt; m&lt;n$</li>
+</ul>
+<h4 id="sol-py"><a href="#sol-py" class="headerlink" title="sol.py"></a>sol.py</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> string <span class="keyword">import</span> digits, ascii_letters</span><br><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> hashlib <span class="keyword">import</span> sha256</span><br><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">table = digits+ascii_letters</span><br><span class="line">r = remote(<span class="string">&quot;49.235.239.97&quot;</span>, <span class="string">&quot;10001&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">passpow</span>():</span></span><br><span class="line">	r.recvuntil(<span class="string">&quot;sha256(XXXX+&quot;</span>)</span><br><span class="line">	pre = r.recv(<span class="number">16</span>).decode()</span><br><span class="line">	rev = r.recvuntil(<span class="string">&quot; == &quot;</span>)</span><br><span class="line">	res = r.recv(<span class="number">64</span>).decode()</span><br><span class="line">	<span class="keyword">for</span> a <span class="keyword">in</span> table:</span><br><span class="line">		<span class="keyword">for</span> b <span class="keyword">in</span> table:</span><br><span class="line">			<span class="keyword">for</span> c <span class="keyword">in</span> table:</span><br><span class="line">				<span class="keyword">for</span> d <span class="keyword">in</span> table:</span><br><span class="line">					<span class="keyword">if</span>(sha256((a+b+c+d+pre).encode()).hexdigest() == res):</span><br><span class="line">						<span class="keyword">return</span> a+b+c+d</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read_data</span>():</span></span><br><span class="line">	r.recvuntil(<span class="string">&quot;e = &quot;</span>)</span><br><span class="line">	e = int(r.recvline().strip().decode())</span><br><span class="line">	r.recvuntil(<span class="string">&quot;n = &quot;</span>)</span><br><span class="line">	n = int(r.recvline().strip().decode())</span><br><span class="line">	r.recvuntil(<span class="string">&quot;c = &quot;</span>)</span><br><span class="line">	c = int(r.recvline().strip().decode())</span><br><span class="line">	<span class="keyword">return</span> e,n,c</span><br><span class="line"></span><br><span class="line">w = passpow()</span><br><span class="line">print(<span class="string">&#x27;Successfully pass the pow!&#x27;</span>)</span><br><span class="line">r.send(str(w)+<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">e,n,c=read_data()</span><br><span class="line">high = n</span><br><span class="line">low = <span class="number">0</span></span><br><span class="line">cnt=<span class="number">1</span></span><br><span class="line">data = []</span><br><span class="line">print(<span class="string">&#x27;Data get!&#x27;</span>)</span><br><span class="line">print(<span class="string">&#x27;Waiting......&#x27;</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">	<span class="comment">#print(&#x27;now cnt is:&#x27;,cnt)</span></span><br><span class="line">	r.recvuntil(<span class="string">&#x27;2. exit\n&gt; &#x27;</span>)</span><br><span class="line">	r.sendline(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">	c = (c*(<span class="number">4</span>**e))%n</span><br><span class="line">	r.sendline(hex(c))</span><br><span class="line">	r.recvuntil(<span class="string">&#x27;Your cipher (in hex): &#x27;</span>)</span><br><span class="line">	back = r.recv(<span class="number">1</span>).strip().decode()</span><br><span class="line">	back=int(back)</span><br><span class="line">	data.append(back)</span><br><span class="line">	divide = (high-low) // <span class="number">4</span></span><br><span class="line">	<span class="keyword">if</span>(back == <span class="number">0</span>):</span><br><span class="line">		high -= <span class="number">3</span> * divide</span><br><span class="line">	<span class="keyword">elif</span>(back == <span class="number">1</span>):</span><br><span class="line">		high -= <span class="number">2</span> * divide</span><br><span class="line">		low += divide</span><br><span class="line">	<span class="keyword">elif</span>(back == <span class="number">2</span>):</span><br><span class="line">		high -= divide</span><br><span class="line">		low += <span class="number">2</span> * divide</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		low += <span class="number">3</span> * divide</span><br><span class="line">	cnt += <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span>(high &lt;= low + <span class="number">4</span>):</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&#x27;get flag!\nflag=&#x27;</span>,end=<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">print(long_to_bytes(high))</span><br><span class="line"></span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>running……</p>
+<p><img src="https://i.loli.net/2020/10/10/QTHMpwfb41ESgly.png" alt="10.png"></p>
+<p>因为区间比较大，所以交互的时间比较久</p>
+<p><img src="https://i.loli.net/2020/10/10/nukcNeAjo7bvD3O.png" alt="11.png"></p>
+<p>拿到啦！</p>
+<p><em>如果你的输出最后不是完整的flag，是因为我们最后保留的还是一个区间，只是比较小</em></p>
+<p><del>自己手动改一下或者多跑几边就行了</del></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flag: 0xGame&#123;a9abdec6-7b84-4443-afb8-ee4dada8bdca&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Waiting-update"><a href="#Waiting-update" class="headerlink" title="Waiting update"></a>Waiting update</h2><p>如果以后遇到同样的题目，我会慢慢更新例题的（咕咕咕）</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dawn_whisper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/10/10/RSA_Parity_Oracle/">http://example.com/2020/10/10/RSA_Parity_Oracle/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Dawn_whisper's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Crypto/">Crypto</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/10/11/Wp_for_Moectf2020's_Crypto/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Moectf2020's wp for Crypto</div></div></a></div><div class="next-post pull-right"><a href="/2020/10/08/Wp_for_Moectf2020's_misc/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Moectf2020's wp for Misc</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-20</div><div class="title">First AWD at ciscn2021</div></div></a></div><div><a href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-16</div><div class="title">Writeup for MRCTF2021 crypto</div></div></a></div><div><a href="/2021/04/04/Wp_for_红明谷_crypto/" title="Writeup for 红明谷 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-04</div><div class="title">Writeup for 红明谷 crypto</div></div></a></div><div><a href="/2021/03/27/Writeup_for_MAR_DASCTF's_crypto/" title="Writeup for MAR DASCTF's crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-27</div><div class="title">Writeup for MAR DASCTF's crypto</div></div></a></div><div><a href="/2021/03/18/Lattice_learning2/" title="Lattice learning 2"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-18</div><div class="title">Lattice learning 2</div></div></a></div><div><a href="/2021/03/17/Lattice_learning1/" title="Lattice learning 1"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-17</div><div class="title">Lattice learning 1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Dawn_whisper</div><div class="author-info__description">弱到不行的crypto手+退役OI选手</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fas fa-heartbeat"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Dawn_whisper's blog~   If you have any idea about my blog, plz send an email to me~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RSA-Parity-Oracle"><span class="toc-number">1.</span> <span class="toc-text">RSA Parity Oracle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">适用条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-number">1.2.1.</span> <span class="toc-text">第一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5"><span class="toc-number">1.2.2.</span> <span class="toc-text">第二步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5"><span class="toc-number">1.2.3.</span> <span class="toc-text">第三步</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2020-0xGame-Crypto-parityOracle"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.2020 0xGame Crypto parityOracle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#sol-py"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">sol.py</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Waiting-update"><span class="toc-number">1.4.</span> <span class="toc-text">Waiting update</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/" title="内网渗透笔记">内网渗透笔记</a><time datetime="2022-07-13T02:58:41.000Z" title="发表于 2022-07-13 10:58:41">2022-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/09/2021%E9%A2%86%E8%88%AA%E6%9D%AF/" title="2021领航杯 &amp; 蚌埠住了">2021领航杯 &amp; 蚌埠住了</a><time datetime="2021-10-09T15:09:20.000Z" title="发表于 2021-10-09 23:09:20">2021-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/26/AWD%E6%A1%86%E6%9E%B6/" title="AWD框架">AWD框架</a><time datetime="2021-06-26T11:42:06.000Z" title="发表于 2021-06-26 19:42:06">2021-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021">First AWD at ciscn2021</a><time datetime="2021-06-20T04:51:30.000Z" title="发表于 2021-06-20 12:51:30">2021-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto">Writeup for MRCTF2021 crypto</a><time datetime="2021-04-16T11:58:26.000Z" title="发表于 2021-04-16 19:58:26">2021-04-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Dawn_whisper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

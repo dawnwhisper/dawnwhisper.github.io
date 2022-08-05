@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Summary of RSA Factorization Algorithm | Dawn_whisper's blog</title><meta name="keywords" content="Crypto"><meta name="author" content="Dawn_whisper"><meta name="copyright" content="Dawn_whisper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Summary of RSA Factorization Algorithm爪巴了，数学知识它不进脑子啊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Summary of RSA Factorization Algorithm">
+<meta property="og:url" content="http://example.com/2020/11/07/RSA_Factorization_Algorithm/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="Summary of RSA Factorization Algorithm爪巴了，数学知识它不进脑子啊">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg">
+<meta property="article:published_time" content="2020-11-07T08:22:20.000Z">
+<meta property="article:modified_time" content="2021-03-11T01:19:02.000Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2020/11/07/RSA_Factorization_Algorithm/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Dawn_whisper","link":"链接: ","source":"来源: Dawn_whisper's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-11 09:19:02'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Dawn_whisper's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dawn_whisper's blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/books/"><i class="fa-fw fas fa-book"></i><span> Paper&amp;books</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> Links</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Summary of RSA Factorization Algorithm</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-07T08:22:20.000Z" title="发表于 2020-11-07 16:22:20">2020-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-03-11T01:19:02.000Z" title="更新于 2021-03-11 09:19:02">2021-03-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Crypto/">Crypto</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Summary-of-RSA-Factorization-Algorithm"><a href="#Summary-of-RSA-Factorization-Algorithm" class="headerlink" title="Summary of RSA Factorization Algorithm"></a>Summary of RSA Factorization Algorithm</h1><p>爪巴了，数学知识它不进脑子啊</p>
+<a id="more"></a>
+
+<h2 id="Pollard-39-s-p-−-1"><a href="#Pollard-39-s-p-−-1" class="headerlink" title="Pollard&#39;s p − 1"></a>Pollard&#39;s p − 1</h2><p>已知 $N=p\cdot q$ ，我们的任务是分解出其中的两个质因子</p>
+<p>首先我们找到这样的一个 $L$ 满足 $L\mid p-1$ 且 $L\nmid q-1$ ，也就是存在整数 $i,j,k(k\neq0)$ 满足 $L=i\cdot (p-1)=j\cdot (q-1)+k$ ，由费马小定理可知<br>$$<br>a^L=a^{i\cdot (p-1)}=(a^{p-1})^i\equiv 1^i\ (mod\ p)\equiv 1\ (mod\ p)<br>$$<br>$$<br>a^L=a^{j\cdot (q-1)+k}=(a^{q-1})^i\cdot a^k\equiv 1^j\cdot a^k\ (mod\ q)\equiv a^k\ (mod\ q)<br>$$</p>
+<p>所以 $p\mid a^L-1$ 而 $q\nmid a^L-1$ ，那么我们就可以得到 $p=gcd(a^L-a,N)$</p>
+<p><del>听起来无比简单</del>，但是，我们要如何找到这个 $L$ 呢？</p>
+<p>在Pollard的观察中，如果 $p-1$ 恰好是许多小素数的乘积，所以我们可以利用 $p-1$ 的倍数 $n!$ （n不是非常大）来代替 $p-1$ ，即计算 $gcd(a^{n!}-1,N)$ （例如我们可以选择 $a=2$ ）</p>
+<ul>
+<li>如果结果是1，那就继续计算下一个 $n$</li>
+<li>如果结果是 $N$ ，那么可以尝试更换 $a$ 的值再次尝试</li>
+<li>如果结果是位于 $1$~$N$ 之间的一个数，那么这个数就是我们要找的 $p$</li>
+</ul>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>我们所要求的指一定是小于 $N$ 的，所以不用计算出 $a^{n!}-1$ 的确切值，中途膜 $N$ 即可</li>
+<li>我们上一步已经得到了 $a^{(n-1)!}$ 的值，所以继续计算 $a^{n!}=(a^{(n-1)!})^n$ </li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">q = getPrime(<span class="number">64</span>)</span><br><span class="line">p = getPrime(<span class="number">64</span>)</span><br><span class="line">n = p * q</span><br><span class="line">print(n)</span><br><span class="line">print(p)</span><br><span class="line">print(q)</span><br><span class="line"></span><br><span class="line">sum = <span class="number">2</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,n):</span><br><span class="line">    sum = pow(sum,i,n)</span><br><span class="line">    <span class="comment"># print(sum)</span></span><br><span class="line">    <span class="keyword">if</span>(gcd(sum<span class="number">-1</span>,n)!=<span class="number">1</span>):</span><br><span class="line">        print(i)</span><br><span class="line">        print(gcd(sum<span class="number">-1</span>,n))</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+
+<p>当我们执行时，我们发现脚本只能有一定概率在有限时间内跑出结果，因为能够跑出结果的情况有且只有**$p-1$恰好是许多小素数的乘积**时，那么这样的分解方式需要多少时间呢？</p>
+<p>这里贴一个书里的原图</p>
+<p><img src="https://i.loli.net/2020/11/14/O5GjVLui2wNzZEx.png" alt="22.png"></p>
+<h2 id="Pollard’s-ρ-algorithm"><a href="#Pollard’s-ρ-algorithm" class="headerlink" title="Pollard’s ρ algorithm"></a>Pollard’s ρ algorithm</h2><p>波拉德的ρ算法是整数分解的一种算法，它只占用了很少的空间，并且它的预期运行时间与被分解的合数的最小质因数大小的平方根成正比</p>
+<h3 id="核心思想-gt-生日悖论"><a href="#核心思想-gt-生日悖论" class="headerlink" title="核心思想-&gt;生日悖论"></a>核心思想-&gt;生日悖论</h3><p>​    假设我们构造一个伪随机数列，比如说我们定义 $f(x)=x^2+1$ ，然后选择一个种子，比方说2，那么就可以得到 $x_1=f(2)$ 、 $x_2=f(f(2))$ 、 $x_3=f(f(f(2)))$ ……但由于生日悖论，这个伪随机数列总会的重复，而一旦重复，这个序列就会成为一个环，如下图，所以这种序列结构为这种算法得到了<code>ρ算法</code>这样的名字</p>
+<p><img src="https://i.loli.net/2021/03/04/zfFE7I1MJO6Upuh.png" alt="32.png"></p>
+<p>​    那么现在我们要怎么利用这个序列来分解n呢？我们利用<code>Floyd&#39;s cycle-finding algorithm</code>发现：每次我们检查 $gcd(x_i-x_j,n)$ ，如果发现这个结果不等于1或n，那么这个结果就是n的非平凡因子了（即不等于1与n的因子），当 $x_i=x_j\pmod{p}$ 时，$x_i-x_j$ 必定存在p这个因子，而且我们注意到 $x_k\ mod\ p$  这个序列也是重复的，也就是说，我们总能找到一组合法的<code>(i,j)</code>满足 $gcd(x_i-x_j,n)\neq1$ ，如果结果等于<code>n</code>时，也就代表<code>Pollard&#39;s ρ algorithm</code>失败了，但我们可以重新选择一组序列来进行计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> Crypto.Util.number <span class="keyword">import</span> isPrime</span><br><span class="line"><span class="keyword">from</span> gmpy2 <span class="keyword">import</span> gcd</span><br><span class="line"></span><br><span class="line">n = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">maps</span>(<span class="params">x,n</span>):</span></span><br><span class="line">    <span class="keyword">return</span> (x * x + <span class="number">1</span>) % n</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pollard_rho</span>(<span class="params">seed,n</span>):</span></span><br><span class="line">    anslist = []</span><br><span class="line">    x2 = x1 = seed</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        x1 = maps(x1,n)</span><br><span class="line">        x2 = maps(maps(x2,n),n)</span><br><span class="line">        data = gcd(x1-x2,n)</span><br><span class="line">        <span class="keyword">if</span>(data != <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">return</span> int(data)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pollard_rho_Factor</span>(<span class="params">n</span>):</span></span><br><span class="line">    ans = []</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        data = pollard_rho(<span class="number">2</span>,n)</span><br><span class="line">        ans.append(data)</span><br><span class="line">        n = n // data</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line">        <span class="keyword">if</span>(isPrime(n)):</span><br><span class="line">            ans.append(n)</span><br><span class="line">            <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">print(pollard_rho_Factor(n))</span><br></pre></td></tr></table></figure>
+
+<h3 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h3><p>​    使用<code>Brent&#39;s cycle finding method</code>来取代<code>Floyd&#39;s cycle-finding algorithm</code>，其不同点就是从一步一检查变成了百步一检查，它定义 $z=(x_2-x_3)(x_3-x_5)(x_4-x_7)\cdots(x_{101}-c_{201})\pmod{n}$ 随后再检查 $gcd(z,n)$ 是否为1，这样的做法只是为了加速，但对于部分情况会失灵，比如当<code>n</code>是一个完全平方数时，是无法分解的，但也并不是没有办法，我们使用原本的正常方法即可</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dawn_whisper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2020/11/07/RSA_Factorization_Algorithm/">http://example.com/2020/11/07/RSA_Factorization_Algorithm/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Dawn_whisper's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Crypto/">Crypto</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/11/11/many_time_pad_attack/"><img class="prev-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Many time pad attack</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/07/Wp_for_Hackergame2020/"><img class="next-cover" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Write up for hackergame2020</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-20</div><div class="title">First AWD at ciscn2021</div></div></a></div><div><a href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-16</div><div class="title">Writeup for MRCTF2021 crypto</div></div></a></div><div><a href="/2021/04/04/Wp_for_红明谷_crypto/" title="Writeup for 红明谷 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-04</div><div class="title">Writeup for 红明谷 crypto</div></div></a></div><div><a href="/2021/03/27/Writeup_for_MAR_DASCTF's_crypto/" title="Writeup for MAR DASCTF's crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-27</div><div class="title">Writeup for MAR DASCTF's crypto</div></div></a></div><div><a href="/2021/03/18/Lattice_learning2/" title="Lattice learning 2"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-18</div><div class="title">Lattice learning 2</div></div></a></div><div><a href="/2021/03/17/Lattice_learning1/" title="Lattice learning 1"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-03-17</div><div class="title">Lattice learning 1</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Dawn_whisper</div><div class="author-info__description">弱到不行的crypto手+退役OI选手</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fas fa-heartbeat"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Dawn_whisper's blog~   If you have any idea about my blog, plz send an email to me~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary-of-RSA-Factorization-Algorithm"><span class="toc-number">1.</span> <span class="toc-text">Summary of RSA Factorization Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Pollard-39-s-p-%E2%88%92-1"><span class="toc-number">1.1.</span> <span class="toc-text">Pollard&#39;s p − 1</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pollard%E2%80%99s-%CF%81-algorithm"><span class="toc-number">1.2.</span> <span class="toc-text">Pollard’s ρ algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3-gt-%E7%94%9F%E6%97%A5%E6%82%96%E8%AE%BA"><span class="toc-number">1.2.1.</span> <span class="toc-text">核心思想-&gt;生日悖论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/" title="内网渗透笔记">内网渗透笔记</a><time datetime="2022-07-13T02:58:41.000Z" title="发表于 2022-07-13 10:58:41">2022-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/09/2021%E9%A2%86%E8%88%AA%E6%9D%AF/" title="2021领航杯 &amp; 蚌埠住了">2021领航杯 &amp; 蚌埠住了</a><time datetime="2021-10-09T15:09:20.000Z" title="发表于 2021-10-09 23:09:20">2021-10-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/26/AWD%E6%A1%86%E6%9E%B6/" title="AWD框架">AWD框架</a><time datetime="2021-06-26T11:42:06.000Z" title="发表于 2021-06-26 19:42:06">2021-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021">First AWD at ciscn2021</a><time datetime="2021-06-20T04:51:30.000Z" title="发表于 2021-06-20 12:51:30">2021-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto">Writeup for MRCTF2021 crypto</a><time datetime="2021-04-16T11:58:26.000Z" title="发表于 2021-04-16 19:58:26">2021-04-16</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Dawn_whisper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
