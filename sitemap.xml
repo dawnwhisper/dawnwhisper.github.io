@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2022/08/27/First%20price%20at%20CISCN2022!/</loc>
+    <loc>http://example.com/2022/08/14/DEFCON2022/</loc>
     
-    <lastmod>2022-08-30</lastmod>
+    <lastmod>2022-09-01</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2022/08/14/DEFCON2022/</loc>
+    <loc>http://example.com/2022/08/27/First%20price%20at%20CISCN2022!/</loc>
     
-    <lastmod>2022-08-27</lastmod>
+    <lastmod>2022-09-01</lastmod>
     
   </url>
   
@@ -333,21 +333,7 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Life-Web/</loc>
-    <lastmod>2022-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/tags/Crypto/</loc>
-    <lastmod>2022-09-01</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Life-Web-Crypto/</loc>
     <lastmod>2022-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -368,14 +354,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Text/</loc>
+    <loc>http://example.com/tags/Thanks/</loc>
     <lastmod>2022-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Thanks/</loc>
+    <loc>http://example.com/tags/Text/</loc>
     <lastmod>2022-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
