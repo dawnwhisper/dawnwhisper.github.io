@@ -354,14 +354,14 @@
   </url>
   
   <url>
-    <loc>http://example.com/tags/Thanks/</loc>
+    <loc>http://example.com/tags/Text/</loc>
     <lastmod>2022-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Text/</loc>
+    <loc>http://example.com/tags/Thanks/</loc>
     <lastmod>2022-09-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
