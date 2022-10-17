@@ -36,11 +36,11 @@
     <category term="Life" scheme="http://example.com/categories/Life/"/>
     
     
-    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
-    
     <category term="Web" scheme="http://example.com/tags/Web/"/>
     
     <category term="Life" scheme="http://example.com/tags/Life/"/>
+    
+    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
   </entry>
   
@@ -166,11 +166,11 @@
     <category term="AWD" scheme="http://example.com/categories/AWD/"/>
     
     
-    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
-    
     <category term="Web" scheme="http://example.com/tags/Web/"/>
     
     <category term="AWD" scheme="http://example.com/tags/AWD/"/>
+    
+    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
     <category term="Misc" scheme="http://example.com/tags/Misc/"/>
     
@@ -461,9 +461,9 @@
     <category term="Writeup" scheme="http://example.com/categories/Writeup/"/>
     
     
-    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
-    
     <category term="Web" scheme="http://example.com/tags/Web/"/>
+    
+    <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
     <category term="Writeup" scheme="http://example.com/tags/Writeup/"/>
     
