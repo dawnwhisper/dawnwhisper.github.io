@@ -36,9 +36,9 @@
     <category term="Life" scheme="http://example.com/categories/Life/"/>
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
     <category term="Life" scheme="http://example.com/tags/Life/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
     
     <category term="Crypto" scheme="http://example.com/tags/Crypto/"/>
     
@@ -64,9 +64,9 @@
     <category term="Life" scheme="http://example.com/categories/Life/"/>
     
     
-    <category term="Web" scheme="http://example.com/tags/Web/"/>
-    
     <category term="Life" scheme="http://example.com/tags/Life/"/>
+    
+    <category term="Web" scheme="http://example.com/tags/Web/"/>
     
   </entry>
   
@@ -115,11 +115,11 @@
     <category term="Life" scheme="http://example.com/categories/Life/"/>
     
     
+    <category term="Life" scheme="http://example.com/tags/Life/"/>
+    
     <category term="Web" scheme="http://example.com/tags/Web/"/>
     
     <category term="AWD" scheme="http://example.com/tags/AWD/"/>
-    
-    <category term="Life" scheme="http://example.com/tags/Life/"/>
     
   </entry>
   
