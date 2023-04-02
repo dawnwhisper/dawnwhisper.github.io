@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/</loc>
+    
+    <lastmod>2023-04-02</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://example.com/comment/index.html</loc>
     
     <lastmod>2022-09-01</lastmod>
@@ -312,78 +319,78 @@
 
   <url>
     <loc>http://example.com/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
   <url>
+    <loc>http://example.com/tags/Life/</loc>
+    <lastmod>2023-04-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/Web/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/AWD/</loc>
-    <lastmod>2022-11-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Life/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Crypto/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Misc/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Writeup/</loc>
-    <lastmod>2022-11-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/Text/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Thanks/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/tags/Text/</loc>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Pwn/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/tags/Reverse/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -392,42 +399,42 @@
   
   <url>
     <loc>http://example.com/categories/Life/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/AWD/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Crypto/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Writeup/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Text/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>http://example.com/categories/Web/</loc>
-    <lastmod>2022-11-21</lastmod>
+    <lastmod>2023-04-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

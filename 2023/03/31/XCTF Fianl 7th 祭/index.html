@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>XCTF Fianl 7th 祭 | Dawn_whisper's blog</title><meta name="keywords" content="Life,Crypto"><meta name="author" content="Dawn_whisper"><meta name="copyright" content="Dawn_whisper"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="XCTF Fianl 7th 祭Gossip在nuaa搞竞赛是否搞错了什么 今天是3202.3.31，经历了好几天的鬼混生活，写这篇文章的时候我只剩下半条命了（ 总的来说，今年的题目比较烂，但是师傅们一起玩的很开心 如果是来看wp的师傅们可以直接点旁边目录跳转 Before2023.3.28 终于见到了可爱的可可姐，感觉人生都亮起来了（雾 上完早八，直接收拾好东西去酒店找可可，dbt说下午马上就能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCTF Fianl 7th 祭">
+<meta property="og:url" content="http://example.com/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/index.html">
+<meta property="og:site_name" content="Dawn_whisper&#39;s blog">
+<meta property="og:description" content="XCTF Fianl 7th 祭Gossip在nuaa搞竞赛是否搞错了什么 今天是3202.3.31，经历了好几天的鬼混生活，写这篇文章的时候我只剩下半条命了（ 总的来说，今年的题目比较烂，但是师傅们一起玩的很开心 如果是来看wp的师傅们可以直接点旁边目录跳转 Before2023.3.28 终于见到了可爱的可可姐，感觉人生都亮起来了（雾 上完早八，直接收拾好东西去酒店找可可，dbt说下午马上就能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png">
+<meta property="article:published_time" content="2023-03-31T15:36:35.000Z">
+<meta property="article:modified_time" content="2023-04-02T13:57:45.212Z">
+<meta property="article:author" content="Dawn_whisper">
+<meta property="article:tag" content="Life">
+<meta property="article:tag" content="Crypto">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png"><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://example.com/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Dawn_whisper","link":"链接: ","source":"来源: Dawn_whisper's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-02 21:57:45'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/color.css"><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dawn_whisper's blog" type="application/atom+xml">
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/comment/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></li><li><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dawn_whisper's blog</a></span><div id="he-plugin-simple"></div><div id="none_space"></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 菜单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/comment/"><i class="fa-fw fas fa-paper-plane"></i><span> 留言板</span></a></li><li><a class="site-page" href="/links/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></li><li><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">XCTF Fianl 7th 祭</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-31T15:36:35.000Z" title="发表于 2023-03-31 23:36:35">2023-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-02T13:57:45.212Z" title="更新于 2023-04-02 21:57:45">2023-04-02</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Life/">Life</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="XCTF-Fianl-7th-祭"><a href="#XCTF-Fianl-7th-祭" class="headerlink" title="XCTF Fianl 7th 祭"></a>XCTF Fianl 7th 祭</h1><h2 id="Gossip"><a href="#Gossip" class="headerlink" title="Gossip"></a>Gossip</h2><p>在nuaa搞竞赛是否搞错了什么</p>
+<p>今天是3202.3.31，经历了好几天的鬼混生活，写这篇文章的时候我只剩下半条命了（</p>
+<p>总的来说，今年的题目比较烂，但是师傅们一起玩的很开心</p>
+<p>如果是来看wp的师傅们可以直接点旁边目录跳转</p>
+<h2 id="Before"><a href="#Before" class="headerlink" title="Before"></a>Before</h2><p>2023.3.28 终于见到了可爱的可可姐，感觉人生都亮起来了（雾</p>
+<p>上完早八，直接收拾好东西去酒店找可可，dbt说下午马上就能到，于是坐地铁去景枫里面带可可姐逛商场，顺便等等dbt。结果逛了两圈，买了奶茶，吃完了饭，聊累了天，还是没见dbt的人影，于是可可开始催我，我就去群里催dbt。</p>
+<blockquote>
+<p>我：人呢？人呢？人呢？人呢？急急急急急</p>
+<p>DBT：别急 刚下飞机</p>
+<p>DBT：在地铁上 我们9个人</p>
+<p>DBT：先去签到 马上就到了</p>
+<p>DBT：别急 打车呢</p>
+</blockquote>
+<p>这可能就是蒋队的责任心罢，毕竟要先把队友们都安排好，但是来吃饭的时候已经两点半了，商场里的餐馆都下班了，最后带着L的学弟学妹们吃了披萨🍕（</p>
+<p>等吃完饭拉上dbt，去南京南拉上了学弟，再去鸡鸣寺找To1in和桑哥，可惜樱花花季过去了，前几周满树的百花都变成了绿油油的芽，于是还是去玄武湖公园刷了点微信步数，风景不错，但是路上一直在聊天没怎么拍照，丢几张之前拍的樱花好了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518275.png" alt="image-20230402151809615"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304011918631.png" alt="image-20230401191840480"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png" alt="image-20230402151830581"></p>
+<p>散完了步被To1in带着去恰海鲜，我这个平时一点海鲜都不碰的人那晚上也吃的很开心，只能说跟着本地人不管走多远都能吃到好吃的，在桌上也认识了东南密码大手子rec和sus的队长，大家聊的也都很开心，就是可可姐说要晚上喝酒跟我们一打十，还说完就不认账，<del>我寻思拿雪碧一🥤打十🍺应该也没什么问题是吧</del>。（逃</p>
+<p>吃完之后和Dem0哥哥约了酒局，打算和好兄弟们好好喝一次酒，结果回宾馆的路上发现w&amp;sm的聚餐也改到了今天，<strong>龙哥叫我去，那不得不去</strong>，于是下了地铁便和几个密码手先行分开直奔w&amp;m聚会。</p>
+<p>关于w&amp;m聚会吃饭，我龙哥永远离不开火锅、烤肉、东北菜和海底捞，因为不管每次几个人怎么选，龙哥总会有各种各样的理由最后选到这几个上面去，我建议下次w&amp;m聚会安排吃饭时候直接写个随机数全部安排好<del>（现已加入w&amp;m聚会吃饭菜单）</del>，就不至于每次好几个人扎堆研究吃什么了。</p>
+<blockquote>
+<p>又是w&amp;m线下聚会，请选择与您共进晚餐的人：</p>
+<blockquote>
+<p>Ha1c9on   Yoshino-s   L1near   114   wjh  Snowy_war   yusa   Dawn_whisper</p>
+</blockquote>
+<p>人员选择完毕，请选择您们准备前往的饭店：</p>
+<blockquote>
+<p>火锅   海底捞   烤肉   东北菜</p>
+</blockquote>
+<p>请选择吃完饭之后的活动安排：</p>
+<blockquote>
+<p>上网   上网   上网   上网   上网   上网   上网</p>
+</blockquote>
+<p>您的聚会已经全部安排完毕啦！去享受您的快乐生活吧！</p>
+</blockquote>
+<p>稍微和好兄弟们聊了几句，国防科大的哥哥们也陆陆续续到了，可可姐进来喊我，科大的兄弟们可能也就这一次有机会见面，于是便和w&amp;m的师傅们告别去下一场酒局。</p>
+<p>关于吃饭，除了几个嘴硬的每次喝酒就接一个瓶底，dbt一个人转了一圈，这点我是服的，到我这就跟dbt一次陪了一整杯。结果点菜的时候点玉米，上来就是十几串整个玉米，我看见dbt直接傻在那之后直接就开始嘲笑😝，你小子铁定是没见过真正的北方人是怎么上菜的，最后一人一个指标没完成，还剩下几个没人要，最后让服务员都切成小段才勉强解决掉。你说你也没见过？来个图给你看看。我只能说，这才真正有北方烧烤的感觉</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021601152.png" alt="image-20230402160133986"></p>
+<p>再提一嘴，有些人到最后都在嘴硬：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021600491.png" alt="截屏2023-04-02 16.00.39"></p>
+<p>吃完饭坐着聊天，相互加起了微信，师傅们相互介绍的时候，总免不了这几句</p>
+<blockquote>
+<p>你好师傅我是dw，wm做密码的那个</p>
+<p>嗷，就是师傅你啊</p>
+</blockquote>
+<p>这时候再加上dbt几句吹水，师傅们跟我客气几下被觉得好像大家都认识我一样（，科大的师傅们人很好也很有意思，Dem0、rec、等风、init、Evolution等等师傅们也都很帅，于是大伙坐下一聊就聊到了三点半，一个个都说今晚这五个队都喝趴下之后明天排名直接上升五名，结果第二天开赛的时候我看是一个比一个猛（</p>
+<p>晚上这nuaa是回不去了，也没有地铁去SU轰趴馆那边，我直接和dbt进行一个同床共枕，赢！</p>
+<h2 id="Gaming"><a href="#Gaming" class="headerlink" title="Gaming"></a>Gaming</h2><p>早上7点醒来跟着dbt去混了顿酒店早餐，然后送走去现场的参赛选手，再慢慢坐地铁回nuaa上课去，回学校的时候正好9点，稍微躺了一会就去教室里上线比赛了</p>
+<h3 id="Crypto"><a href="#Crypto" class="headerlink" title="Crypto"></a>Crypto</h3><h4 id="Three"><a href="#Three" class="headerlink" title="Three"></a>Three</h4><p>他🐎的，这题纯抽象，我真不懂为什么现在出题都能这样出</p>
+<p>简单来说是个mpc，三方安全计算，但是关键代码一行不给，全靠一行英语描述自己猜，再给一个运行过程猜数据</p>
+<p>不想多评价了，感觉出题人纯不会说人话，题目都说不清楚，读半天不知道要说啥，这题放进misc去我绝对不会多说一句话（</p>
+<h4 id="TSA"><a href="#TSA" class="headerlink" title="TSA"></a>TSA</h4><p>搞了个RSA，全文读下来感觉出题人想考个时间二分，类似测信道攻击吧，结果检测的地方没写好，开赛十分钟被非了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ct == enc_flag:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;bye~&quot;</span>)</span><br><span class="line">    exit()</span><br></pre></td></tr></table></figure>
+
+<p>反手就是一个 $c*2^e$ ，返回来一个 $2m$ ，然后flag就有了…</p>
+<p>真正的考点应该是这个</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">modExp</span>(<span class="params">a, e, n</span>):</span><br><span class="line">    karatsuba = <span class="number">10</span></span><br><span class="line">    normal = <span class="number">100</span></span><br><span class="line">    montgomery = <span class="number">2000</span></span><br><span class="line">    <span class="keyword">if</span> a &lt; n:</span><br><span class="line">        delay = karatsuba + montgomery</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        delay = normal + <span class="number">200</span></span><br><span class="line">    time.sleep(delay/<span class="number">10000</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">pow</span>(a, e, n)</span><br></pre></td></tr></table></figure>
+
+<p>不过比赛也没revenge，懒得写正解exp咯</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021633875.png" alt="截屏2023-04-02 16.33.17"></p>
+<p>完蛋，好像真有预期解，那没事了</p>
+<h4 id="noise"><a href="#noise" class="headerlink" title="noise"></a>noise</h4><p>题目给出一个矩阵运算 $AB+X&#x3D;C\mod{N}$ ，然后给出C，在B和X都较小的情况下恢复B，一眼定真，鉴定为强*杯lattice原题，不过那题是 $AB&#x3D;C\mod{N}$ ，但是也有办法<br>$$<br>[A][B]+[X]&#x3D;\begin{bmatrix}A|X\end{bmatrix}\begin{bmatrix}B\\ 1\end{bmatrix}&#x3D;\begin{bmatrix}A|1\end{bmatrix}\begin{bmatrix}B\\ X\end{bmatrix}&#x3D;C\mod{N}<br>$$<br> 这样变换一下就和那题一样了，最后结束的时候dbt说可以给x乘一个小向量，这样就是 $AB\alpha+X\alpha&#x3D;C\alpha\mod{N}$ ，然后让 $X\alpha$ 等于零向量就行了，只能说曾经shallow跟我讲过这个思路，比赛现场的时候还是没想起来。另外感觉自己调参的本事还是太菜了，先丢个exp，后面好好再重新练练吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sage.modules.free_module_integer <span class="keyword">import</span> IntegerLattice</span><br><span class="line"></span><br><span class="line">n = <span class="number">75</span></span><br><span class="line">m = <span class="number">150</span></span><br><span class="line">r = <span class="number">56</span></span><br><span class="line">N = <span class="number">126633165554229521438977290762059361297987250739820462036000284719563379254544315991201997343356439034674007770120263341747898897565056619503383631412169301973302667340133958109</span></span><br><span class="line"></span><br><span class="line">t1 = [ZZ.random_element(-<span class="number">2</span>^<span class="number">15</span>, <span class="number">2</span>^<span class="number">15</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n*m)]</span><br><span class="line">t2 = [ZZ.random_element(N) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(r*n)]</span><br><span class="line">t3 = [ZZ.random_element(-<span class="number">2</span>^<span class="number">20</span>, <span class="number">2</span>^<span class="number">20</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(r*m)]</span><br><span class="line">B = matrix(ZZ, n, m, t1)</span><br><span class="line">L = IntegerLattice(B)</span><br><span class="line">finalans = L.reduced_basis[<span class="number">0</span>]</span><br><span class="line">A = matrix(ZZ, r, n, t2)</span><br><span class="line">X = matrix(ZZ, r, m, t3)</span><br><span class="line">C = (A * B + X) % N</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">attack</span>(<span class="params">n, m, r, N, C</span>):</span><br><span class="line">    C = C.T</span><br><span class="line">    M = block_matrix([[N*identity_matrix(r), zero_matrix(r, m)], [C, <span class="number">2</span>^<span class="number">15</span> * identity_matrix(m)]])</span><br><span class="line">    temp = M.LLL()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;LLL done&quot;</span>)</span><br><span class="line"></span><br><span class="line">    M = Matrix(ZZ, [temp[i][r:] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">75</span>)]) / <span class="number">2</span>^<span class="number">15</span></span><br><span class="line">    tempM = block_matrix([[<span class="number">2</span>^<span class="number">30</span> * M.T, identity_matrix(<span class="number">150</span>)]])</span><br><span class="line">    res = tempM.LLL()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;LLL done&quot;</span>)</span><br><span class="line"></span><br><span class="line">    res1 = Matrix(ZZ, [res[i][<span class="number">75</span>:] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">75</span>)])</span><br><span class="line">    res1 = res1.BKZ(block_size = <span class="number">10</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;BKZ done&quot;</span>)</span><br><span class="line">    tar = IntegerLattice(res1).reduced_basis[<span class="number">0</span>]</span><br><span class="line">    tar_inv = [-i <span class="keyword">for</span> i <span class="keyword">in</span> tar]</span><br><span class="line">    <span class="keyword">return</span> tar, tar_inv</span><br><span class="line"></span><br><span class="line">ans1, ans2 = attack(n, m, r, N, C)</span><br></pre></td></tr></table></figure>
+
+<p><del>平等的恨每一道我调不出来的需要调参的题目</del></p>
+<h2 id="Result"><a href="#Result" class="headerlink" title="Result"></a>Result</h2><p>W&amp;M万年老五，我背大锅，没进前四去打KOH，可惜，归根到底只能说还是自己太菜了（</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021647511.png" alt="image-20230402164735355"></p>
+<p>第二天Dota2跟我们密码手没什么关系，也就是直播看看乐子，我也没怎么去写脚本，摸摸鱼啦，结果还是第五（</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021647119.png" alt="image-20230402164655201"></p>
+<h2 id="After"><a href="#After" class="headerlink" title="After"></a>After</h2><p>2023.3.30 比赛结束咯，开始新一轮的鬼混2.0（</p>
+<p>比赛结束之后，去现场找到了很多很多的师傅们，甚至还和脑王合影<del>追星成功</del>了，领完奖之后，龙哥说抽奖也没什么好东西，于是我们几个没去晚宴，回宾馆商量了下晚上去哪吃饭，不过过程如上所述，最后选到了东北烧烤（，y老师带着他的女朋友，wjh师傅带着他的女朋友，龙哥雪姐姐和yusa也聊得很开心，只剩下我一个人背个包在前面领路，<del>属于是输麻了</del>，坐下之后在群里喊或或，据说是要坐二十多站地铁，于是我们先吃起来了，饭桌上大家畅谈人生，发现大家都有着不止一技之长，还能畅谈各大公司开出的不少资薪，<del>这下又属于是输麻了2.0</del>，不过好一点的是，各位w&amp;m的师傅们对我都很好，希望读完书后的生活能过得好一点吧</p>
+<p>恰饭的时候或或和114也都陆陆续续到了，恰完了饭被龙哥拉去打游戏，吃完晚宴后dbt和南邮的很多师傅们去百家湖喝酒，于是一个劲的给我发消息打电话，甚至让我喊上龙哥一起去，但是最后还是只有我一个打了个车回到百家湖，晚上的细节我已经不想仔细描述了，感觉只有最后在门口dbt说谎不眨眼那段可以封神。简单来说有个着装很暴露的妹妹<del>（感觉浑身上下就穿了个肚兜，我怕我多看一眼要说我色狼（）</del>来我们这桌加微信，试图约dbt去下周音乐节，实际上dbt明天就走却和人家约了下周一起，说的真真切切看的我都快信了（，最后大家一起和天命的师傅们合了照，于是便一起打车回酒店了</p>
+<p>大晚上四点我一个人没地方住，最后还得感谢雪姐姐从睡梦里醒来让我有个地方睡下（</p>
+<p>2023.3.31 早上听说我的闹钟响了两个小时，把雪姐姐叫醒了我还是一动不动，<del>不过我早八的签到还是签上了，大成功！</del></p>
+<p>在酒店休息好的时候已经中午了，正好赶上帆哥哥回南京、小学弟路过南航，于是一起在托乐嘉吃了顿饭。很喜欢帆哥哥见面时的说的话：“你居然还没死呢”</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304022146291.png" alt="image-20230402214618544"></p>
+<p>下午回学校上完了课，把校队里的事情忙完了之后，感觉自己就剩下半条命了，结果又被dbt他们叫了出去，说是安排了一晚上的活动，反正我是顶不住了，本来打算最后夜不归宿最后一次，结果livehouse自己又给自己破防了（，被兄弟们安慰了会，还是觉得回学校好好休息比较好，晚上和shallow👴聊了蛮久，谁知道这次有没有想通呢，管她呢，明天爬起来接着卷绩点再说吧…</p>
+<h2 id="Soliloquy"><a href="#Soliloquy" class="headerlink" title="Soliloquy"></a>Soliloquy</h2><blockquote>
+<p><em>我试着 一个人 一整天 都不失落</em><br><em>就让我 喝醉了 唱着歌 自娱自乐</em><br><em>开始怀疑了 被爱情击倒了</em><br><em>无可奈何 💔</em></p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dawn_whisper</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/">http://example.com/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Dawn_whisper's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Life/">Life</a><a class="post-meta__tags" href="/tags/Crypto/">Crypto</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.png" target="_blank"><img class="post-qr-code-img" src="/img/wechat.png" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/08/27/First%20price%20at%20CISCN2022!/"><img class="next-cover" src="https://img1.imgtp.com/2022/08/28/9RDGd4Cv.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">First price at CISCN2022!</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/08/27/First price at CISCN2022!/" title="First price at CISCN2022!"><img class="cover" src="https://img1.imgtp.com/2022/08/28/9RDGd4Cv.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-27</div><div class="title">First price at CISCN2022!</div></div></a></div><div><a href="/2022/08/14/DEFCON2022/" title="DEFCON2022 at straw hat"><img class="cover" src="https://img1.imgtp.com/2022/08/27/lRMWG6sS.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-08-14</div><div class="title">DEFCON2022 at straw hat</div></div></a></div><div><a href="/2021/10/09/2021领航杯/" title="2021领航杯 & 蚌埠住了"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-09</div><div class="title">2021领航杯 & 蚌埠住了</div></div></a></div><div><a href="/2021/06/20/Frist_AWD_at_ciscn2021/" title="First AWD at ciscn2021"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-06-20</div><div class="title">First AWD at ciscn2021</div></div></a></div><div><a href="/2021/04/16/Wp_for_mrctf2021/" title="Writeup for MRCTF2021 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-16</div><div class="title">Writeup for MRCTF2021 crypto</div></div></a></div><div><a href="/2021/04/04/Wp_for_红明谷_crypto/" title="Writeup for 红明谷 crypto"><img class="cover" src="/img/top_img.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-04-04</div><div class="title">Writeup for 红明谷 crypto</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Dawn_whisper</div><div class="author-info__description">弱到不行的crypto手+退役OI选手</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">34</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/dawnwhisper"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/dawnwhisper" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:dawn_whisper@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://space.bilibili.com/179833081" target="_blank" title="Bilibili"><i class="fa-brands fa-bilibili"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">Welcome to Dawn_whisper's blog~   If you have any idea about my blog, plz send an email to me~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#XCTF-Fianl-7th-%E7%A5%AD"><span class="toc-number">1.</span> <span class="toc-text">XCTF Fianl 7th 祭</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gossip"><span class="toc-number">1.1.</span> <span class="toc-text">Gossip</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Before"><span class="toc-number">1.2.</span> <span class="toc-text">Before</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gaming"><span class="toc-number">1.3.</span> <span class="toc-text">Gaming</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Crypto"><span class="toc-number">1.3.1.</span> <span class="toc-text">Crypto</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Three"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">Three</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TSA"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">TSA</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#noise"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">noise</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Result"><span class="toc-number">1.4.</span> <span class="toc-text">Result</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#After"><span class="toc-number">1.5.</span> <span class="toc-text">After</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Soliloquy"><span class="toc-number">1.6.</span> <span class="toc-text">Soliloquy</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/" title="XCTF Fianl 7th 祭">XCTF Fianl 7th 祭</a><time datetime="2023-03-31T15:36:35.000Z" title="发表于 2023-03-31 23:36:35">2023-03-31</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/08/27/First%20price%20at%20CISCN2022!/" title="First price at CISCN2022!">First price at CISCN2022!</a><time datetime="2022-08-27T09:43:54.000Z" title="发表于 2022-08-27 17:43:54">2022-08-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/08/14/DEFCON2022/" title="DEFCON2022 at straw hat">DEFCON2022 at straw hat</a><time datetime="2022-08-14T10:51:23.000Z" title="发表于 2022-08-14 18:51:23">2022-08-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/07/13/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E7%AC%94%E8%AE%B0/" title="内网渗透笔记">内网渗透笔记</a><time datetime="2022-07-13T02:58:41.000Z" title="发表于 2022-07-13 10:58:41">2022-07-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/10/09/2021%E9%A2%86%E8%88%AA%E6%9D%AF/" title="2021领航杯 &amp; 蚌埠住了">2021领航杯 &amp; 蚌埠住了</a><time datetime="2021-10-09T15:09:20.000Z" title="发表于 2021-10-09 23:09:20">2021-10-09</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304021518358.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Dawn_whisper</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    loader: {
+      source: {
+        '[tex]/amsCd': '[tex]/amscd'
+      }
+    },
+    tex: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"]],
+      tags: 'ams'
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, ''],
+        addClass: [200,() => {
+          document.querySelectorAll('mjx-container:not([display=\'true\']').forEach( node => {
+            const target = node.parentNode
+            if (!target.classList.contains('has-jax')) {
+              target.classList.add('mathjax-overflow')
+            }
+          })
+        }, '', false]
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typeset()
+}</script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', '', 'katex-wrap')
+  })
+})()</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk({
+      clientID: 'b9d4bee4e56c45722c3e',
+      clientSecret: '6262041849967331fba83dec0387697b1f6ec9a7',
+      repo: 'blog-comments',
+      owner: 'dawnwhisper',
+      admin: ['dawnwhisper'],
+      id: '7e3bf3315a48b6d8729f8a9e81678666',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: true,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      updateCountCallback: commentCount
+    })
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !true) {
+  if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/fireworks.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
